@@ -179,6 +179,9 @@ if (!empty($_REQUEST['confirm'])) {
 						SELECT MAX(TreeID) + 1
 						FROM invite_tree");
 					list($TreeID) = $DB->next_record();
+					if ($TreeID == '') {
+						$TreeID = 1;
+					}
 
 					$DB->query("
 						INSERT INTO invite_tree
