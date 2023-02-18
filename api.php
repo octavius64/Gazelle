@@ -24,6 +24,9 @@ $Debug->handle_errors();
 
 // Send a message to an IRC bot listening on SOCKET_LISTEN_PORT
 function send_irc($Raw) {
+	// TODO: Fix this
+	return;
+
 	$IRCSocket = fsockopen(SOCKET_LISTEN_ADDRESS, SOCKET_LISTEN_PORT);
 	fwrite($IRCSocket, $Raw);
 	fclose($IRCSocket);
