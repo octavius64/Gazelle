@@ -62,7 +62,7 @@ class Artists {
 					G::$Cache->cache_value('groups_artists_'.$GroupID, array());
 				}
 			}
-			$Missing = array_diff($GroupIDs, array_keys($Results));
+			$Missing = array_diff($GroupIDs, old_array_keys($Results));
 			if (!empty($Missing)) {
 				$Results += array_fill_keys($Missing, array());
 			}

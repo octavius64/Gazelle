@@ -178,7 +178,7 @@ class Tags {
 			array_walk_recursive($TagAliases, create_function('&$val', '$val = preg_replace("/\./","_", $val);'));
 			// Clean up the array for smaller cache size
 			foreach ($TagAliases as &$TagAlias) {
-				foreach (array_keys($TagAlias) as $Key) {
+				foreach (old_array_keys($TagAlias) as $Key) {
 					if (is_numeric($Key)) {
 						unset($TagAlias[$Key]);
 					}

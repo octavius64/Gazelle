@@ -90,7 +90,7 @@ if (!empty($_POST['requestid'])) {
 //******************************************************************************//
 //--------------- Validate data in upload form ---------------------------------//
 
-$Validate->SetFields('type', '1', 'inarray', 'Please select a valid type.', array('inarray' => array_keys($Categories)));
+$Validate->SetFields('type', '1', 'inarray', 'Please select a valid type.', array('inarray' => old_array_keys($Categories)));
 switch ($Type) {
 	case 'Music':
 		if (!$_POST['groupid']) {
@@ -101,7 +101,7 @@ switch ($Type) {
 				'1','number','The year of the original release must be entered.', array('length'=>40));
 
 			$Validate->SetFields('releasetype',
-				'1','inarray','Please select a valid release type.', array('inarray'=>array_keys($ReleaseTypes)));
+				'1','inarray','Please select a valid release type.', array('inarray'=>old_array_keys($ReleaseTypes)));
 
 			$Validate->SetFields('tags',
 				'1','string','You must enter at least one tag. Maximum length is 200 characters.', array('maxlength'=>200, 'minlength'=>2));

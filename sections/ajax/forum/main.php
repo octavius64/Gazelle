@@ -42,7 +42,7 @@ $DB->query("
 	WHERE UserID = ".$LoggedUser['ID']);
 list($RestrictedForums) = $DB->next_record();
 $RestrictedForums = explode(',', $RestrictedForums);
-$PermittedForums = array_keys($LoggedUser['PermittedForums']);
+$PermittedForums = old_array_keys($LoggedUser['PermittedForums']);
 
 $JsonCategories = array();
 $JsonCategory = array();

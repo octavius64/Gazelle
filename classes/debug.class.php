@@ -279,7 +279,7 @@ class DEBUG {
 	}
 
 	public function get_cache_keys() {
-		return array_keys(G::$Cache->CacheHits);
+		return old_array_keys(G::$Cache->CacheHits);
 	}
 
 	public function get_sphinxql_queries() {

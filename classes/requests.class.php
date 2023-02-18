@@ -79,7 +79,7 @@ class Requests {
 		if (count($RequestIDs) === 0) {
 			return array();
 		}
-		$IDs = implode(',', array_keys($NotFound));
+		$IDs = implode(',', old_array_keys($NotFound));
 
 		/*
 			Don't change without ensuring you change everything else that uses get_requests()
@@ -126,7 +126,7 @@ class Requests {
 
 			// Orphan requests. There shouldn't ever be any
 			if (count($NotFound) > 0) {
-				foreach (array_keys($NotFound) as $GroupID) {
+				foreach (old_array_keys($NotFound) as $GroupID) {
 					unset($Found[$GroupID]);
 				}
 			}

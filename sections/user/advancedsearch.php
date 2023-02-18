@@ -166,7 +166,7 @@ if (count($_GET)) {
 
 	$Val->SetFields('passkey', '0', 'string', 'Invalid passkey', array('maxlength' => 32));
 	$Val->SetFields('avatar', '0', 'string', 'Avatar URL too long', array('maxlength' => 512));
-	$Val->SetFields('stylesheet', '0', 'inarray', 'Invalid stylesheet', array_unique(array_keys($Stylesheets)));
+	$Val->SetFields('stylesheet', '0', 'inarray', 'Invalid stylesheet', array_unique(old_array_keys($Stylesheets)));
 	$Val->SetFields('cc', '0', 'inarray', 'Invalid Country Code', array('maxlength' => 2));
 
 	$Err = $Val->ValidateForm($_GET);

@@ -194,4 +194,22 @@ function json_print($Status, $Message) {
 function site_url($SSL = true) {
 	return $SSL ? 'https://' . SSL_SITE_URL . '/' : 'http://' . NONSSL_SITE_URL . '/';
 }
+
+/**
+ * Wrapper around old_array_keys.
+ * I think the old behavior of this function was to not throw an exception
+ * when the given array is null, so that's what this wrapper emulates.
+ */
+function old_array_keys($array, $filter_value = null) {
+	if ($array == null) {
+		return [];
+	}
+
+	if ($filter_value == null) {
+		return array_keys($array);
+	} else {
+		return array_keys($array, $filter_value);
+	}
+}
+
 ?>

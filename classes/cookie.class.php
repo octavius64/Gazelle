@@ -40,7 +40,7 @@ class COOKIE /*implements COOKIE_INTERFACE*/ {
 	}
 
 	public function flush() {
-		$Cookies = array_keys($_COOKIE);
+		$Cookies = old_array_keys($_COOKIE);
 		foreach ($Cookies as $Cookie) {
 			$this->del($Cookie);
 		}

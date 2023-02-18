@@ -88,7 +88,7 @@ while (list($GroupID, $Importance) = $DB->next_record(MYSQLI_NUM, false)) {
 		$ArtistRoles[$GroupID] = $Importance;
 	}
 }
-$GroupIDs = array_keys($ArtistRoles);
+$GroupIDs = old_array_keys($ArtistRoles);
 
 $SQL = 'SELECT CASE ';
 
@@ -151,7 +151,7 @@ while (list($Downloads, $GroupIDs) = $Collector->get_downloads('GroupID')) {
 	$TorrentFilesQ = $DB->query("
 		SELECT TorrentID, File
 		FROM torrents_files
-		WHERE TorrentID IN (".implode(',', array_keys($GroupIDs)).')', false);
+		WHERE TorrentID IN (".implode(',', old_array_keys($GroupIDs)).')', false);
 	if (is_int($TorrentFilesQ)) {
 		// Query failed. Let's not create a broken zip archive
 		foreach ($GroupIDs as $GroupID) {

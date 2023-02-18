@@ -742,7 +742,7 @@ class Donations {
 				'icc' => '"icc"'
 			);
 
-			$USD = str_replace(array_keys($Replace), array_values($Replace), $USD);
+			$USD = str_replace(old_array_keys($Replace), array_values($Replace), $USD);
 			$USD = json_decode($USD, true);
 			if (isset($USD['rhs'])) {
 				// The response is in format "# Euroes", extracts the numbers.

@@ -93,7 +93,7 @@ if (isset($_GET['log']) && in_array($_GET['log'], array('1', '0', '100', '-1')))
 
 if (!empty($_GET['categories'])) {
 	$Cats = array();
-	foreach (array_keys($_GET['categories']) as $Cat) {
+	foreach (old_array_keys($_GET['categories']) as $Cat) {
 		if (!is_number($Cat)) {
 			error(0);
 		}

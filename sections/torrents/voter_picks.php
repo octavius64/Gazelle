@@ -42,7 +42,7 @@ if (count($Top10) > 0) {
 				<td><a href="#">&uarr;</a>&nbsp;People who like this album also liked... <a href="#" onclick="$('.votes_rows').gtoggle(); return false;">(Show)</a></td>
 			</tr>
 <?
-	$Top10Groups = array_keys($Top10);
+	$Top10Groups = old_array_keys($Top10);
 
 	$Groups = Torrents::get_groups($Top10Groups, true, true, false);
 	$i = 0;

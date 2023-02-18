@@ -40,7 +40,7 @@ if (!empty($_GET['cats'])) {
 			unset($Categories[$Cat]);
 		}
 	}
-	$Categories = array_keys($Categories);
+	$Categories = old_array_keys($Categories);
 } else {
 	$Categories = array(1, 2, 3, 4, 5, 6, 7);
 }
