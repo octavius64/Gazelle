@@ -223,12 +223,11 @@ class DB_MYSQL {
 		$this->connect();
 		// In the event of a MySQL deadlock, we sleep allowing MySQL time to unlock, then attempt again for a maximum of 5 tries
 		for ($i = 1; $i < 6; $i++) {
-			var_dump($Query);
-			var_dump('\n\n');
+			gzl_log($Query);
 			try {
 				$this->QueryID = mysqli_query($this->LinkID, $Query);
 			} catch (mysqli_sql_exception $e) {
-				var_dump($e);
+				gzl_log($e);
 				exit;
 			}
 			if (!in_array(mysqli_errno($this->LinkID), array(1213, 1205))) {
