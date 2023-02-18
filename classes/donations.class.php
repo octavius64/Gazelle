@@ -312,13 +312,13 @@ class Donations {
 			$QueryID = G::$DB->get_query_id();
 			G::$DB->query("
 				SELECT
-					Rank,
-					SpecialRank,
-					TotalRank,
-					DonationTime,
-					RankExpirationTime + INTERVAL 766 HOUR
-				FROM users_donor_ranks
-				WHERE UserID = '$UserID'");
+					udr.Rank,
+					udr.SpecialRank,
+					udr.TotalRank,
+					udr.DonationTime,
+					udr.RankExpirationTime + INTERVAL 766 HOUR
+				FROM users_donor_ranks AS udr
+				WHERE udr.UserID = '$UserID'");
 				// 2 hours less than 32 days to account for schedule run times
 			if (G::$DB->has_results()) {
 				list($Rank, $SpecialRank, $TotalRank, $DonationTime, $ExpireTime) = G::$DB->next_record(MYSQLI_NUM, false);
