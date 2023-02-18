@@ -403,6 +403,10 @@ class DB_MYSQL {
 	 * and stores them in $this->Queries.
 	 */
 	function warnings() {
+		if (!$this->LinkID) {
+			return;
+		}
+
 		$Warnings = array();
 		if (mysqli_warning_count($this->LinkID)) {
 			$e = mysqli_get_warnings($this->LinkID);
