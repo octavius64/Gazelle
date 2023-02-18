@@ -245,7 +245,7 @@ if (!empty($_REQUEST['confirm'])) {
 			$TPL->set('SITE_NAME', SITE_NAME);
 			$TPL->set('SITE_URL', SITE_URL);
 
-			Misc::send_email($_REQUEST['email'], 'New account confirmation at '.SITE_NAME, $TPL->get(), 'noreply');
+			Misc::send_email($_REQUEST['email'], 'New account confirmation at '.SITE_NAME, $TPL->get(), 'noreply', '');
 			Tracker::update_tracker('add_user', array('id' => $UserID, 'passkey' => $torrent_pass));
 			$Sent = 1;
 
