@@ -420,9 +420,9 @@ if (count($_GET)) {
 		}
 
 		if ($_GET['warned'] == 'yes') {
-			$Where[] = 'ui1.Warned != \'0000-00-00 00:00:00\'';
+			$Where[] = 'ui1.Warned != \'1970-01-01 00:00:00\'';
 		} elseif ($_GET['warned'] == 'no') {
-			$Where[] = 'ui1.Warned = \'0000-00-00 00:00:00\'';
+			$Where[] = 'ui1.Warned = \'1970-01-01 00:00:00\'';
 		}
 
 		if ($_GET['disabled_ip']) {
