@@ -16,6 +16,9 @@ class Tracker {
 	 * @param boolean $ToIRC Sends a message to the channel #tracker with the GET URL.
 	 */
 	public static function update_tracker($Action, $Updates, $ToIRC = false) {
+		// TODO: Remove dummy value
+		return true;
+
 		// Build request
 		$Get = TRACKER_SECRET . "/update?action=$Action";
 		foreach ($Updates as $Key => $Value) {
@@ -41,6 +44,9 @@ class Tracker {
 	 * @return array(0 => $Leeching, 1 => $Seeding) or false if request failed
 	 */
 	public static function global_peer_count() {
+		// TODO: Remove dummy value
+		return [0, 0];
+
 		$Stats = self::get_stats(self::STATS_MAIN);
 		if (isset($Stats['leechers tracked']) && isset($Stats['seeders tracked'])) {
 			$Leechers = $Stats['leechers tracked'];
@@ -58,6 +64,9 @@ class Tracker {
 	 * @return array(0 => $Leeching, 1 => $Seeding) or false if the request failed
 	 */
 	public static function user_peer_count($TorrentPass) {
+		// TODO: Remove dummy value
+		return [0, 0];
+
 		$Stats = self::get_stats(self::STATS_USER, array('key' => $TorrentPass));
 		if ($Stats === false) {
 			return false;
@@ -78,6 +87,9 @@ class Tracker {
 	 * @return results from get_stats()
 	 */
 	public static function info() {
+		// TODO: Remove dummy value
+		return false;
+
 		return self::get_stats(self::STATS_MAIN);
 	}
 
