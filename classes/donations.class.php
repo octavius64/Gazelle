@@ -606,10 +606,10 @@ class Donations {
 		}
 		$QueryID = G::$DB->get_query_id();
 		G::$DB->query("
-			SELECT Amount, Email, Time, Currency, Reason, Source, AddedBy, Rank, TotalRank
-			FROM donations
-			WHERE UserID = '$UserID'
-			ORDER BY Time DESC");
+			SELECT d.Amount, d.Email, d.Time, d.Currency, d.Reason, d.Source, d.AddedBy, d.Rank, d.TotalRank
+			FROM donations as d
+			WHERE d.UserID = '$UserID'
+			ORDER BY d.Time DESC");
 		$DonationHistory = G::$DB->to_array(false, MYSQLI_ASSOC, false);
 		G::$DB->set_query_id($QueryID);
 		return $DonationHistory;
