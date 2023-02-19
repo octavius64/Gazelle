@@ -386,11 +386,19 @@ define('STAFF_LOCKED', 1);
 
 $AllowedPages = ['staffpm', 'ajax', 'locked', 'logout', 'login'];
 
-if (isset(G::$LoggedUser['LockedAccount']) && !in_array($Document, $AllowedPages)) {
-	require(SERVER_ROOT . '/sections/locked/index.php');
-} else {
-	require(SERVER_ROOT . '/sections/' . $Document . '/index.php');
+try {
+	if (isset(G::$LoggedUser['LockedAccount']) && !in_array($Document, $AllowedPages)) {
+		require(SERVER_ROOT . '/sections/locked/index.php');
+	} else {
+		require(SERVER_ROOT . '/sections/' . $Document . '/index.php');
+	}
+} catch (Throwable $e) {
+	gzl_log('script_start catch all exception');
+	gzl_log($e);
+	print("\n\n!!!ERROR!!!");
+	exit(1);
 }
+
 
 $Debug->set_flag('completed module execution');
 
