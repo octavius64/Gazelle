@@ -824,7 +824,7 @@ if (empty($LoggedUser['DisableRequests']) && check_paranoia_here('requestsvoted_
 					</tr>
 <?
 		$Row = 'a';
-		$Requests = Requests::get_requests(old_array_keys($SphRequests));
+		$Requests = Requests::get_requests(legacy_array_keys($SphRequests));
 		foreach ($SphRequests as $RequestID => $SphRequest) {
 			$Request = $Requests[$RequestID];
 			$VotesCount = $SphRequest['votes'];

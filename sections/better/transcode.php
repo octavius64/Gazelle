@@ -35,7 +35,7 @@ if ($TorrentCount == 0) {
 }
 
 $Results = $SphQLResult->to_array('groupid');
-$Groups = Torrents::get_groups(old_array_keys($Results));
+$Groups = Torrents::get_groups(legacy_array_keys($Results));
 $TorrentGroups = array();
 foreach ($Groups as $GroupID => $Group) {
 	if (empty($Group['Torrents'])) {

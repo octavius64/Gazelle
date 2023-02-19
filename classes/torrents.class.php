@@ -76,7 +76,7 @@ class Torrents {
 		*/
 
 		if (count($NotFound) > 0) {
-			$IDs = legacy_implode(',', old_array_keys($NotFound));
+			$IDs = legacy_implode(',', legacy_array_keys($NotFound));
 			$NotFound = array();
 			$QueryID = G::$DB->get_query_id();
 			G::$DB->query("

@@ -105,7 +105,7 @@ $DB->query("
 $ReceiverIDs = $DB->collect('UserID');
 
 
-if (!empty($ReceiverIDs) && (empty($LoggedUser['DisablePM']) || array_intersect($ReceiverIDs, old_array_keys($StaffIDs)))) {
+if (!empty($ReceiverIDs) && (empty($LoggedUser['DisablePM']) || array_intersect($ReceiverIDs, legacy_array_keys($StaffIDs)))) {
 ?>
 	<h3>Reply</h3>
 	<form class="send_form" name="reply" action="inbox.php" method="post" id="messageform">

@@ -16,7 +16,7 @@ if (($Results = $Cache->get_value('better_single_groupids')) === false) {
 	$Cache->cache_value('better_single_groupids', $Results, 30 * 60);
 }
 
-$Groups = Torrents::get_groups(old_array_keys($Results));
+$Groups = Torrents::get_groups(legacy_array_keys($Results));
 
 $JsonResults = array();
 foreach ($Results as $GroupID => $FlacID) {

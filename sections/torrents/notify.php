@@ -128,8 +128,8 @@ foreach ($Results as $Torrent) {
 $Pages = Format::get_pages($Page, $TorrentCount, NOTIFICATIONS_PER_PAGE, 9);
 
 if (!empty($GroupIDs)) {
-	$GroupIDs = old_array_keys($GroupIDs);
-	$FilterIDs = old_array_keys($FilterIDs);
+	$GroupIDs = legacy_array_keys($GroupIDs);
+	$FilterIDs = legacy_array_keys($FilterIDs);
 	$TorrentGroups = Torrents::get_groups($GroupIDs);
 
 	// Get the relevant filter labels

@@ -166,7 +166,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
 			$Votes[$Key] = $Value;
 		}
 
-		foreach (old_array_keys($Answers) as $i) {
+		foreach (legacy_array_keys($Answers) as $i) {
 			if (!isset($Votes[$i])) {
 				$Votes[$i] = 0;
 			}

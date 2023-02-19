@@ -191,7 +191,7 @@ if (!empty($ProducerAlbums)) {
 
 //Custom sorting for releases
 if (!empty($LoggedUser['SortHide'])) {
-	$SortOrder = array_flip(old_array_keys($LoggedUser['SortHide']));
+	$SortOrder = array_flip(legacy_array_keys($LoggedUser['SortHide']));
 } else {
 	$SortOrder = $ReleaseTypes;
 }
@@ -199,7 +199,7 @@ if (!empty($LoggedUser['SortHide'])) {
 $MissingTypes = array_diff_key($ReleaseTypes, $SortOrder);
 if (!empty($MissingTypes)) {
 	$MaxOrder = max($SortOrder);
-	foreach (old_array_keys($MissingTypes) as $Missing) {
+	foreach (legacy_array_keys($MissingTypes) as $Missing) {
 		$SortOrder[$Missing] = ++$MaxOrder;
 	}
 }
@@ -794,7 +794,7 @@ if ($NumRequests > 0) {
 			</td>
 		</tr>
 <?
-	$Tags = Requests::get_tags(old_array_keys($Requests));
+	$Tags = Requests::get_tags(legacy_array_keys($Requests));
 	$Row = 'b';
 	foreach ($Requests as $RequestID => $Request) {
 			$CategoryName = $Categories[$Request['CategoryID'] - 1];

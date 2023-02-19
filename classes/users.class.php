@@ -312,7 +312,7 @@ class Users {
 			$Sort =& $SiteOptions['SortHide'];
 			$MissingTypes = array_diff_key($RT, $Sort);
 			if (!empty($MissingTypes)) {
-				foreach (old_array_keys($MissingTypes) as $Missing) {
+				foreach (legacy_array_keys($MissingTypes) as $Missing) {
 					$Sort[$Missing] = 0;
 				}
 			}

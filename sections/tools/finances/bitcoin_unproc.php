@@ -49,7 +49,7 @@ foreach ($AllDonations as $Address => $Amount) {
 		</tr>
 <?
 if (!empty($NewDonations)) {
-	foreach (DonationsBitcoin::get_userids(old_array_keys($NewDonations)) as $Address => $UserID) {
+	foreach (DonationsBitcoin::get_userids(legacy_array_keys($NewDonations)) as $Address => $UserID) {
 		$DonationEUR = Donations::currency_exchange($NewDonations[$Address], 'BTC');
 ?>
 		<tr>

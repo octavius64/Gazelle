@@ -58,7 +58,7 @@ if (count($GroupIDs) === 0) {
 	error('No results found.');
 }
 
-$Groups = Torrents::get_groups(old_array_keys($GroupIDs));
+$Groups = Torrents::get_groups(legacy_array_keys($GroupIDs));
 $TorrentGroups = array();
 foreach ($Groups as $GroupID => $Group) {
 	if (empty($Group['Torrents'])) {

@@ -158,7 +158,7 @@ class DonationsBitcoin {
 				$NewDonations[$Address] = $Amount;
 			}
 			$Debug->log_var($NewDonations, '$NewDonations');
-			foreach (self::get_userids(old_array_keys($NewDonations)) as $Address => $UserID) {
+			foreach (self::get_userids(legacy_array_keys($NewDonations)) as $Address => $UserID) {
 				Donations::regular_donate($UserID, $NewDonations[$Address], 'Bitcoin Parser', '', 'BTC');
 				self::store_donation($Address, $NewDonations[$Address]);
 			}

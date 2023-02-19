@@ -272,7 +272,7 @@ class TorrentSearch {
 		if ($this->Random && $this->GroupResults) {
 			$TotalCount = $SphQLResult->get_meta('total_found');
 			$this->SphResults = $SphQLResult->collect('groupid');
-			$GroupIDs = old_array_keys($this->SphResults);
+			$GroupIDs = legacy_array_keys($this->SphResults);
 			$GroupCount = count($GroupIDs);
 			while ($SphQLResult->get_meta('total') < $TotalCount && $GroupCount < $this->PageSize) {
 				// Make sure we get $PageSize results, or all of them if there are less than $PageSize hits
@@ -282,7 +282,7 @@ class TorrentSearch {
 					break;
 				}
 				$this->SphResults += $SphQLResult->collect('groupid');
-				$GroupIDs = old_array_keys($this->SphResults);
+				$GroupIDs = legacy_array_keys($this->SphResults);
 				$GroupCount = count($GroupIDs);
 			}
 			if ($GroupCount > $this->PageSize) {
@@ -415,7 +415,7 @@ class TorrentSearch {
 					$Value = array_fill_keys(explode('|', $Value), 1);
 				}
 				$CategoryFilter = array();
-				foreach (old_array_keys($Value) as $Category) {
+				foreach (legacy_array_keys($Value) as $Category) {
 					if (is_number($Category)) {
 						$CategoryFilter[] = $Category;
 					} else {
@@ -440,7 +440,7 @@ class TorrentSearch {
 					$ValidValues = array_map('strtolower', $$ValidValuesVarname);
 					if (($Value = array_search(strtolower($Value), $ValidValues)) === false) {
 						// Force the query to return 0 results if value is still invalid
-						$Value = max(old_array_keys($ValidValues)) + 1;
+						$Value = max(legacy_array_keys($ValidValues)) + 1;
 					}
 				}
 				$this->SphQL->where($Attribute, $Value);
@@ -680,7 +680,7 @@ class TorrentSearch {
 		$AllTorrents = array();
 		foreach ($this->Groups as $GroupID => $Group) {
 			if (!empty($Group['Torrents'])) {
-				$AllTorrents += array_fill_keys(old_array_keys($Group['Torrents']), $GroupID);
+				$AllTorrents += array_fill_keys(legacy_array_keys($Group['Torrents']), $GroupID);
 			}
 		}
 		$TorrentCount = count($AllTorrents);
@@ -690,7 +690,7 @@ class TorrentSearch {
 			$this->SphQLTor->where_match($Term, $Field, false);
 		}
 		$this->SphQLTor->copy_attributes_from($this->SphQL);
-		$this->SphQLTor->where('id', old_array_keys($AllTorrents))->limit(0, $TorrentCount, $TorrentCount);
+		$this->SphQLTor->where('id', legacy_array_keys($AllTorrents))->limit(0, $TorrentCount, $TorrentCount);
 		$SphQLResultTor = $this->SphQLTor->query();
 		$MatchingTorrentIDs = $SphQLResultTor->to_pair('id', 'id');
 		foreach ($AllTorrents as $TorrentID => $GroupID) {

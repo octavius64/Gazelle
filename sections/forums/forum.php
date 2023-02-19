@@ -184,7 +184,7 @@ if (count($Forum) === 0) {
 				) / $PerPage
 			) AS Page
 		FROM forums_last_read_topics AS l
-		WHERE l.TopicID IN (".legacy_implode(', ', old_array_keys($Forum)).')
+		WHERE l.TopicID IN (".legacy_implode(', ', legacy_array_keys($Forum)).')
 			AND l.UserID = \''.$LoggedUser['ID'].'\'');
 
 	// Turns the result set into a multi-dimensional array, with

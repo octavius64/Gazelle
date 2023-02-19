@@ -70,7 +70,7 @@ if ($TopVotes === false) {
 		$Results = $DB->to_array('GroupID', MYSQLI_ASSOC, false);
 		$Ranks = Votes::calc_ranks($DB->to_pair('GroupID', 'Score', false));
 
-		$Groups = Torrents::get_groups(old_array_keys($Results));
+		$Groups = Torrents::get_groups(legacy_array_keys($Results));
 
 		$TopVotes = array();
 		foreach ($Results as $GroupID => $Votes) {

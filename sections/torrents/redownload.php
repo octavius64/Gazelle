@@ -70,7 +70,7 @@ $Collector = new TorrentsDL($DownloadsQ, "$Username's ".ucfirst($_GET['type']));
 
 while (list($Downloads, $GroupIDs) = $Collector->get_downloads('TorrentID')) {
 	$Artists = Artists::get_artists($GroupIDs);
-	$TorrentIDs = old_array_keys($GroupIDs);
+	$TorrentIDs = legacy_array_keys($GroupIDs);
 	$TorrentFilesQ = $DB->query('
 		SELECT TorrentID, File
 		FROM torrents_files

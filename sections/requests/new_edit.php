@@ -65,14 +65,14 @@ if (!$NewRequest) {
 
 			$BitrateArray = array();
 			if ($Request['BitrateList'] == 'Any') {
-				$BitrateArray = old_array_keys($Bitrates);
+				$BitrateArray = legacy_array_keys($Bitrates);
 			} else {
-				$BitrateArray = old_array_keys(array_intersect($Bitrates, explode('|', $Request['BitrateList'])));
+				$BitrateArray = legacy_array_keys(array_intersect($Bitrates, explode('|', $Request['BitrateList'])));
 			}
 
 			$FormatArray = array();
 			if ($Request['FormatList'] == 'Any') {
-				$FormatArray = old_array_keys($Formats);
+				$FormatArray = legacy_array_keys($Formats);
 			} else {
 				foreach ($Formats as $Key => $Val) {
 					if (strpos($Request['FormatList'], $Val) !== false) {
@@ -83,7 +83,7 @@ if (!$NewRequest) {
 
 			$MediaArray = array();
 			if ($Request['MediaList'] == 'Any') {
-				$MediaArray = old_array_keys($Media);
+				$MediaArray = legacy_array_keys($Media);
 			} else {
 				$MediaTemp = explode('|', $Request['MediaList']);
 				foreach ($Media as $Key => $Val) {

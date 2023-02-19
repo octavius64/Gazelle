@@ -201,11 +201,11 @@ function site_url($SSL = true) {
 // RESTORING LEGACY FUNCTION BEHAVIOR
 
 /**
- * Wrapper around old_array_keys.
+ * Wrapper around array_keys.
  * I think the old behavior of this function was to not throw an exception
  * when the given array is null, so that's what this wrapper emulates.
  */
-function old_array_keys($array, $filter_value = null) {
+function legacy_array_keys($array, $filter_value = null) {
 	if ($array == null) {
 		return [];
 	}
@@ -217,6 +217,9 @@ function old_array_keys($array, $filter_value = null) {
 	}
 }
 
+/**
+ * Let the array passed in be null. Return an empty string if that's the case.
+ */
 function legacy_implode($separator, $array) {
 	if ($array == null) {
 		return '';

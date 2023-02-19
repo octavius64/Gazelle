@@ -254,7 +254,7 @@ if (isset($SearchWords)) {
 }
 
 if (!empty($_GET['filter_cat'])) {
-	$CategoryArray = old_array_keys($_GET['filter_cat']);
+	$CategoryArray = legacy_array_keys($_GET['filter_cat']);
 	if (count($CategoryArray) !== count($Categories)) {
 		foreach ($CategoryArray as $Key => $Index) {
 			if (!isset($Categories[$Index - 1])) {
@@ -329,7 +329,7 @@ if ($NumResults == 0) {
 } else {
 	$JsonResults = array();
 	$TimeCompare = 1267643718; // Requests v2 was implemented 2010-03-03 20:15:18
-	$Requests = Requests::get_requests(old_array_keys($SphRequests));
+	$Requests = Requests::get_requests(legacy_array_keys($SphRequests));
 	foreach ($SphRequests as $RequestID => $SphRequest) {
 		$Request = $Requests[$RequestID];
 		$VoteCount = $SphRequest['votes'];
