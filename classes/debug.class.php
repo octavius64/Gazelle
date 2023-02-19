@@ -652,8 +652,9 @@ class DEBUG {
 	<table id="debug_loggedvars" class="debug_table hidden" width="100%">
 <?
 		foreach ($Vars as $ID => $Var) {
-			list($Key, $Data) = each($Var);
-			$Size = count($Data['data']);
+			$Key = array_key_first($Var);
+			$Data = $Var[$Key];
+			$Size = is_countable($Data['data']) ? count($Data['data']) : 1;
 ?>
 		<tr>
 			<td align="left" class="debug_info debug_loggedvars_name">
