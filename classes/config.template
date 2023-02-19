@@ -48,8 +48,8 @@ define('SPHINX_INDEX', 'torrents');
 // Ocelot details
 define('TRACKER_HOST', 'localhost');
 define('TRACKER_PORT', 2710);
-define('TRACKER_SECRET', ''); // Must be 32 characters and match site_password in Ocelot's config.cpp
-define('TRACKER_REPORTKEY', ''); // Must be 32 characters and match report_password in Ocelot's config.cpp
+define('TRACKER_SECRET', 'yd6gm1xn3GQxPCiKRp7OO1WlETfNIcPd'); // Must be 32 characters and match site_password in Ocelot's config.cpp
+define('TRACKER_REPORTKEY', 'eGvjs5kOeaH9ZXkcLHQ8F4cHuBbq1bkl'); // Must be 32 characters and match report_password in Ocelot's config.cpp
 
 if (!empty($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 80) {
 	define('SITE_URL', NONSSL_SITE_URL);
