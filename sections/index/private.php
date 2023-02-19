@@ -146,6 +146,12 @@ if (($UserCount = $Cache->get_value('stats_user_count')) === false) {
 	list($UserCount) = $DB->next_record();
 	$Cache->cache_value('stats_user_count', $UserCount, 0); //inf cache
 }
+
+// Prevent division by 0 errors
+if ($UserCount == 0) {
+	$UserCount = 1;
+}
+
 $UserCount = (int)$UserCount;
 ?>
 				<li>Enabled users: <?=number_format($UserCount)?> <a href="stats.php?action=users" class="brackets">Details</a></li>
@@ -240,6 +246,11 @@ if (($RequestStats = $Cache->get_value('stats_requests')) === false) {
 	$Cache->cache_value('stats_requests', array($RequestCount, $FilledCount), 11280);
 } else {
 	list($RequestCount, $FilledCount) = $RequestStats;
+}
+
+// Prevent division by 0
+if ($RequestCount == 0) {
+	$RequestCount = 1;
 }
 
 ?>
