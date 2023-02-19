@@ -18,15 +18,17 @@ if (!$News = $Cache->get_value('news')) {
 	$Cache->cache_value('news_latest_title', $News[0][1], 0);
 }
 
-if ($LoggedUser['LastReadNews'] != $News[0][0]) {
-	$Cache->begin_transaction("user_info_heavy_$UserID");
-	$Cache->update_row(false, array('LastReadNews' => $News[0][0]));
-	$Cache->commit_transaction(0);
-	$DB->query("
-		UPDATE users_info
-		SET LastReadNews = '".$News[0][0]."'
-		WHERE UserID = $UserID");
-	$LoggedUser['LastReadNews'] = $News[0][0];
+if (count($News) > 0) {
+	if ($LoggedUser['LastReadNews'] != $News[0][0]) {
+		$Cache->begin_transaction("user_info_heavy_$UserID");
+		$Cache->update_row(false, array('LastReadNews' => $News[0][0]));
+		$Cache->commit_transaction(0);
+		$DB->query("
+			UPDATE users_info
+			SET LastReadNews = '".$News[0][0]."'
+			WHERE UserID = $UserID");
+		$LoggedUser['LastReadNews'] = $News[0][0];
+	}
 }
 
 View::show_header('News', 'bbcode,news_ajax');
