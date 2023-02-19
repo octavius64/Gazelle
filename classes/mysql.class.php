@@ -281,6 +281,10 @@ class DB_MYSQL {
 	}
 
 	function next_record($Type = MYSQLI_BOTH, $Escape = true) { // $Escape can be true, false, or an array of keys to not escape
+		if (!$this->has_results()) {
+			return;
+		}
+
 		if ($this->LinkID) {
 			$this->Record = mysqli_fetch_array($this->QueryID, $Type);
 			$this->Row++;
@@ -308,7 +312,12 @@ class DB_MYSQL {
 	 */
 	function record_count() {
 		if ($this->QueryID) {
-			return mysqli_num_rows($this->QueryID);
+			// Running some queries returns a "true" on success instead of a mysqli object
+			if (gettype($this->QueryID) == "boolean") {
+				return 0;
+			} else {
+				return mysqli_num_rows($this->QueryID);
+			}
 		}
 	}
 
