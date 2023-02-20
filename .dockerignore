@@ -1,0 +1,7 @@
+.git
+release/*
+static/similar
+static/stylespreview
+*.swp
+*.project
+*.php~
