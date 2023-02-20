@@ -1,3 +1,5 @@
+/docker/memcached_socket/memcached.sock
+/docker/mysql_data/**
 /www/classes/config.php
 release/*
 static/similar

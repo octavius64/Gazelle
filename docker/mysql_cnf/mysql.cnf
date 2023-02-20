@@ -1,0 +1,3 @@
+# The Gazelle codebase is not compatible with most new SQL modes
+[mysqld]
+sql-mode = ""

@@ -8,3 +8,14 @@ services:
       dockerfile: memcached.Dockerfile
     volumes:
       - ./memcached_socket:/home/memcached_socket:rw
+
+  mysql:
+    image: mysql:8.0
+    environment:
+      - MYSQL_ROOT_PASSWORD=CXO1oy3Nj2c0PCQrtCUzdiROplIT1NqF
+      - MYSQL_DATABASE=gazelle
+      - MYSQL_USER=gazelle
+      - MYSQL_PASSWORD=YzgJugVqPLOFAAQQjIatiM4BAadloZuj
+    volumes:
+      - ./mysql_cnf:/etc/mysql/conf.d:ro
+      - ./mysql_data:/var/lib/mysql:rw
