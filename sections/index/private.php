@@ -149,7 +149,7 @@ if (($UserCount = $Cache->get_value('stats_user_count')) === false) {
 	$Cache->cache_value('stats_user_count', $UserCount, 0); //inf cache
 }
 
-// Prevent division by 0 errors
+// Prevent division by 0 errors DIVIDE_BY_ZERO
 if ($UserCount == 0) {
 	$UserCount = 1;
 }
@@ -250,7 +250,7 @@ if (($RequestStats = $Cache->get_value('stats_requests')) === false) {
 	list($RequestCount, $FilledCount) = $RequestStats;
 }
 
-// Prevent division by 0
+// Prevent division by 0 DIVIDE_BY_ZERO
 if ($RequestCount == 0) {
 	$RequestCount = 1;
 }

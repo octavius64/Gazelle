@@ -6,6 +6,11 @@
 	$UpVotes	= $GroupVotes['Ups'];
 	$DownVotes	= $TotalVotes - $UpVotes;
 
+	// Work around divide by zero DIVIDE_BY_ZERO
+	if ($TotalVotes == 0) {
+		$TotalVotes = 1;
+	}
+
 	$Voted = isset($UserVotes[$GroupID]) ? $UserVotes[$GroupID]['Type'] : false;
 	$Score = Votes::binomial_score($UpVotes, $TotalVotes);
 ?>
