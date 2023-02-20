@@ -1,4 +1,4 @@
-config.php
+/www/classes/config.php
 release/*
 static/similar
 static/stylespreview
