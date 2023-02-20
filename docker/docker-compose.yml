@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+
+  memcached:
+    build:
+      context: .
+      dockerfile: memcached.Dockerfile
+    volumes:
+      - ./memcached_socket:/home/memcached_socket:rw
