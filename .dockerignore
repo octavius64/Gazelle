@@ -1,3 +1,6 @@
+/docker/memcached_socket/memcached.sock
+/docker/mysql_data/**
+/docker/db_initializer_pipe/**
 .git
 release/*
 static/similar

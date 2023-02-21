@@ -1,5 +1,6 @@
 /docker/memcached_socket/memcached.sock
 /docker/mysql_data/**
+/docker/db_initializer_pipe/**
 /www/classes/config.php
 release/*
 static/similar

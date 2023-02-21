@@ -20,12 +20,24 @@ services:
       - ./mysql_cnf:/etc/mysql/conf.d:ro
       - ./mysql_data:/var/lib/mysql:rw
 
+  db_initializer:
+    build:
+      context: ..
+      dockerfile: docker/db_initializer.Dockerfile
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_ROOT_PASSWORD=CXO1oy3Nj2c0PCQrtCUzdiROplIT1NqF
+    volumes:
+      - ./db_initializer_pipe:/db_initializer_pipe
+
   ocelot:
     build:
       context: ../../Ocelot
       dockerfile: docker/ocelot.Dockerfile
     depends_on:
-      - mysql
+      - db_initializer
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_DATABASE=gazelle
