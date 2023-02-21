@@ -47,3 +47,5 @@ services:
       - GAZELLE_SITE_PASSWORD=hTwbqH8vKpKm4i6bTVbc4DcqCmgkaRGL
       - GAZELLE_REPORT_PASSWORD=In7fMmbKCpGuOdrJ8jpZ9A2NAoC8B5Qc
       - OCELOT_LISTEN_PORT=2710
+    volumes:
+      - ./db_initializer_pipe:/db_initializer_pipe
