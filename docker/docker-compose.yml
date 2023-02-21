@@ -19,3 +19,19 @@ services:
     volumes:
       - ./mysql_cnf:/etc/mysql/conf.d:ro
       - ./mysql_data:/var/lib/mysql:rw
+
+  ocelot:
+    build:
+      context: ../../Ocelot
+      dockerfile: docker/ocelot.Dockerfile
+    depends_on:
+      - mysql
+    environment:
+      - MYSQL_HOST=mysql
+      - MYSQL_DATABASE=gazelle
+      - MYSQL_USER=gazelle
+      - MYSQL_PASSWORD=YzgJugVqPLOFAAQQjIatiM4BAadloZuj
+      - GAZELLE_HOST=gazelle
+      - GAZELLE_SITE_PASSWORD=hTwbqH8vKpKm4i6bTVbc4DcqCmgkaRGL
+      - GAZELLE_REPORT_PASSWORD=In7fMmbKCpGuOdrJ8jpZ9A2NAoC8B5Qc
+      - OCELOT_LISTEN_PORT=2710
