@@ -13,7 +13,8 @@ cat /home/config.template | \
     sed "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" > \
     /var/www/html/classes/config.php
 
-/db_initializer_pipe/wait_db_ready.sh
+echo 'Waiting for sphinxsearch...'
+while ! nc -z sphinxsearch 9306; do sleep 3; done
 
 echo 'Starting nginx...'
 exec /docker-entrypoint.sh nginx -g "daemon off;"
