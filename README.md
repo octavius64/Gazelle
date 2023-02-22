@@ -6,6 +6,8 @@ Forked from: https://github.com/WhatCD/Gazelle
 This repo is a work in progress to update the codebase and depenencies, dockerize it, and fix any bugs.
 
 ## Deployment Instructions
+Clone submodules: `git submodule update --init`
+
 Create a file named `secrets` with key value pairs at `docker/secrets`. Each secret must only contain alpha-numeric characters, and must be 32 characters long. Something like the following:
 
 ```ini
