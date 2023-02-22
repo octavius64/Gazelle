@@ -12,10 +12,10 @@ services:
   mysql:
     image: mysql:8.0
     environment:
-      - MYSQL_ROOT_PASSWORD=CXO1oy3Nj2c0PCQrtCUzdiROplIT1NqF
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
       - MYSQL_DATABASE=gazelle
       - MYSQL_USER=gazelle
-      - MYSQL_PASSWORD=YzgJugVqPLOFAAQQjIatiM4BAadloZuj
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - ./mysql_cnf:/etc/mysql/conf.d:ro
       - ./mysql_data:/var/lib/mysql:rw
@@ -28,7 +28,7 @@ services:
       - mysql
     environment:
       - MYSQL_HOST=mysql
-      - MYSQL_ROOT_PASSWORD=CXO1oy3Nj2c0PCQrtCUzdiROplIT1NqF
+      - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - ./db_initializer_pipe:/db_initializer_pipe
 
@@ -39,7 +39,7 @@ services:
     depends_on:
       - db_initializer
     environment:
-      - MYSQL_PASSWORD=YzgJugVqPLOFAAQQjIatiM4BAadloZuj
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - ./db_initializer_pipe:/db_initializer_pipe
 
@@ -53,10 +53,10 @@ services:
       - MYSQL_HOST=mysql
       - MYSQL_DATABASE=gazelle
       - MYSQL_USER=gazelle
-      - MYSQL_PASSWORD=YzgJugVqPLOFAAQQjIatiM4BAadloZuj
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - GAZELLE_HOST=gazelle
-      - GAZELLE_SITE_PASSWORD=hTwbqH8vKpKm4i6bTVbc4DcqCmgkaRGL
-      - GAZELLE_REPORT_PASSWORD=In7fMmbKCpGuOdrJ8jpZ9A2NAoC8B5Qc
+      - GAZELLE_SITE_PASSWORD=${GAZELLE_SITE_PASSWORD}
+      - GAZELLE_REPORT_PASSWORD=${GAZELLE_REPORT_PASSWORD}
       - OCELOT_LISTEN_PORT=2710
     volumes:
       - ./db_initializer_pipe:/db_initializer_pipe
@@ -81,13 +81,13 @@ services:
     ports:
       - '8080:80'
     environment:
-      - GAZELLE_ENCKEY=fHxsx3kEB6SgudaMJEnfto1NPEWfkJtQ
-      - GAZELLE_REPORT_PASSWORD=In7fMmbKCpGuOdrJ8jpZ9A2NAoC8B5Qc
-      - GAZELLE_RSS_KEY=UiybX96X2WdglyXzD77gQn8JuzeEMWGA
-      - GAZELLE_SCHEDULE_KEY=xq2yZ3OpAA0GKet1BLLSXwbJg9plfG8Y
-      - GAZELLE_SITE_PASSWORD=hTwbqH8vKpKm4i6bTVbc4DcqCmgkaRGL
-      - GAZELLE_SITE_SALT=6OrccjMqkKfakTAMoGhAzKxyrisSTg4D
-      - MYSQL_PASSWORD=YzgJugVqPLOFAAQQjIatiM4BAadloZuj
+      - GAZELLE_ENCKEY=${GAZELLE_ENCKEY}
+      - GAZELLE_REPORT_PASSWORD=${GAZELLE_REPORT_PASSWORD}
+      - GAZELLE_RSS_KEY=${GAZELLE_RSS_KEY}
+      - GAZELLE_SCHEDULE_KEY=${GAZELLE_SCHEDULE_KEY}
+      - GAZELLE_SITE_PASSWORD=${GAZELLE_SITE_PASSWORD}
+      - GAZELLE_SITE_SALT=${GAZELLE_SITE_SALT}
+      - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - ../nginx.conf:/etc/nginx/conf.d/default.conf:ro
       - ../www:/var/www/html
