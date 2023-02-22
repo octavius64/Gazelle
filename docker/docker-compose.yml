@@ -45,7 +45,7 @@ services:
 
   ocelot:
     build:
-      context: ../../Ocelot
+      context: ../Ocelot
       dockerfile: docker/ocelot.Dockerfile
     depends_on:
       - db_initializer
