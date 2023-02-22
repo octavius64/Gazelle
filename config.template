@@ -33,20 +33,20 @@ define('SQLSOCK', '/var/run/mysqld/mysqld.sock');
 // Memcached details
 $MemcachedServers = array(
 	// unix sockets are fast, and other people can't telnet into them
-	array('host' => 'unix:///var/run/memcached.sock', 'port' => 0, 'buckets' => 1),
+	array('host' => 'unix:///home/memcached_socket/memcached.sock', 'port' => 0, 'buckets' => 1),
 );
 
 // Sphinx details
-define('SPHINX_HOST', 'localhost');
+define('SPHINX_HOST', 'sphinxsearch');
 define('SPHINX_PORT', 9312);
-define('SPHINXQL_HOST', '127.0.0.1');
+define('SPHINXQL_HOST', 'sphinxsearch');
 define('SPHINXQL_PORT', 9306);
 define('SPHINXQL_SOCK', false);
 define('SPHINX_MAX_MATCHES', 1000); // Must be <= the server's max_matches variable (default 1000)
 define('SPHINX_INDEX', 'torrents');
 
 // Ocelot details
-define('TRACKER_HOST', 'localhost');
+define('TRACKER_HOST', 'ocelot');
 define('TRACKER_PORT', 2710);
 define('TRACKER_SECRET', '<GAZELLE_SITE_PASSWORD>'); // Must be 32 characters and match site_password in Ocelot's config.cpp
 define('TRACKER_REPORTKEY', '<GAZELLE_REPORT_PASSWORD>'); // Must be 32 characters and match report_password in Ocelot's config.cpp

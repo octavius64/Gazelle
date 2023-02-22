@@ -67,6 +67,7 @@ services:
       dockerfile: php_fpm.Dockerfile
     volumes:
       - ../www:/var/www/html:ro
+      - ./memcached_socket:/home/memcached_socket:rw
 
   gazelle_nginx:
     build:
