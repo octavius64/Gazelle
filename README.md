@@ -1,32 +1,28 @@
 # Gazelle
 Gazelle is a web framework geared towards private BitTorrent trackers. Although naturally focusing on music, it can be modified for most needs. Gazelle is written in PHP, JavaScript, and MySQL.
 
-## Gazelle Runtime Dependencies
-* [Nginx](http://wiki.nginx.org/Main) (recommended)
-* [PHP 5.4 or newer](https://www.php.net/) (required)
-* [Memcached](http://memcached.org/) (required)
-* [Sphinx 2.0.6 or newer](http://sphinxsearch.com/) (required)
-* [procps-ng](http://sourceforge.net/projects/procps-ng/) (recommended)
+Forked from: https://github.com/WhatCD/Gazelle
 
-## Gazelle/Ocelot Compile-time Dependencies
-* [Git](http://git-scm.com/) (required)
-* [GCC/G++](http://gcc.gnu.org/) (4.7+ required; 4.8.1+ recommended)
-* [Boost](http://www.boost.org/) (1.55.0+ required)
+This repo is a work in progress to update the codebase and depenencies, dockerize it, and fix any bugs.
 
-_Note: This list may not be exhaustive._
+## Deployment Instructions
+Create a file named `secrets` with key value pairs at `docker/secrets`. Each secret must only contain alpha-numeric characters, and must be 32 characters long. Something like the following:
 
-## Change Log
-You may have noticed that commits in the repository do not have descriptive messages. If you are looking for a change log of Gazelle, it can be [viewed here](https://raw.github.com/WhatCD/Gazelle/master/docs/CHANGES.txt). The change log is generated daily and includes new additions or modifications to Gazelle's source.
+```ini
+GAZELLE_ENCKEY=5iQRiYjQmy44ofLV9OyD7k7dp7f93zy4
+GAZELLE_HOST=LnGeGxbzq3YfZ9AkKGUeOUWnO6jqaBBk
+GAZELLE_REPORT_PASSWORD=Ak5vtJAWka4qJbKN3Y980BAzVDcBNUHq
+GAZELLE_RSS_KEY=jI8UOZvXWDGkJ9G4AOolat0aBATU0gCw
+GAZELLE_SCHEDULE_KEY=CVSs0j8FcziSxihbKfyVKZC2hrdI4aY1
+GAZELLE_SITE_PASSWORD=8KHdOe7968UoNA73Rp6xWmbGgtfsktNR
+GAZELLE_SITE_SALT=jPXKQ8Gkb29Qq2NZEHrIhBKRzRhlULz9
+MYSQL_PASSWORD=CBBA8taEd5Sr4pEpD9UZbrGWkWwSJwPy
+MYSQL_ROOT_PASSWORD=X6AKUKX0y4aJX4baPyh5MSxhEGp7s8GW
+```
 
-## Coding Standards
-Gazelle's code adheres to a set of coding standards that can be found [here](https://github.com/WhatCD/Gazelle/wiki/Coding-Standards). If you plan on sending pull requests, these standards must be followed.
+And then you must use the included docker compose wrapper script to launch all containers:
+- `cd docker`
+- `./docker_compose up`
 
-## Installation
-[This guide](https://github.com/WhatCD/Gazelle/wiki/Gazelle-installation) will walk you through setting up Gazelle on a machine running Gentoo Linux. Although installing Gazelle is relatively straightforward, we recommend a working knowledge of PHP if you plan to modify the source code.
-
-## Gazelle development using Vagrant
-[VagrantGazelle](https://github.com/dr4g0nnn/VagrantGazelle) allows for convenient development of Gazelle, without going through the trouble of setting it all up yourself.
-
-Vagrant uses virtual machines to allow for easy development in consistent environments. The setup linked above allows for development on your local machine and the Gazelle setup to run without altering your system.
-
-Once set up, the Gazelle source files will be present in `src/`, which is shared to `/var/www/` on the machine. A port forward from port 80 on the guest to 8080 on the host will also be established.
+## Original WCD/Gazelle Change Log
+You may have noticed that commits in the repository do not have descriptive messages. If you are looking for a change log of Gazelle, it can be [viewed here](https://raw.github.com/WhatCD/Gazelle/master/docs/CHANGES.txt).
