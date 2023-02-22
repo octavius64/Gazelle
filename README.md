@@ -8,6 +8,8 @@ This repo is a work in progress to update the codebase and depenencies, dockeriz
 ## Deployment Instructions
 Clone submodules: `git submodule update --init`
 
+Edit a couple values in the file `config.template` under the `Main settings` section and set your own IP address. Note that every time you edit this file, you will have to rebuild the docker containers.
+
 Create a file named `secrets` with key value pairs at `docker/secrets`. Each secret must only contain alpha-numeric characters, and must be 32 characters long. Something like the following:
 
 ```ini
