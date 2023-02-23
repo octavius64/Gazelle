@@ -14,7 +14,6 @@ Create a file named `secrets` with key value pairs at `docker/secrets`. Each sec
 
 ```ini
 GAZELLE_ENCKEY=5iQRiYjQmy44ofLV9OyD7k7dp7f93zy4
-GAZELLE_HOST=LnGeGxbzq3YfZ9AkKGUeOUWnO6jqaBBk
 GAZELLE_REPORT_PASSWORD=Ak5vtJAWka4qJbKN3Y980BAzVDcBNUHq
 GAZELLE_RSS_KEY=jI8UOZvXWDGkJ9G4AOolat0aBATU0gCw
 GAZELLE_SCHEDULE_KEY=CVSs0j8FcziSxihbKfyVKZC2hrdI4aY1
