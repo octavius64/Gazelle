@@ -11,7 +11,7 @@ function js_pages($Action, $TorrentID, $NumResults, $CurrentPage) {
 			$PageLinks[] = "<a href=\"#\" onclick=\"$Action($TorrentID, $i)\">$i</a>";
 		}
 	}
-	return implode(' | ', $PageLinks);
+	return legacy_implode(' | ', $PageLinks);
 }
 
 // This gets used in a few places

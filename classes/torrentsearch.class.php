@@ -336,10 +336,10 @@ class TorrentSearch {
 					$Operator = self::$FieldOperators[''];
 				}
 				if (!empty($QueryParts['include'])) {
-					$SearchString .= '( ' . implode($Operator, $QueryParts['include']) . ' ) ';
+					$SearchString .= '( ' . legacy_implode($Operator, $QueryParts['include']) . ' ) ';
 				}
 				if (!empty($QueryParts['exclude'])) {
-					 $SearchString .= implode(' ', $QueryParts['exclude']);
+					 $SearchString .= legacy_implode(' ', $QueryParts['exclude']);
 				}
 				$this->SphQL->where_match($SearchString, $Field, false);
 				if (isset(self::$TorrentFields[$Field])) {
@@ -491,7 +491,7 @@ class TorrentSearch {
 			if (isset($this->Terms['taglist']['exclude'])) {
 				$AllTags = array_merge($AllTags, $this->Terms['taglist']['exclude']);
 			}
-			$this->RawTerms['taglist'] = str_replace('_', '.', implode(', ', $AllTags));
+			$this->RawTerms['taglist'] = str_replace('_', '.', legacy_implode(', ', $AllTags));
 		}
 	}
 

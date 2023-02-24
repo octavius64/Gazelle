@@ -96,7 +96,7 @@ foreach ($FileList as &$File) {
 	$File = Torrents::filelist_old_format($File);
 }
 unset($File);
-$FileList = implode('|||', $FileList);
+$FileList = legacy_implode('|||', $FileList);
 $Userinfo = Users::user_info($Torrent['UserID']);
 $JsonTorrentList[] = array(
 	'id' => (int)$Torrent['ID'],

@@ -141,7 +141,7 @@ $SQL .= "
 	tg.Name,
 	t.Size
 FROM torrents AS t
-	JOIN torrents_group AS tg ON tg.ID = t.GroupID AND tg.CategoryID = '1' AND tg.ID IN (".implode(',', $GroupIDs).")
+	JOIN torrents_group AS tg ON tg.ID = t.GroupID AND tg.CategoryID = '1' AND tg.ID IN (".legacy_implode(',', $GroupIDs).")
 ORDER BY t.GroupID ASC, Rank DESC, t.$Preference";
 
 $DownloadsQ = $DB->query($SQL);
@@ -151,7 +151,7 @@ while (list($Downloads, $GroupIDs) = $Collector->get_downloads('GroupID')) {
 	$TorrentFilesQ = $DB->query("
 		SELECT TorrentID, File
 		FROM torrents_files
-		WHERE TorrentID IN (".implode(',', old_array_keys($GroupIDs)).')', false);
+		WHERE TorrentID IN (".legacy_implode(',', old_array_keys($GroupIDs)).')', false);
 	if (is_int($TorrentFilesQ)) {
 		// Query failed. Let's not create a broken zip archive
 		foreach ($GroupIDs as $GroupID) {
@@ -209,7 +209,7 @@ while (list($Downloads, $GroupIDs) = $Collector->get_downloads('GroupID')) {
 	}
 }
 $Collector->finalize();
-$Settings = array(implode(':', $_REQUEST['list']), $_REQUEST['preference']);
+$Settings = array(legacy_implode(':', $_REQUEST['list']), $_REQUEST['preference']);
 if (!isset($LoggedUser['Collector']) || $LoggedUser['Collector'] != $Settings) {
 	Users::update_site_options($LoggedUser['ID'], array('Collector' => $Settings));
 }

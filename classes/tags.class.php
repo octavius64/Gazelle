@@ -139,7 +139,7 @@ class Tags {
 				$this->TagLink[$Tag] = '<a href="' . $Link . $Tag . $ArtistName . '">' . $Tag . '</a>';
 			}
 		}
-		return implode(', ', $this->TagLink);
+		return legacy_implode(', ', $this->TagLink);
 	}
 
 	/**
@@ -240,7 +240,7 @@ class Tags {
 	public static function tag_filter_sph($Tags, $EnableNegation, $TagType) {
 		$QueryParts = [];
 		$Tags = Tags::remove_aliases($Tags);
-		$TagList = str_replace('_', '.', implode(', ', array_merge($Tags['include'], $Tags['exclude'])));
+		$TagList = str_replace('_', '.', legacy_implode(', ', array_merge($Tags['include'], $Tags['exclude'])));
 
 		if (!$EnableNegation && !empty($Tags['exclude'])) {
 			$Tags['include'] = array_merge($Tags['include'], $Tags['exclude']);
@@ -261,19 +261,19 @@ class Tags {
 		if (!isset($TagType) || $TagType == 1) {
 			$SearchWords = array_merge($Tags['include'], $Tags['exclude']);
 			if (!empty($Tags)) {
-				$QueryParts[] = implode(' ', $SearchWords);
+				$QueryParts[] = legacy_implode(' ', $SearchWords);
 			}
 		}
 		// 'Any' tags
 		else {
 			if (!empty($Tags['include'])) {
-				$QueryParts[] = '( ' . implode(' | ', $Tags['include']) . ' )';
+				$QueryParts[] = '( ' . legacy_implode(' | ', $Tags['include']) . ' )';
 			}
 			if (!empty($Tags['exclude'])) {
-				$QueryParts[] = implode(' ', $Tags['exclude']);
+				$QueryParts[] = legacy_implode(' ', $Tags['exclude']);
 			}
 		}
 
-		return ['input' => $TagList, 'predicate' => implode(' ', $QueryParts)];
+		return ['input' => $TagList, 'predicate' => legacy_implode(' ', $QueryParts)];
 	}
 }

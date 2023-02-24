@@ -150,7 +150,7 @@ class TorrentsDL {
 			. ($NumSkipped
 				? "\r\n"
 					. "Albums unavailable within your criteria (consider making a request for your desired format):\r\n"
-					. implode("\r\n", $this->SkippedFiles) . "\r\n"
+					. legacy_implode("\r\n", $this->SkippedFiles) . "\r\n"
 				: "");
 	}
 
@@ -163,7 +163,7 @@ class TorrentsDL {
 		return "A server error occurred. Please try again at a later time.\r\n"
 			. "\r\n"
 			. "The following torrents could not be downloaded:\r\n"
-			. implode("\r\n", $this->FailedFiles) . "\r\n";
+			. legacy_implode("\r\n", $this->FailedFiles) . "\r\n";
 	}
 
 	/**
@@ -196,7 +196,7 @@ class TorrentsDL {
 			$TorrentInfo[] = $Encoding;
 		}
 		if (!empty($TorrentInfo)) {
-			$TorrentInfo = ' (' . Misc::file_string(implode(' - ', $TorrentInfo)) . ')';
+			$TorrentInfo = ' (' . Misc::file_string(legacy_implode(' - ', $TorrentInfo)) . ')';
 		} else {
 			$TorrentInfo = '';
 		}

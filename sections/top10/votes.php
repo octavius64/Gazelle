@@ -19,7 +19,7 @@ if (!empty($_GET['advanced']) && check_perms('site_advanced_top10')) {
 			}
 		}
 		$Operator = $TagsAny ? ' OR ' : ' AND ';
-		$Where[] = '('.implode($Operator, $TagWhere).')';
+		$Where[] = '('.legacy_implode($Operator, $TagWhere).')';
 	}
 	$Year1 = (int)$_GET['year1'];
 	$Year2 = (int)$_GET['year2'];
@@ -39,7 +39,7 @@ if (!empty($_GET['advanced']) && check_perms('site_advanced_top10')) {
 $Filtered = !empty($Where);
 
 if (!empty($Where)) {
-	$Where = implode(' AND ', $Where);
+	$Where = legacy_implode(' AND ', $Where);
 }
 $WhereSum = (empty($Where)) ? '' : md5($Where);
 

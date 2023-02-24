@@ -43,7 +43,7 @@ if (isset($_POST['torrents'])) {
             $DB->query("
                 SELECT ID
                 FROM torrents
-                WHERE GroupID IN (".implode(', ', $GroupIDs).")");
+                WHERE GroupID IN (".legacy_implode(', ', $GroupIDs).")");
             $TorrentIDs = $DB->collect('ID');
 
             if (sizeof($TorrentIDs) == 0) {
@@ -62,7 +62,7 @@ if (isset($_POST['torrents'])) {
                         $DB->query("
                             SELECT ID
                             FROM torrents
-                            WHERE ID IN (".implode(', ', $TorrentIDs).")
+                            WHERE ID IN (".legacy_implode(', ', $TorrentIDs).")
                               AND Size > '$Bytes'");
                         $LargeTorrents = $DB->collect('ID');
                         $TorrentIDs = array_diff($TorrentIDs, $LargeTorrents);

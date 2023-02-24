@@ -28,7 +28,7 @@ $DB->query('SELECT FOUND_ROWS()');
 list($NumResults) = $DB->next_record();
 
 if (count($UserIDs) > 0) {
-	$UserIDs = implode(',', $UserIDs);
+	$UserIDs = legacy_implode(',', $UserIDs);
 	$DB->query("
 		SELECT uid
 		FROM xbt_snatched

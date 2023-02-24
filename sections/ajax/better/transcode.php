@@ -101,7 +101,7 @@ foreach ($TorrentGroups as $GroupID => $Editions) {
 	foreach ($TagList as $Tag) {
 		$TorrentTags[] = "<a href=\"torrents.php?taglist=$Tag\">$Tag</a>";
 	}
-	$TorrentTags = implode(', ', $TorrentTags);
+	$TorrentTags = legacy_implode(', ', $TorrentTags);
 	foreach ($Editions as $RemIdent => $Edition) {
 		if (!$Edition['FlacID']
 				|| !empty($Edition['Formats']) && $_GET['type'] === '3'

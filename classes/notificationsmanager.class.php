@@ -132,7 +132,7 @@ class NotificationsManager {
 		}
 		$Type = db_string($Type);
 		if (!empty($UserIDs)) {
-			$UserIDs = implode(',', $UserIDs);
+			$UserIDs = legacy_implode(',', $UserIDs);
 			$QueryID = G::$DB->get_query_id();
 			G::$DB->query("
 				SELECT UserID
@@ -500,7 +500,7 @@ class NotificationsManager {
 		while (list($ID) = G::$DB->next_record()) {
 			$IDs[] = $ID;
 		}
-		$IDs = implode(',', $IDs);
+		$IDs = legacy_implode(',', $IDs);
 		if (!empty($IDs)) {
 			G::$DB->query("
 				UPDATE staff_pm_conversations
@@ -522,7 +522,7 @@ class NotificationsManager {
 		while (list($ID) = G::$DB->next_record()) {
 			$IDs[] = $ID;
 		}
-		$IDs = implode(',', $IDs);
+		$IDs = legacy_implode(',', $IDs);
 		if (!empty($IDs)) {
 			G::$DB->query("
 				UPDATE pm_conversations_users
@@ -545,7 +545,7 @@ class NotificationsManager {
 		while (list($ID) = G::$DB->next_record()) {
 			$IDs[] = $ID;
 		}
-		$IDs = implode(',', $IDs);
+		$IDs = legacy_implode(',', $IDs);
 		if (!empty($IDs)) {
 			G::$DB->query("
 				UPDATE users_notify_torrents
@@ -593,7 +593,7 @@ class NotificationsManager {
 				INSERT INTO forums_last_read_topics (UserID, TopicID, PostID)
 					SELECT '" . G::$LoggedUser['ID'] . "', ID, LastPostID
 					FROM forums_topics
-					WHERE ID IN (".implode(',', $UserSubscriptions).')
+					WHERE ID IN (".legacy_implode(',', $UserSubscriptions).')
 				ON DUPLICATE KEY UPDATE
 					PostID = LastPostID');
 		}
@@ -659,7 +659,7 @@ class NotificationsManager {
 			}
 			$Update[] = "$Type = $Result";
 		}
-		$Update = implode(',', $Update);
+		$Update = legacy_implode(',', $Update);
 
 		$QueryID = G::$DB->get_query_id();
 		G::$DB->query("

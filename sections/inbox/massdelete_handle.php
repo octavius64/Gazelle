@@ -18,7 +18,7 @@ foreach ($Messages AS $ConvID) {
 		error(0);
 	}
 }
-$ConvIDs = implode(',', $Messages);
+$ConvIDs = legacy_implode(',', $Messages);
 $DB->query("
 	SELECT COUNT(ConvID)
 	FROM pm_conversations_users

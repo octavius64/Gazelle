@@ -53,7 +53,7 @@ $DB->query("
 			Remasterrecordlabel, Remastercataloguenumber)
 		) AS RemIdent
 	FROM torrents
-	WHERE GroupID IN (".implode(',', $SnatchedGroupIDs).")
+	WHERE GroupID IN (".legacy_implode(',', $SnatchedGroupIDs).")
 		AND Format IN ('FLAC', 'MP3')
 	GROUP BY GroupID, RemIdent");
 
@@ -212,7 +212,7 @@ foreach ($TorrentGroups as $GroupID => $Editions) {
 		if (!empty($Edition['RemasterYear'])) {
 			$ExtraInfo .= ' - ';
 		}
-		$ExtraInfo .= implode(' / ', $EditionInfo);
+		$ExtraInfo .= legacy_implode(' / ', $EditionInfo);
 ?>
 		<tr class="torrent torrent_row<?=$Edition['IsSnatched'] ? ' snatched_torrent' : ''?>">
 			<td>

@@ -41,7 +41,7 @@ class Subscriptions {
 			SELECT m.ID
 			FROM users_main AS m
 				LEFT JOIN users_info AS i ON i.UserID = m.ID
-			WHERE m.Username IN ('" . implode("', '", $Usernames) . "')
+			WHERE m.Username IN ('" . legacy_implode("', '", $Usernames) . "')
 				AND i.NotifyOnQuote = '1'
 				AND i.UserID != " . G::$LoggedUser['ID']);
 

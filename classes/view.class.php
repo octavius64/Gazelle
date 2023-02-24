@@ -78,7 +78,7 @@ class View {
 			foreach ($ClassNameParts as $Index => $Part) {
 				$ClassNameParts[$Index] = ucfirst($Part);
 			}
-			$ClassName = implode($ClassNameParts). 'Template';
+			$ClassName = legacy_implode($ClassNameParts). 'Template';
 			$LoadedTemplates[$TemplateName] = $ClassName;
 		}
 		$ClassName::render($Args);

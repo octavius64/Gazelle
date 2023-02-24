@@ -112,7 +112,7 @@ class AutoEnable {
 
         G::$DB->query("SELECT Email, ID, UserID
                 FROM users_enable_requests
-                WHERE ID IN (".implode(',', $IDs).")
+                WHERE ID IN (".legacy_implode(',', $IDs).")
                     AND Outcome IS NULL");
         $Results = G::$DB->to_array(false, MYSQLI_NUM);
 
@@ -176,7 +176,7 @@ class AutoEnable {
                 SET HandledTimestamp = '".sqltime()."',
                     CheckedBy = '".G::$LoggedUser['ID']."',
                     Outcome = '$Status'
-                WHERE ID IN (".implode(',', $IDs).")");
+                WHERE ID IN (".legacy_implode(',', $IDs).")");
         G::$Cache->decrement_value(self::CACHE_KEY_NAME, count($IDs));
     }
 

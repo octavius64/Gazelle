@@ -57,9 +57,9 @@ $i = 0;
 foreach ($Notifications as $N) { // $N stands for Notifications
 	$i++;
 	$NewFilter = $N['ID'] === false;
-	$N['Artists']		= implode(', ', explode('|', substr($N['Artists'], 1, -1)));
-	$N['Tags']			= implode(', ', explode('|', substr($N['Tags'], 1, -1)));
-	$N['NotTags']		= implode(', ', explode('|', substr($N['NotTags'], 1, -1)));
+	$N['Artists']		= legacy_implode(', ', explode('|', substr($N['Artists'], 1, -1)));
+	$N['Tags']			= legacy_implode(', ', explode('|', substr($N['Tags'], 1, -1)));
+	$N['NotTags']		= legacy_implode(', ', explode('|', substr($N['NotTags'], 1, -1)));
 	$N['ReleaseTypes'] 	= explode('|', substr($N['ReleaseTypes'], 1, -1));
 	$N['Categories'] 	= explode('|', substr($N['Categories'], 1, -1));
 	$N['Formats'] 		= explode('|', substr($N['Formats'], 1, -1));

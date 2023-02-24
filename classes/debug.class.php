@@ -69,7 +69,7 @@ class DEBUG {
 
 		if (isset($Reason[0])) {
 			$this->log_var($CacheStatus, 'Cache server status');
-			$this->analysis(implode(', ', $Reason));
+			$this->analysis(legacy_implode(', ', $Reason));
 			return true;
 		}
 
@@ -157,7 +157,7 @@ class DEBUG {
 				}
 			$LastKey = $Key;
 		}
-		return implode(', ', $Return);
+		return legacy_implode(', ', $Return);
 	}
 
 	public function php_error_handler($Level, $Error, $File, $Line) {
@@ -590,7 +590,7 @@ class DEBUG {
 		foreach ($Queries as $Query) {
 			list($SQL, $Time, $Warnings) = $Query;
 			if ($Warnings !== null) {
-				$Warnings = implode('<br />', $Warnings);
+				$Warnings = legacy_implode('<br />', $Warnings);
 			}
 ?>
 		<tr valign="top">

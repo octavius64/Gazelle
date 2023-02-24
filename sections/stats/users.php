@@ -151,7 +151,7 @@ View::show_header('Detailed User Statistics');
 ?>
 <h3 id="User_Flow"><a href="#User_Flow">User Flow</a></h3>
 <div class="box pad center">
-	<img src="https://chart.googleapis.com/chart?cht=lc&amp;chs=880x160&amp;chco=000D99,99000D&amp;chg=0,-1,1,1&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|<?=implode('|', $Labels)?>&amp;chxr=0,0,<?=$Max?>&amp;chd=t:<?=implode(',', $InFlow)?>|<?=implode(',', $OutFlow)?>&amp;chls=2,4,0&amp;chdl=New+Registrations|Disabled+Users&amp;chf=bg,s,FFFFFF00" alt="User Flow Chart" />
+	<img src="https://chart.googleapis.com/chart?cht=lc&amp;chs=880x160&amp;chco=000D99,99000D&amp;chg=0,-1,1,1&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|<?=legacy_implode('|', $Labels)?>&amp;chxr=0,0,<?=$Max?>&amp;chd=t:<?=legacy_implode(',', $InFlow)?>|<?=legacy_implode(',', $OutFlow)?>&amp;chls=2,4,0&amp;chdl=New+Registrations|Disabled+Users&amp;chf=bg,s,FFFFFF00" alt="User Flow Chart" />
 </div>
 <br />
 <h3 id="User_Classes"><a href="#User_Classes">User Classes</a></h3>
@@ -171,16 +171,16 @@ View::show_header('Detailed User Statistics');
 <br />
 <h3 id="Geo_Dist_Map"><a href="#Geo_Dist_Map">Geographical Distribution Map</a></h3>
 <div class="box center">
-	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-55,-180,73,180&amp;chs=440x220&amp;chd=t:<?=implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Worldwide" />
-	<img src="https://chart.googleapis.com/chart?cht=map:fixed=37,-26,65,67&amp;chs=440x220&amp;chs=440x220&amp;chd=t:<?=implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Europe" />
+	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-55,-180,73,180&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Worldwide" />
+	<img src="https://chart.googleapis.com/chart?cht=map:fixed=37,-26,65,67&amp;chs=440x220&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Europe" />
 	<br />
-	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-46,-132,24,21.5&amp;chs=440x220&amp;chd=t:<?=implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - South America" />
-	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-11,22,50,160&amp;chs=440x220&amp;chd=t:<?=implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Asia" />
+	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-46,-132,24,21.5&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - South America" />
+	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-11,22,50,160&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Asia" />
 	<br />
-	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-36,-57,37,100&amp;chs=440x220&amp;chd=t:<?=implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Africa" />
-	<img src="https://chart.googleapis.com/chart?cht=map:fixed=14.8,15,45,86&amp;chs=440x220&amp;chd=t:<?=implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Middle East" />
+	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-36,-57,37,100&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Africa" />
+	<img src="https://chart.googleapis.com/chart?cht=map:fixed=14.8,15,45,86&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Middle East" />
 	<br />
-	<img src="https://chart.googleapis.com/chart?chxt=y,x&amp;chg=0,-1,1,1&amp;chxs=0,h&amp;cht=bvs&amp;chco=76A4FB&amp;chs=880x300&amp;chd=t:<?=implode(',', array_slice($CountryUsers, 0, 31))?>&amp;chxl=1:|<?=implode('|', array_slice($Countries, 0, 31))?>|0:|<?=implode('|', $LogIncrements)?>&amp;chf=bg,s,FFFFFF00" alt="Number of users by country" />
+	<img src="https://chart.googleapis.com/chart?chxt=y,x&amp;chg=0,-1,1,1&amp;chxs=0,h&amp;cht=bvs&amp;chco=76A4FB&amp;chs=880x300&amp;chd=t:<?=legacy_implode(',', array_slice($CountryUsers, 0, 31))?>&amp;chxl=1:|<?=legacy_implode('|', array_slice($Countries, 0, 31))?>|0:|<?=legacy_implode('|', $LogIncrements)?>&amp;chf=bg,s,FFFFFF00" alt="Number of users by country" />
 </div>
 <?
 View::show_footer();

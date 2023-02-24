@@ -39,7 +39,7 @@ $TagList = explode(',', $_POST['tags']);
 foreach ($TagList as $ID => $Tag) {
 	$TagList[$ID] = Misc::sanitize_tag($Tag);
 }
-$TagList = implode(' ', $TagList);
+$TagList = legacy_implode(' ', $TagList);
 
 $Updates = array("Description='".db_string($_POST['description'])."', TagList='".db_string($TagList)."'");
 
@@ -81,7 +81,7 @@ if (check_perms('site_collages_delete')) {
 if (!empty($Updates)) {
 	$DB->query('
 		UPDATE collages
-		SET '.implode(', ', $Updates)."
+		SET '.legacy_implode(', ', $Updates)."
 		WHERE ID = $CollageID");
 }
 $Cache->delete_value('collage_'.$CollageID);

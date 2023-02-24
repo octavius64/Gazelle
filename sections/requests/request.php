@@ -41,9 +41,9 @@ if ($CategoryName === 'Music') {
 	$FullName = $ArtistName.$Request['Title']." [$Request[Year]]";
 
 	if ($Request['BitrateList'] != '') {
-		$BitrateString = implode(', ', explode('|', $Request['BitrateList']));
-		$FormatString = implode(', ', explode('|', $Request['FormatList']));
-		$MediaString = implode(', ', explode('|', $Request['MediaList']));
+		$BitrateString = legacy_implode(', ', explode('|', $Request['BitrateList']));
+		$FormatString = legacy_implode(', ', explode('|', $Request['FormatList']));
+		$MediaString = legacy_implode(', ', explode('|', $Request['MediaList']));
 	} else {
 		$BitrateString = 'Unknown, please read the description.';
 		$FormatString = 'Unknown, please read the description.';

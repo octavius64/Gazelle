@@ -14,7 +14,7 @@ class Requests {
 				JOIN requests_tags AS rt ON t.ID = rt.TagID
 			WHERE rt.RequestID = $RequestID");
 		$TagList = G::$DB->collect(0, false);
-		$TagList = db_string(implode(' ', $TagList));
+		$TagList = db_string(legacy_implode(' ', $TagList));
 
 		G::$DB->query("
 			REPLACE INTO sphinx_requests_delta (
@@ -79,7 +79,7 @@ class Requests {
 		if (count($RequestIDs) === 0) {
 			return array();
 		}
-		$IDs = implode(',', old_array_keys($NotFound));
+		$IDs = legacy_implode(',', old_array_keys($NotFound));
 
 		/*
 			Don't change without ensuring you change everything else that uses get_requests()
@@ -183,7 +183,7 @@ class Requests {
 			return array();
 		}
 		if (is_array($RequestIDs)) {
-			$RequestIDs = implode(',', $RequestIDs);
+			$RequestIDs = legacy_implode(',', $RequestIDs);
 		}
 		$QueryID = G::$DB->get_query_id();
 		G::$DB->query("

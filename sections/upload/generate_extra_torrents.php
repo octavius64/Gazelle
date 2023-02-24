@@ -35,7 +35,7 @@ foreach ($ExtraTorrents as $ExtraTorrent) {
 
 	// To be stored in the database
 	$ThisInsert['FilePath'] = db_string($ExtraDirName);
-	$ThisInsert['FileString'] = db_string(implode("\n", $ExtraTmpFileList));
+	$ThisInsert['FileString'] = db_string(legacy_implode("\n", $ExtraTmpFileList));
 	$ThisInsert['InfoHash'] = pack('H*', $ExtraTor->info_hash());
 	$ThisInsert['NumFiles'] = count($ExtraFileList);
 	$ThisInsert['TorEnc'] = db_string($ExtraTor->encode());

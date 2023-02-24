@@ -81,7 +81,7 @@ if ($ShowGrouped) {
 				JOIN forums AS f ON f.ID = t.ForumID
 				LEFT JOIN forums_last_read_topics AS l ON l.UserID = $UserID
 						AND l.TopicID = t.ID
-			WHERE p.ID IN (".implode(',', $PostIDs).')
+			WHERE p.ID IN (".legacy_implode(',', $PostIDs).')
 			ORDER BY p.ID DESC';
 		$Posts = $DB->query($sql);
 	}

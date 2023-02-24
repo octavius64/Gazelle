@@ -48,7 +48,7 @@ class MASS_USER_BOOKMARKS_EDITOR extends MASS_USER_TORRENTS_EDITOR {
 						AND GroupID IN (%s)',
 				$this->Table,
 				G::$LoggedUser['ID'],
-				implode(', ', $SQL)
+				legacy_implode(', ', $SQL)
 			);
 			$this->query_and_clear_cache($SQL);
 		}
@@ -74,7 +74,7 @@ class MASS_USER_BOOKMARKS_EDITOR extends MASS_USER_TORRENTS_EDITOR {
 					ON DUPLICATE KEY UPDATE
 						Sort = VALUES (Sort)',
 				$this->Table,
-				implode(', ', $SQL));
+				legacy_implode(', ', $SQL));
 			$this->query_and_clear_cache($SQL);
 		}
 	}

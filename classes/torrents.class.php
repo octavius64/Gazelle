@@ -76,7 +76,7 @@ class Torrents {
 		*/
 
 		if (count($NotFound) > 0) {
-			$IDs = implode(',', old_array_keys($NotFound));
+			$IDs = legacy_implode(',', old_array_keys($NotFound));
 			$NotFound = array();
 			$QueryID = G::$DB->get_query_id();
 			G::$DB->query("
@@ -370,7 +370,7 @@ class Torrents {
 			G::$DB->query("
 				UPDATE collages
 				SET NumTorrents = NumTorrents - 1
-				WHERE ID IN (".implode(', ', $CollageIDs).')');
+				WHERE ID IN (".legacy_implode(', ', $CollageIDs).')');
 			G::$DB->query("
 				DELETE FROM collages_torrents
 				WHERE GroupID = '$GroupID'");
@@ -566,7 +566,7 @@ class Torrents {
 			foreach ($FileList as $File) {
 				$TmpFileList[] = self::filelist_format_file($File);
 			}
-			$FileString = implode("\n", $TmpFileList);
+			$FileString = legacy_implode("\n", $TmpFileList);
 			G::$DB->query("
 				UPDATE torrents
 				SET Size = $TotalSize, FilePath = '".db_string($FilePath)."', FileList = '".db_string($FileString)."'
@@ -674,7 +674,7 @@ class Torrents {
 				$EditionInfo[] = $Data['RemasterTitle'];
 			}
 			if (count($EditionInfo)) {
-				$Info[] = implode(' ', $EditionInfo);
+				$Info[] = legacy_implode(' ', $EditionInfo);
 			}
 		}
 		if ($Data['IsSnatched']) {
@@ -689,7 +689,7 @@ class Torrents {
 		if ($Data['PersonalFL']) {
 			$Info[] = Format::torrent_label('Personal Freeleech!');
 		}
-		return implode(' / ', $Info);
+		return legacy_implode(' / ', $Info);
 	}
 
 
@@ -709,12 +709,12 @@ class Torrents {
 		G::$DB->query("
 			UPDATE torrents
 			SET FreeTorrent = '$FreeNeutral', FreeLeechType = '$FreeLeechType'
-			WHERE ID IN (".implode(', ', $TorrentIDs).')');
+			WHERE ID IN (".legacy_implode(', ', $TorrentIDs).')');
 
 		G::$DB->query('
 			SELECT ID, GroupID, info_hash
 			FROM torrents
-			WHERE ID IN ('.implode(', ', $TorrentIDs).')
+			WHERE ID IN ('.legacy_implode(', ', $TorrentIDs).')
 			ORDER BY GroupID ASC');
 		$Torrents = G::$DB->to_array(false, MYSQLI_NUM, false);
 		$GroupIDs = G::$DB->collect('GroupID');
@@ -751,7 +751,7 @@ class Torrents {
 		G::$DB->query('
 			SELECT ID
 			FROM torrents
-			WHERE GroupID IN ('.implode(', ', $GroupIDs).')');
+			WHERE GroupID IN ('.legacy_implode(', ', $GroupIDs).')');
 		if (G::$DB->has_results()) {
 			$TorrentIDs = G::$DB->collect('ID');
 			Torrents::freeleech_torrents($TorrentIDs, $FreeNeutral, $FreeLeechType);

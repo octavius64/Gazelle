@@ -59,7 +59,7 @@ if (isset($_GET['forums']) && is_array($_GET['forums'])) {
 		}
 	}
 	if (count($ForumArray) > 0) {
-		$SearchForums = implode(', ', $ForumArray);
+		$SearchForums = legacy_implode(', ', $ForumArray);
 	}
 }
 
@@ -230,11 +230,11 @@ if ($Type == 'body') {
 
 	//In tests, this is significantly faster than LOCATE
 	$SQL .= "p.Body LIKE '%";
-	$SQL .= implode("%' AND p.Body LIKE '%", $Words);
+	$SQL .= legacy_implode("%' AND p.Body LIKE '%", $Words);
 	$SQL .= "%' ";
 
 	//$SQL .= "LOCATE('";
-	//$SQL .= implode("', p.Body) AND LOCATE('", $Words);
+	//$SQL .= legacy_implode("', p.Body) AND LOCATE('", $Words);
 	//$SQL .= "', p.Body) ";
 
 	if (isset($SearchForums)) {
@@ -279,7 +279,7 @@ if ($Type == 'body') {
 			JOIN forums AS f ON f.ID = t.ForumID
 		WHERE " . Forums::user_forums_sql() . ' AND ';
 	$SQL .= "t.Title LIKE '%";
-	$SQL .= implode("%' AND t.Title LIKE '%", $Words);
+	$SQL .= legacy_implode("%' AND t.Title LIKE '%", $Words);
 	$SQL .= "%' ";
 	if (isset($SearchForums)) {
 		$SQL .= " AND f.ID IN ($SearchForums)";

@@ -60,10 +60,10 @@ if (!empty($_GET['search'])) {
 		$sql .= "um.Username LIKE '$Search' AND ";
 	} elseif ($_GET['searchtype'] === 'subject') {
 		$Words = explode(' ', $Search);
-		$sql .= "c.Subject LIKE '%".implode("%' AND c.Subject LIKE '%", $Words)."%' AND ";
+		$sql .= "c.Subject LIKE '%".legacy_implode("%' AND c.Subject LIKE '%", $Words)."%' AND ";
 	} elseif ($_GET['searchtype'] === 'message') {
 		$Words = explode(' ', $Search);
-		$sql .= "m.Body LIKE '%".implode("%' AND m.Body LIKE '%", $Words)."%' AND ";
+		$sql .= "m.Body LIKE '%".legacy_implode("%' AND m.Body LIKE '%", $Words)."%' AND ";
 	}
 }
 $sql .= $Section === 'sentbox' ? ' cu.InSentbox' : ' cu.InInbox';

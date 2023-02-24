@@ -23,7 +23,7 @@ if (isset($Keys) && $_GET['type'] == 'clear') {
 			$Cache->delete_value($Key);
 		}
 	}
-	echo '<div class="save_message">Key(s) ' . implode(', ', array_map('display_str', $Keys)) . ' cleared!</div>';
+	echo '<div class="save_message">Key(s) ' . legacy_implode(', ', array_map('display_str', $Keys)) . ' cleared!</div>';
 }
 $MultiKeyTooltip = 'Enter cache keys delimited by any amount of whitespace.';
 ?>

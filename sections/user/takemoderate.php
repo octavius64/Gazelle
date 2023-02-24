@@ -427,11 +427,11 @@ if (count($DroppedClasses) > 0) {
 	foreach ($DroppedClasses as $PermID) {
 		$ClassChanges[] = $Classes[$PermID]['Name'];
 	}
-	$EditSummary[] = 'Secondary classes dropped: '.implode(', ', $ClassChanges);
+	$EditSummary[] = 'Secondary classes dropped: '.legacy_implode(', ', $ClassChanges);
 	$DB->query("
 		DELETE FROM users_levels
 		WHERE UserID = '$UserID'
-			AND PermissionID IN (".implode(',', $DroppedClasses).')');
+			AND PermissionID IN (".legacy_implode(',', $DroppedClasses).')');
 	if (count($SecondaryClasses) > 0) {
 		$LightUpdates['ExtraClasses'] = array_fill_keys($SecondaryClasses, 1);
 	} else {
@@ -444,7 +444,7 @@ if (count($AddedClasses) > 0) {
 	foreach ($AddedClasses as $PermID) {
 		$ClassChanges[] = $Classes[$PermID]['Name'];
 	}
-	$EditSummary[] = "Secondary classes added: ".implode(', ', $ClassChanges);
+	$EditSummary[] = "Secondary classes added: ".legacy_implode(', ', $ClassChanges);
 	$Values = array();
 	foreach ($AddedClasses as $PermID) {
 		$Values[] = "($UserID, $PermID)";
@@ -452,7 +452,7 @@ if (count($AddedClasses) > 0) {
 	}
 	$DB->query("
 		INSERT INTO users_levels (UserID, PermissionID)
-		VALUES ".implode(', ', $Values));
+		VALUES ".legacy_implode(', ', $Values));
 	//$LightUpdates['ExtraClasses'] = array_fill_keys($SecondaryClasses, 1);
 	$DeleteKeys = true;
 }
@@ -562,7 +562,7 @@ if ($PermittedForums != db_string($Cur['PermittedForums']) && check_perms('users
 			$ForumList[] = $ForumID;
 		}
 	}
-	$PermittedForums = implode(',', $ForumSet);
+	$PermittedForums = legacy_implode(',', $ForumSet);
 	$UpdateSet[] = "PermittedForums = '$PermittedForums'";
 	$EditSummary[] = "permitted forum(s): $PermittedForums";
 	$DeleteKeys = true;
@@ -824,7 +824,7 @@ if ($DeleteKeys) {
 $Summary = '';
 // Create edit summary
 if ($EditSummary) {
-	$Summary = implode(', ', $EditSummary) . ' by ' . $LoggedUser['Username'];
+	$Summary = legacy_implode(', ', $EditSummary) . ' by ' . $LoggedUser['Username'];
 	$Summary = sqltime() . ' - ' . ucfirst($Summary);
 
 	if ($Reason) {
@@ -849,7 +849,7 @@ if (!empty($Summary)) {
 
 // Build query
 
-$SET = implode(', ', $UpdateSet);
+$SET = legacy_implode(', ', $UpdateSet);
 
 $SQL = "
 	UPDATE users_main AS m

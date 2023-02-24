@@ -6,7 +6,7 @@ if (!empty($UserSubscriptions)) {
 		INSERT INTO forums_last_read_topics (UserID, TopicID, PostID)
 			SELECT '$LoggedUser[ID]', ID, LastPostID
 			FROM forums_topics
-			WHERE ID IN (".implode(',', $UserSubscriptions).')
+			WHERE ID IN (".legacy_implode(',', $UserSubscriptions).')
 		ON DUPLICATE KEY UPDATE
 			PostID = LastPostID');
 }

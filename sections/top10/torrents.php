@@ -16,9 +16,9 @@ if (!empty($_GET['advanced']) && check_perms('site_advanced_top10')) {
 		}
 		if (!empty($TagWhere)) {
 			if ($_GET['anyall'] == 'any') {
-				$Where[] = '('.implode(' OR ', $TagWhere).')';
+				$Where[] = '('.legacy_implode(' OR ', $TagWhere).')';
 			} else {
-				$Where[] = '('.implode(' AND ', $TagWhere).')';
+				$Where[] = '('.legacy_implode(' AND ', $TagWhere).')';
 			}
 		}
 	}
@@ -141,7 +141,7 @@ if ($_GET['groups'] == 'show') {
 <?
 
 if (!empty($Where)) {
-	$Where = '('.implode(' AND ', $Where).')';
+	$Where = '('.legacy_implode(' AND ', $Where).')';
 	$WhereSum = md5($Where);
 } else {
 	$WhereSum = '';

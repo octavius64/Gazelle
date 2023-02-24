@@ -55,7 +55,7 @@ foreach ($Blocks as $Index => $Block) {
 	if ($Index % $SplitOn == 0) {
 		$DB->query('
 			INSERT INTO geoip_country (StartIP, EndIP, Code)
-			VALUES '.implode(', ', $Values));
+			VALUES '.legacy_implode(', ', $Values));
 		$Values = array();
 	}
 }
@@ -63,7 +63,7 @@ foreach ($Blocks as $Index => $Block) {
 if (count($Values) > 0) {
 	$DB->query("
 		INSERT INTO geoip_country (StartIP, EndIP, Code)
-		VALUES ".implode(', ', $Values));
+		VALUES ".legacy_implode(', ', $Values));
 }
 
 
@@ -124,6 +124,6 @@ foreach ($Registries as $Registry) {
 $Query[] = "('".$Current['StartIP']."','".$Current['EndIP']."','".$Current['Code']."')";
 
 $DB->query("TRUNCATE TABLE geoip_country");
-$DB->query("INSERT INTO geoip_country (StartIP, EndIP, Code) VALUES ".implode(',', $Query));
+$DB->query("INSERT INTO geoip_country (StartIP, EndIP, Code) VALUES ".legacy_implode(',', $Query));
 echo $DB->affected_rows();
 */

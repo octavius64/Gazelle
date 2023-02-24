@@ -459,7 +459,7 @@ $Cache->increment('usage_index');
 				}
 				$TagLinks[] = "<a href=\"torrents.php?action=basic&amp;taglist=$Tag\">$Tag</a> ";
 			}
-			$TagStr = "<br />\n<div class=\"tags\">".implode(', ', $TagLinks).'</div>';
+			$TagStr = "<br />\n<div class=\"tags\">".legacy_implode(', ', $TagLinks).'</div>';
 		}
 ?>
 			<tr>

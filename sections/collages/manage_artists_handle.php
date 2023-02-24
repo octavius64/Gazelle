@@ -53,7 +53,7 @@ if ($_POST['submit'] === 'Remove') {
 			INSERT INTO collages_artists
 				(ArtistID, Sort, CollageID)
 			VALUES
-				' . implode(', ', $SQL) . '
+				' . legacy_implode(', ', $SQL) . '
 			ON DUPLICATE KEY UPDATE
 				Sort = VALUES (Sort)';
 

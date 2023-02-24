@@ -84,7 +84,7 @@ if (isset($_POST['confirm'])) {
 		WHERE ArtistID = $NewArtistID");
 	$NewArtistGroups = $DB->collect('GroupID');
 	$NewArtistGroups[] = '0';
-	$NewArtistGroups = implode(',', $NewArtistGroups);
+	$NewArtistGroups = legacy_implode(',', $NewArtistGroups);
 
 	$DB->query("
 		SELECT DISTINCT RequestID
@@ -92,7 +92,7 @@ if (isset($_POST['confirm'])) {
 		WHERE ArtistID = $NewArtistID");
 	$NewArtistRequests = $DB->collect('RequestID');
 	$NewArtistRequests[] = '0';
-	$NewArtistRequests = implode(',', $NewArtistRequests);
+	$NewArtistRequests = legacy_implode(',', $NewArtistRequests);
 
 	$DB->query("
 		SELECT DISTINCT UserID
@@ -100,7 +100,7 @@ if (isset($_POST['confirm'])) {
 		WHERE ArtistID = $NewArtistID");
 	$NewArtistBookmarks = $DB->collect('UserID');
 	$NewArtistBookmarks[] = '0';
-	$NewArtistBookmarks = implode(',', $NewArtistBookmarks);
+	$NewArtistBookmarks = legacy_implode(',', $NewArtistBookmarks);
 
 	// Merge all of this artist's aliases onto the new artist
 	$DB->query("

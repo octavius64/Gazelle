@@ -11,7 +11,7 @@ $DB->query("
 	FROM collages
 	WHERE ID = '$CollageID'");
 list($Name, $Description, $TagList, $UserID, $CategoryID, $Locked, $MaxGroups, $MaxGroupsPerUser, $Featured) = $DB->next_record();
-$TagList = implode(', ', explode(' ', $TagList));
+$TagList = legacy_implode(', ', explode(' ', $TagList));
 
 if ($CategoryID == 0 && $UserID != $LoggedUser['ID'] && !check_perms('site_collages_delete')) {
 	error(403);

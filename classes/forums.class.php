@@ -246,7 +246,7 @@ class Forums {
 						) / $PerPage
 					) AS Page
 				FROM forums_last_read_topics AS l
-				WHERE l.TopicID IN(" . implode(',', $TopicIDs) . ") AND
+				WHERE l.TopicID IN(" . legacy_implode(',', $TopicIDs) . ") AND
 					l.UserID = '" . G::$LoggedUser['ID'] . "'");
 			$LastRead = G::$DB->to_array('TopicID', MYSQLI_ASSOC);
 			G::$DB->set_query_id($QueryID);
@@ -305,11 +305,11 @@ class Forums {
 		}
 		$SQL = "((f.MinClassRead <= '" . G::$LoggedUser['Class'] . "'";
 		if (count($RestrictedForums)) {
-			$SQL .= " AND f.ID NOT IN ('" . implode("', '", $RestrictedForums) . "')";
+			$SQL .= " AND f.ID NOT IN ('" . legacy_implode("', '", $RestrictedForums) . "')";
 		}
 		$SQL .= ')';
 		if (count($PermittedForums)) {
-			$SQL .= " OR f.ID IN ('" . implode("', '", $PermittedForums) . "')";
+			$SQL .= " OR f.ID IN ('" . legacy_implode("', '", $PermittedForums) . "')";
 		}
 		$SQL .= ')';
 		return $SQL;

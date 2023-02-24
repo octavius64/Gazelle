@@ -66,7 +66,7 @@ if ($NumResults > $PerPage * ($Page - 1)) {
 			LEFT JOIN users_main AS um ON um.ID = p.AuthorID
 			LEFT JOIN users_info AS ui ON ui.UserID = um.ID
 			LEFT JOIN users_main AS ed ON ed.ID = um.ID
-		WHERE p.ID IN ('.implode(',', $PostIDs).')
+		WHERE p.ID IN ('.legacy_implode(',', $PostIDs).')
 		ORDER BY f.Name ASC, t.LastPostID DESC';
 	$DB->query($sql);
 }

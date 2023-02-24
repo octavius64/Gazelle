@@ -118,9 +118,9 @@ if (!empty($_GET['formats'])) {
 		if (count($FormatNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['formats_strict'])) {
-				$SearchString = '(' . implode(' | ', $FormatNameArray) . ')';
+				$SearchString = '(' . legacy_implode(' | ', $FormatNameArray) . ')';
 			} else {
-				$SearchString = '(any | ' . implode(' | ', $FormatNameArray) . ')';
+				$SearchString = '(any | ' . legacy_implode(' | ', $FormatNameArray) . ')';
 			}
 			$SphQL->where_match($SearchString, 'formatlist', false);
 		}
@@ -140,9 +140,9 @@ if (!empty($_GET['media'])) {
 		if (count($MediaNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['media_strict'])) {
-				$SearchString = '(' . implode(' | ', $MediaNameArray) . ')';
+				$SearchString = '(' . legacy_implode(' | ', $MediaNameArray) . ')';
 			} else {
-				$SearchString = '(any | ' . implode(' | ', $MediaNameArray) . ')';
+				$SearchString = '(any | ' . legacy_implode(' | ', $MediaNameArray) . ')';
 			}
 			$SphQL->where_match($SearchString, 'medialist', false);
 		}
@@ -162,9 +162,9 @@ if (!empty($_GET['bitrates'])) {
 		if (count($BitrateNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['bitrate_strict'])) {
-				$SearchString = '(' . implode(' | ', $BitrateNameArray) . ')';
+				$SearchString = '(' . legacy_implode(' | ', $BitrateNameArray) . ')';
 			} else {
-				$SearchString = '(any | ' . implode(' | ', $BitrateNameArray) . ')';
+				$SearchString = '(any | ' . legacy_implode(' | ', $BitrateNameArray) . ')';
 			}
 			$SphQL->where_match($SearchString, 'bitratelist', false);
 		}
@@ -248,7 +248,7 @@ if (isset($SearchWords)) {
 		}
 	}
 	if (!empty($QueryParts)) {
-		$SearchString = implode(' ', $QueryParts);
+		$SearchString = legacy_implode(' ', $QueryParts);
 		$SphQL->where_match($SearchString, '*', false);
 	}
 }

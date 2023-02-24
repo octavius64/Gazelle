@@ -136,7 +136,7 @@ if (!empty($GroupIDs)) {
 	$DB->query('
 		SELECT ID, Label, Artists
 		FROM users_notify_filters
-		WHERE ID IN ('.implode(',', $FilterIDs).')');
+		WHERE ID IN ('.legacy_implode(',', $FilterIDs).')');
 	$Filters = $DB->to_array('ID', MYSQLI_ASSOC, array('Artists'));
 	foreach ($Filters as &$Filter) {
 		$Filter['Artists'] = explode('|', trim($Filter['Artists'], '|'));
@@ -153,7 +153,7 @@ if (!empty($GroupIDs)) {
 			UPDATE users_notify_torrents
 			SET UnRead = '0'
 			WHERE UserID = ".$LoggedUser['ID'].'
-				AND TorrentID IN ('.implode(',', $UnReadIDs).')');
+				AND TorrentID IN ('.legacy_implode(',', $UnReadIDs).')');
 		$Cache->delete_value('notifications_new_'.$LoggedUser['ID']);
 	}
 }
@@ -259,7 +259,7 @@ if (empty($Results)) {
 						}
 					}
 				}
-				$MatchingArtistsText = (!empty($MatchingArtists) ? 'Caught by filter for '.implode(', ', $MatchingArtists) : '');
+				$MatchingArtistsText = (!empty($MatchingArtists) ? 'Caught by filter for '.legacy_implode(', ', $MatchingArtists) : '');
 				$DisplayName = Artists::display_artists($GroupInfo['ExtendedArtists'], true, true);
 			}
 			$DisplayName .= "<a href=\"torrents.php?id=$GroupID&amp;torrentid=$TorrentID#torrent$TorrentID\" class=\"tooltip\" title=\"View torrent\" dir=\"ltr\">" . $GroupInfo['Name'] . '</a>';

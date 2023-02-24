@@ -26,7 +26,7 @@ switch ($Type) {
 				$Query = "
 					UPDATE users_freeleeches
 					SET Expired = TRUE
-					WHERE ".implode(" OR ", $Cond);
+					WHERE ".legacy_implode(" OR ", $Cond);
 				$DB->query($Query);
 				foreach ($UserIDs as $UserID) {
 					$Cache->delete_value("users_tokens_$UserID");

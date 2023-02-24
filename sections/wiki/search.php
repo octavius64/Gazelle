@@ -53,7 +53,7 @@ $SQL = "
 	WHERE MinClassRead <= '".$LoggedUser['EffectiveClass']."'";
 if ($Search != '') {
 	$SQL .= " AND $Type LIKE '%";
-	$SQL .= implode("%' AND $Type LIKE '%", $Words);
+	$SQL .= legacy_implode("%' AND $Type LIKE '%", $Words);
 	$SQL .= "%' ";
 }
 

@@ -554,7 +554,7 @@ if ($Override = check_perms('users_mod') || $OwnProfile || !empty($SupportFor)) 
 			FROM xbt_files_users
 			WHERE uid = $UserID");
 		$Clients = $DB->collect(0);
-		echo implode('; ', $Clients);
+		echo legacy_implode('; ', $Clients);
 		?></li>
 <?
 }
@@ -851,7 +851,7 @@ if (empty($LoggedUser['DisableRequests']) && check_paranoia_here('requestsvoted_
 			foreach ($Tags as $TagID => $TagName) {
 				$TagList[] = "<a href=\"requests.php?tags=$TagName\">".display_str($TagName).'</a>';
 			}
-			$TagList = implode(', ', $TagList);
+			$TagList = legacy_implode(', ', $TagList);
 ?>
 								<?=$TagList?>
 							</div>

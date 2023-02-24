@@ -29,7 +29,7 @@ if (!empty($TopicIDs)) {
 				) / $PerPage
 			) AS Page
 		FROM forums_last_read_topics AS l
-		WHERE l.TopicID IN(".implode(',', $TopicIDs).")
+		WHERE l.TopicID IN(".legacy_implode(',', $TopicIDs).")
 			AND l.UserID = '$LoggedUser[ID]'");
 	$LastRead = $DB->to_array('TopicID', MYSQLI_ASSOC);
 } else {

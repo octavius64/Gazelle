@@ -273,7 +273,7 @@ if ($CategoryName === 'Music') {
 				error(0);
 			}
 		}
-		$BitrateList = implode('|', $BitrateArray);
+		$BitrateList = legacy_implode('|', $BitrateArray);
 	} else {
 		$BitrateList = 'Any';
 	}
@@ -287,7 +287,7 @@ if ($CategoryName === 'Music') {
 				error(0);
 			}
 		}
-		$FormatList = implode('|', $FormatArray);
+		$FormatList = legacy_implode('|', $FormatArray);
 	} else {
 		$FormatList = 'Any';
 	}
@@ -301,7 +301,7 @@ if ($CategoryName === 'Music') {
 				error(0);
 			}
 		}
-		$MediaList = implode('|', $MediaArray);
+		$MediaList = legacy_implode('|', $MediaArray);
 	} else {
 		$MediaList = 'Any';
 	}
@@ -574,9 +574,9 @@ if ($NewRequest) {
 
 
 	if ($CategoryName === 'Music') {
-		$Announce = "\"$Title\" - ".Artists::display_artists($ArtistForm, false, false).' '.site_url()."requests.php?action=view&id=$RequestID - ".implode(' ', $Tags);
+		$Announce = "\"$Title\" - ".Artists::display_artists($ArtistForm, false, false).' '.site_url()."requests.php?action=view&id=$RequestID - ".legacy_implode(' ', $Tags);
 	} else {
-		$Announce = "\"$Title\" - ".site_url()."requests.php?action=view&id=$RequestID - ".implode(' ', $Tags);
+		$Announce = "\"$Title\" - ".site_url()."requests.php?action=view&id=$RequestID - ".legacy_implode(' ', $Tags);
 	}
 	send_irc('PRIVMSG #'.SSL_SITE_URL."-requests :$Announce");
 

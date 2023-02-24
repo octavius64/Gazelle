@@ -194,7 +194,7 @@ class Tools {
 				i.BanDate = '".sqltime()."',
 				i.BanReason = '$BanReason',
 				i.RatioWatchDownload = ".($BanReason == 2 ? 'm.Downloaded' : "'0'")."
-			WHERE m.ID IN(".implode(',', $UserIDs).') ');
+			WHERE m.ID IN(".legacy_implode(',', $UserIDs).') ');
 		G::$Cache->decrement('stats_user_count', G::$DB->affected_rows());
 		foreach ($UserIDs as $UserID) {
 			G::$Cache->delete_value("enabled_$UserID");
@@ -222,7 +222,7 @@ class Tools {
 		G::$DB->query('
 			SELECT torrent_pass
 			FROM users_main
-			WHERE ID in ('.implode(', ', $UserIDs).')');
+			WHERE ID in ('.legacy_implode(', ', $UserIDs).')');
 		$PassKeys = G::$DB->collect('torrent_pass');
 		$Concat = '';
 		foreach ($PassKeys as $PassKey) {

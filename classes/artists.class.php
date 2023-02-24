@@ -32,7 +32,7 @@ class Artists {
 			}
 		}
 		if (count($DBs) > 0) {
-			$IDs = implode(',', $DBs);
+			$IDs = legacy_implode(',', $DBs);
 			if (empty($IDs)) {
 				$IDs = "null";
 			}

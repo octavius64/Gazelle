@@ -38,7 +38,7 @@ class BencodeTorrent extends BencodeDecode {
 				$CurSize = (Int64::is_int($File['length'])
 					? Int64::get($File['length'])
 					: $File['length']);
-				$this->Files[] = array($CurSize, implode('/', $TmpPath));
+				$this->Files[] = array($CurSize, legacy_implode('/', $TmpPath));
 				$this->Size += $CurSize;
 			}
 			uasort($this->Files, function($a, $b) {

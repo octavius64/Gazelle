@@ -49,7 +49,7 @@ foreach ($ReportType['report_fields'] as $Field => $Value) {
 
 if (!empty($_POST['sitelink'])) {
 	if (preg_match_all('/'.TORRENT_REGEX.'/i', $_POST['sitelink'], $Matches)) {
-		$ExtraIDs = implode(' ', $Matches[4]);
+		$ExtraIDs = legacy_implode(' ', $Matches[4]);
 		if (in_array($TorrentID, $Matches[4])) {
 			$Err = "The extra permalinks you gave included the link to the torrent you're reporting!";
 		}
@@ -64,7 +64,7 @@ if (!empty($_POST['link'])) {
 	//resource_type://domain:port/filepathname?query_string#anchor
 	//					http://		www			.foo.com								/bar
 	if (preg_match_all('/'.URL_REGEX.'/is', $_POST['link'], $Matches)) {
-		$Links = implode(' ', $Matches[0]);
+		$Links = legacy_implode(' ', $Matches[0]);
 	} else {
 		$Err = "The extra links you provided weren't links...";
 	}

@@ -104,7 +104,7 @@ class DonationsBitcoin {
 		G::$DB->query("
 			SELECT BitcoinAddress, UserID
 			FROM users_info
-			WHERE BitcoinAddress IN ('" . implode("', '", $Addresses) . "')");
+			WHERE BitcoinAddress IN ('" . legacy_implode("', '", $Addresses) . "')");
 		if (G::$DB->has_results()) {
 			$UserIDs = G::$DB->to_pair(0, 1);
 		} else {

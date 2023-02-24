@@ -814,7 +814,7 @@ if ($NumRequests > 0) {
 				foreach ($Tags[$RequestID] as $TagID => $TagName) {
 					$ReqTagList[] = "<a href=\"requests.php?tags=$TagName\">".display_str($TagName).'</a>';
 				}
-				$ReqTagList = implode(', ', $ReqTagList);
+				$ReqTagList = legacy_implode(', ', $ReqTagList);
 			} else {
 				$ReqTagList = '';
 			}

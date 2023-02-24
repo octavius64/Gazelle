@@ -413,11 +413,11 @@ foreach ($FileList as $File) {
 	$TmpFileList[] = Torrents::filelist_format_file($File);
 }
 if (count($TooLongPaths) > 0) {
-	$Names = implode(' <br />', $TooLongPaths);
+	$Names = legacy_implode(' <br />', $TooLongPaths);
 	$Err = "The torrent contained one or more files with too long a name:<br /> $Names";
 }
 $FilePath = db_string($DirName);
-$FileString = db_string(implode("\n", $TmpFileList));
+$FileString = db_string(legacy_implode("\n", $TmpFileList));
 $Debug->set_flag('upload: torrent decoded');
 
 if ($Type == 'Music') {
@@ -709,7 +709,7 @@ if (!empty($LogScores) && $HasLog) {
 	foreach ($LogScores as $LogKey => $LogScore) {
 		$LogScores[$LogKey] = "$TorrentID, $LogScore, 1, 0, 0, NULL";
 	}
-	$LogQuery .= implode('),(', $LogScores).')';
+	$LogQuery .= legacy_implode('),(', $LogScores).')';
 	$DB->query($LogQuery);
 	$LogInDB = true;
 }
@@ -879,16 +879,16 @@ if (!empty($ArtistsUnescaped)) {
 	// Don't add notification if >2 main artists or if tracked artist isn't a main artist
 	if (count($ArtistNameList) > 2 || $Artist['name'] == 'Various Artists') {
 		$SQL .= " AND (ExcludeVA = '0' AND (";
-		$SQL .= implode(' OR ', array_merge($ArtistNameList, $GuestArtistNameList));
+		$SQL .= legacy_implode(' OR ', array_merge($ArtistNameList, $GuestArtistNameList));
 		$SQL .= " OR Artists = '')) AND (";
 	} else {
 		$SQL .= " AND (";
 		if (!empty($GuestArtistNameList)) {
 			$SQL .= "(ExcludeVA = '0' AND (";
-			$SQL .= implode(' OR ', $GuestArtistNameList);
+			$SQL .= legacy_implode(' OR ', $GuestArtistNameList);
 			$SQL .= ')) OR ';
 		}
-		$SQL .= implode(' OR ', $ArtistNameList);
+		$SQL .= legacy_implode(' OR ', $ArtistNameList);
 		$SQL .= " OR Artists = '') AND (";
 	}
 } else {
@@ -903,9 +903,9 @@ foreach ($Tags as $Tag) {
 	$NotTagSQL[] = " NotTags LIKE '%|".db_string(trim($Tag))."|%' ";
 }
 $TagSQL[] = "Tags = ''";
-$SQL .= implode(' OR ', $TagSQL);
+$SQL .= legacy_implode(' OR ', $TagSQL);
 
-$SQL .= ") AND !(".implode(' OR ', $NotTagSQL).')';
+$SQL .= ") AND !(".legacy_implode(' OR ', $NotTagSQL).')';
 
 $SQL .= " AND (Categories LIKE '%|".db_string(trim($Type))."|%' OR Categories = '') ";
 
@@ -997,7 +997,7 @@ if ($DB->has_results()) {
 		$Feed->populate("torrents_notify_$Passkey", $Item);
 		$Cache->delete_value("notifications_new_$UserID");
 	}
-	$InsertSQL .= implode(',', $Rows);
+	$InsertSQL .= legacy_implode(',', $Rows);
 	$DB->query($InsertSQL);
 	$Debug->set_flag('upload: notification inserts finished');
 

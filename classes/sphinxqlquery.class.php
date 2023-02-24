@@ -70,9 +70,9 @@ class SphinxqlQuery {
 				}
 			}
 			if ($Exclude) {
-				$Filters[] = "$Attribute NOT IN (".implode(",", $Values).")";
+				$Filters[] = "$Attribute NOT IN (".legacy_implode(",", $Values).")";
 			} else {
-				$Filters[] = "$Attribute IN (".implode(",", $Values).")";
+				$Filters[] = "$Attribute IN (".legacy_implode(",", $Values).")";
 			}
 		} else {
 			if (!is_number($Values)) {
@@ -85,7 +85,7 @@ class SphinxqlQuery {
 				$Filters[] = "$Attribute = $Values";
 			}
 		}
-		$this->Filters[] = implode(" AND ", $Filters);
+		$this->Filters[] = legacy_implode(" AND ", $Filters);
 		return $this;
 	}
 
@@ -248,7 +248,7 @@ class SphinxqlQuery {
 		foreach ($this->Options as $Option => $Value) {
 			$Options[] = "$Option = $Value";
 		}
-		return implode(', ', $Options);
+		return legacy_implode(', ', $Options);
 	}
 
 	/**
@@ -261,10 +261,10 @@ class SphinxqlQuery {
 		}
 		$this->QueryString = "SELECT $this->Select\nFROM $this->Indexes";
 		if (!empty($this->Expressions)) {
-			$this->Filters['expr'] = "MATCH('".implode(' ', $this->Expressions)."')";
+			$this->Filters['expr'] = "MATCH('".legacy_implode(' ', $this->Expressions)."')";
 		}
 		if (!empty($this->Filters)) {
-			$this->QueryString .= "\nWHERE ".implode("\n\tAND ", $this->Filters);
+			$this->QueryString .= "\nWHERE ".legacy_implode("\n\tAND ", $this->Filters);
 			unset($this->Filters['expr']);
 		}
 		if (!empty($this->GroupBy)) {
@@ -274,7 +274,7 @@ class SphinxqlQuery {
 			$this->QueryString .= "\nWITHIN GROUP ORDER BY $this->SortGroupBy";
 		}
 		if (!empty($this->SortBy)) {
-			$this->QueryString .= "\nORDER BY ".implode(", ", $this->SortBy);
+			$this->QueryString .= "\nORDER BY ".legacy_implode(", ", $this->SortBy);
 		}
 		if (!empty($this->Limits)) {
 			$this->QueryString .= "\nLIMIT $this->Limits";
@@ -295,7 +295,7 @@ class SphinxqlQuery {
 		$QueryStartTime = microtime(true);
 		$this->build_query();
 		if (count($this->Errors) > 0) {
-			$ErrorMsg = implode("\n", $this->Errors);
+			$ErrorMsg = legacy_implode("\n", $this->Errors);
 			$this->Sphinxql->error("Query builder found errors:\n$ErrorMsg");
 			return new SphinxqlResult(null, null, 1, $ErrorMsg);
 		}

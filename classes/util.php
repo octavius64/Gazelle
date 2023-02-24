@@ -198,6 +198,8 @@ function site_url($SSL = true) {
 	return $SSL ? 'https://' . SSL_SITE_URL . '/' : 'http://' . NONSSL_SITE_URL . '/';
 }
 
+// RESTORING LEGACY FUNCTION BEHAVIOR
+
 /**
  * Wrapper around old_array_keys.
  * I think the old behavior of this function was to not throw an exception
@@ -212,6 +214,14 @@ function old_array_keys($array, $filter_value = null) {
 		return array_keys($array);
 	} else {
 		return array_keys($array, $filter_value);
+	}
+}
+
+function legacy_implode($separator, $array) {
+	if ($array == null) {
+		return '';
+	} else {
+		return implode($separator, $array);
 	}
 }
 

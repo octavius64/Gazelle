@@ -16,7 +16,7 @@ $SQL = '
 	FROM log ';
 if ($Search) {
 	$SQL .= "WHERE Message LIKE '%";
-	$SQL .= implode("%' AND Message LIKE '%", $Words);
+	$SQL .= legacy_implode("%' AND Message LIKE '%", $Words);
 	$SQL .= "%' ";
 }
 if (!check_perms('site_view_full_log')) {

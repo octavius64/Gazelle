@@ -550,7 +550,7 @@ class Users {
 				$ClassesDisplay[] = '<span class="tooltip secondary_class" title="'.$Classes[$PermID]['Name'].'">'.$PermShort.'</span>';
 			}
 			if (!empty($ClassesDisplay)) {
-				$Str .= '&nbsp;'.implode('&nbsp;', $ClassesDisplay);
+				$Str .= '&nbsp;'.legacy_implode('&nbsp;', $ClassesDisplay);
 			}
 		}
 

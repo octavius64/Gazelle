@@ -48,7 +48,7 @@ if (empty($_GET['search']) || trim($_GET['search']) == '') {
 		$Log = $DB->query('
 			SELECT ID, Message, Time
 			FROM log
-			WHERE ID IN ('.implode(',', $LogIDs).')
+			WHERE ID IN ('.legacy_implode(',', $LogIDs).')
 			ORDER BY ID DESC');
 	} else {
 		$Log = $DB->query('

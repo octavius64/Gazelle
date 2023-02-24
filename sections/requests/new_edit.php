@@ -94,7 +94,7 @@ if (!$NewRequest) {
 			}
 		}
 
-		$Tags = implode(', ', $Request['Tags']);
+		$Tags = legacy_implode(', ', $Request['Tags']);
 	}
 }
 

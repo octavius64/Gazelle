@@ -99,7 +99,7 @@ if (!empty($_GET['categories'])) {
 		}
 		$Cats[] = "tg.CategoryID = '".db_string($Cat)."'";
 	}
-	$SearchWhere[] = '('.implode(' OR ', $Cats).')';
+	$SearchWhere[] = '('.legacy_implode(' OR ', $Cats).')';
 }
 
 if (!isset($_GET['tags_type'])) {
@@ -127,15 +127,15 @@ if (!empty($_GET['tags'])) {
 	if (!empty($TagList)) {
 		if (isset($_GET['tags_type']) && $_GET['tags_type'] !== '1') {
 			$_GET['tags_type'] = '0';
-			$SearchWhere[] = '('.implode(' OR ', $TagList).')';
+			$SearchWhere[] = '('.legacy_implode(' OR ', $TagList).')';
 		} else {
 			$_GET['tags_type'] = '1';
-			$SearchWhere[] = '('.implode(' AND ', $TagList).')';
+			$SearchWhere[] = '('.legacy_implode(' AND ', $TagList).')';
 		}
 	}
 }
 
-$SearchWhere = implode(' AND ', $SearchWhere);
+$SearchWhere = legacy_implode(' AND ', $SearchWhere);
 if (!empty($SearchWhere)) {
 	$SearchWhere = " AND $SearchWhere";
 }
@@ -309,7 +309,7 @@ if ((empty($_GET['search']) || trim($_GET['search']) === '') && $Order != 'Name'
 		FROM temp_sections_torrents_user";
 	if (!empty($Words)) {
 		$SQL .= "
-		WHERE Name LIKE '%".implode("%' AND Name LIKE '%", $Words)."%'";
+		WHERE Name LIKE '%".legacy_implode("%' AND Name LIKE '%", $Words)."%'";
 	}
 	$SQL .= "
 		ORDER BY $Order $Way

@@ -88,7 +88,7 @@ if ($UsersOnly) {
 			SELECT DISTINCT IP
 			FROM users_history_ips
 			WHERE UserID != '$UserID'
-				AND IP IN (" . implode(',', $UserIPs) . ")");
+				AND IP IN (" . legacy_implode(',', $UserIPs) . ")");
 		unset($UserIPs);
 
 		if ($DB->has_results()) {
@@ -101,7 +101,7 @@ if ($UsersOnly) {
 					EndTime
 				FROM users_history_ips
 				WHERE UserID = '$UserID'
-					AND IP IN (" . implode(',', $OtherIPs) . ")
+					AND IP IN (" . legacy_implode(',', $OtherIPs) . ")
 				ORDER BY StartTime DESC
 				LIMIT $Limit");
 			unset($OtherIPs);
@@ -142,7 +142,7 @@ if (!empty($Results)) {
 			StartTime,
 			EndTime
 		FROM users_history_ips
-		WHERE IP IN (" . implode(',', $IPs) . ")
+		WHERE IP IN (" . legacy_implode(',', $IPs) . ")
 			AND UserID != '$UserID'
 			AND UserID != 0
 		ORDER BY StartTime DESC");

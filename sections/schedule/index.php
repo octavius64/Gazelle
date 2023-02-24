@@ -325,7 +325,7 @@ if ($Hour != $NextHour || $_GET['runhour'] || isset($argv[2])) {
 			$DB->query("
 				UPDATE users_main
 				SET PermissionID = ".$L['To']."
-				WHERE ID IN(".implode(',', $UserIDs).')');
+				WHERE ID IN(".legacy_implode(',', $UserIDs).')');
 			foreach ($UserIDs as $UserID) {
 				/*$Cache->begin_transaction("user_info_$UserID");
 				$Cache->update_row(false, array('PermissionID' => $L['To']));
@@ -369,7 +369,7 @@ if ($Hour != $NextHour || $_GET['runhour'] || isset($argv[2])) {
 			$DB->query("
 				UPDATE users_main
 				SET PermissionID = ".$L['From']."
-				WHERE ID IN(".implode(',', $UserIDs).')');
+				WHERE ID IN(".legacy_implode(',', $UserIDs).')');
 			foreach ($UserIDs as $UserID) {
 				/*$Cache->begin_transaction("user_info_$UserID");
 				$Cache->update_row(false, array('PermissionID' => $L['From']));
@@ -505,7 +505,7 @@ if ($Hour != $NextHour || $_GET['runhour'] || isset($argv[2])) {
 				JOIN users_main AS m ON m.ID = i.UserID
 			SET m.can_leech = '0',
 				i.AdminComment = CONCAT('$sqltime - Leeching privileges disabled by ratio watch system for downloading more than 10 GBs on ratio watch. - required ratio: ', m.RequiredRatio, '\n\n', i.AdminComment)
-			WHERE m.ID IN(" . implode(',', $Users) . ')');
+			WHERE m.ID IN(" . legacy_implode(',', $Users) . ')');
 	}
 
 }
@@ -660,7 +660,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 				ui.RatioWatchDownload = '0',
 				um.can_leech = '1',
 				ui.AdminComment = CONCAT('$sqltime - Leeching re-enabled by adequate ratio.\n\n', ui.AdminComment)
-			WHERE ui.UserID IN(".implode(',', $OffRatioWatch).')');
+			WHERE ui.UserID IN(".legacy_implode(',', $OffRatioWatch).')');
 	}
 
 	foreach ($OffRatioWatch as $UserID) {
@@ -692,7 +692,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 			SET ui.RatioWatchEnds = '1970-01-01 00:00:00',
 				ui.RatioWatchDownload = '0',
 				um.can_leech = '1'
-			WHERE ui.UserID IN(".implode(',', $OffRatioWatch).')');
+			WHERE ui.UserID IN(".legacy_implode(',', $OffRatioWatch).')');
 	}
 
 	foreach ($OffRatioWatch as $UserID) {
@@ -727,7 +727,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 			SET i.RatioWatchEnds = '".time_plus(60 * 60 * 24 * 14)."',
 				i.RatioWatchTimes = i.RatioWatchTimes + 1,
 				i.RatioWatchDownload = m.Downloaded
-			WHERE m.ID IN(".implode(',', $OnRatioWatch).')');
+			WHERE m.ID IN(".legacy_implode(',', $OnRatioWatch).')');
 	}
 
 	foreach ($OnRatioWatch as $UserID) {
@@ -784,13 +784,13 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 				JOIN users_main AS m ON m.ID = i.UserID
 			SET	m.can_leech = '0',
 				i.AdminComment = CONCAT('$sqltime - Leeching ability disabled by ratio watch system - required ratio: ', m.RequiredRatio, '\n\n', i.AdminComment)
-			WHERE m.ID IN(".implode(',', $UserIDs).')');
+			WHERE m.ID IN(".legacy_implode(',', $UserIDs).')');
 
 
 
 		$DB->query("
 			DELETE FROM users_torrent_history
-			WHERE UserID IN (".implode(',', $UserIDs).')');
+			WHERE UserID IN (".legacy_implode(',', $UserIDs).')');
 	}
 
 	foreach ($UserIDs as $UserID) {
@@ -883,7 +883,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 	$Query = $DB->query('
 		SELECT ID
 		FROM users_main
-		WHERE PermissionID IN(' . implode(', ', $DemoteClasses) . ')
+		WHERE PermissionID IN(' . legacy_implode(', ', $DemoteClasses) . ')
 			AND (
 				Uploaded / Downloaded < 0.95
 				OR Uploaded < 25 * 1024 * 1024 * 1024
@@ -896,7 +896,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 		SET
 			um.PermissionID = ' . MEMBER . ",
 			ui.AdminComment = CONCAT('" . sqltime() . ' - Class changed to ' . Users::make_class_string(MEMBER) . " by System\n\n', ui.AdminComment)
-		WHERE um.PermissionID IN (" . implode(', ', $DemoteClasses) . ')
+		WHERE um.PermissionID IN (" . legacy_implode(', ', $DemoteClasses) . ')
 			AND (
 				um.Uploaded / um.Downloaded < 0.95
 				OR um.Uploaded < 25 * 1024 * 1024 * 1024
@@ -917,7 +917,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 	$Query = $DB->query('
 		SELECT ID
 		FROM users_main
-		WHERE PermissionID IN(' . implode(', ', $DemoteClasses) . ')
+		WHERE PermissionID IN(' . legacy_implode(', ', $DemoteClasses) . ')
 			AND Uploaded / Downloaded < 0.65');
 	echo "demoted 3\n";
 	$DB->query('
@@ -926,7 +926,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 		SET
 			um.PermissionID = ' . USER . ",
 			ui.AdminComment = CONCAT('" . sqltime() . ' - Class changed to ' . Users::make_class_string(USER) . " by System\n\n', ui.AdminComment)
-		WHERE um.PermissionID IN (" . implode(', ', $DemoteClasses) . ')
+		WHERE um.PermissionID IN (" . legacy_implode(', ', $DemoteClasses) . ')
 			AND um.Uploaded / um.Downloaded < 0.65');
 	$DB->set_query_id($Query);
 	while (list($UserID) = $DB->next_record()) {
@@ -953,7 +953,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 	$ForumIDs = $DB->collect('ForumID');
 
 	if (count($IDs) > 0) {
-		$LockIDs = implode(',', $IDs);
+		$LockIDs = legacy_implode(',', $IDs);
 		$DB->query("
 			UPDATE forums_topics
 			SET IsLocked = '1'
@@ -1045,7 +1045,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 	unset($DeleteNotes);
 
 	if (count($LogEntries) > 0) {
-		$Values = "('".implode("', '$sqltime'), ('", $LogEntries) . "', '$sqltime')";
+		$Values = "('".legacy_implode("', '$sqltime'), ('", $LogEntries) . "', '$sqltime')";
 		$DB->query("
 			INSERT INTO log (Message, Time)
 			VALUES $Values");
@@ -1056,7 +1056,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 		SELECT SimilarID
 		FROM artists_similar_scores
 		WHERE Score <= 0");
-	$SimilarIDs = implode(',', $DB->collect('SimilarID'));
+	$SimilarIDs = legacy_implode(',', $DB->collect('SimilarID'));
 
 	if ($SimilarIDs) {
 		$DB->query("
@@ -1411,7 +1411,7 @@ if ($BiWeek != $NextBiWeek || $_GET['runbiweek']) {
 		$DB->query('
 			UPDATE users_main
 			SET Invites = Invites + 1
-			WHERE ID IN ('.implode(',', $UserIDs).')');
+			WHERE ID IN ('.legacy_implode(',', $UserIDs).')');
 	}
 
 	$BonusReqs = array(
@@ -1454,7 +1454,7 @@ if ($BiWeek != $NextBiWeek || $_GET['runbiweek']) {
 			$DB->query('
 				UPDATE users_main
 				SET Invites = Invites + 1
-				WHERE ID IN ('.implode(',', $UserIDs).')');
+				WHERE ID IN ('.legacy_implode(',', $UserIDs).')');
 		}
 	}
 }

@@ -50,7 +50,7 @@ class Format {
 				$DescArr = explode(' ', $CutDesc);
 				if (count($DescArr) > 1) {
 					array_pop($DescArr);
-					$CutDesc = implode(' ', $DescArr);
+					$CutDesc = legacy_implode(' ', $DescArr);
 				}
 				if ($ShowDots) {
 					//TODO: should we replace the three dots with an ellipsis character?

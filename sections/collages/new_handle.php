@@ -80,7 +80,7 @@ $TagList = explode(',', $_POST['tags']);
 foreach ($TagList as $ID => $Tag) {
 	$TagList[$ID] = Misc::sanitize_tag($Tag);
 }
-$TagList = implode(' ', $TagList);
+$TagList = legacy_implode(' ', $TagList);
 
 $DB->query("
 	INSERT INTO collages

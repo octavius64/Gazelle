@@ -31,7 +31,7 @@ if ($_POST['artists'.$FormID]) {
 		}
 	}
 	if (count($ParsedArtists) > 0) {
-		$ArtistList = '|'.implode('|', $ParsedArtists).'|';
+		$ArtistList = '|'.legacy_implode('|', $ParsedArtists).'|';
 		$HasFilter = true;
 	}
 }
@@ -130,7 +130,7 @@ if ($_POST['users'.$FormID]) {
 	$DB->query("
 		SELECT ID, Paranoia
 		FROM users_main
-		WHERE Username IN ('" . implode("', '", $EscapedUsernames) . "')
+		WHERE Username IN ('" . legacy_implode("', '", $EscapedUsernames) . "')
 			AND ID != $LoggedUser[ID]");
 	while (list($UserID, $Paranoia) = $DB->next_record()) {
 		$Paranoia = unserialize($Paranoia);

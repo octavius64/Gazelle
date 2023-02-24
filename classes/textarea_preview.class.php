@@ -160,7 +160,7 @@ class TEXTAREA_PREVIEW extends TEXTAREA_PREVIEW_SUPER {
 		}
 
 		if (!empty($ExtraAttributes)) {
-			$Attributes = ' ' . implode(' ', $ExtraAttributes);
+			$Attributes = ' ' . legacy_implode(' ', $ExtraAttributes);
 		} else {
 			$Attributes = '';
 		}

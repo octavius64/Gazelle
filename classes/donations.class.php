@@ -236,7 +236,7 @@ class Donations {
 				G::$Cache->delete_value("donor_profile_rewards_$UserID");
 				$UserIDs[] = $UserID;
 			}
-			$In = implode(',', $UserIDs);
+			$In = legacy_implode(',', $UserIDs);
 			G::$DB->query("
 				UPDATE users_donor_ranks
 				SET Rank = Rank - IF(Rank = " . MAX_RANK . ", 2, 1), RankExpirationTime = NOW()
@@ -561,9 +561,9 @@ class Donations {
 				$Update[] = "SecondAvatar = '$SecondAvatar'";
 			}
 		}
-		$Insert = implode(', ', $Insert);
-		$Values = implode(', ', $Values);
-		$Update = implode(', ', $Update);
+		$Insert = legacy_implode(', ', $Insert);
+		$Values = legacy_implode(', ', $Values);
+		$Update = legacy_implode(', ', $Update);
 		if ($Counter > 0) {
 			$QueryID = G::$DB->get_query_id();
 			G::$DB->query("

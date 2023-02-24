@@ -31,7 +31,7 @@ if ($DB->affected_rows()) {
 		if ($DB->record_count() < 100) {
 			// Sphinx doesn't like huge MVA updates. Update sphinx_requests_delta
 			// and live with the <= 1 minute delay if we have more than 100 bookmarkers
-			$Bookmarkers = implode(',', $DB->collect('UserID'));
+			$Bookmarkers = legacy_implode(',', $DB->collect('UserID'));
 			$SphQL = new SphinxqlQuery();
 			$SphQL->raw_query("UPDATE requests, requests_delta SET bookmarker = ($Bookmarkers) WHERE id = $PageID");
 		} else {

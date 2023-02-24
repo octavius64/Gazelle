@@ -277,7 +277,7 @@ if (count($_GET)) {
 			}
 			$Query .= $operator.' '.$_GET['email_cnt'];
 			$DB->query($Query);
-			$Users = implode(',', $DB->collect('UserID'));
+			$Users = legacy_implode(',', $DB->collect('UserID'));
 			if (!empty($Users)) {
 				$Where[] = "um1.ID IN ($Users)";
 			}
@@ -341,13 +341,13 @@ if (count($_GET)) {
 		if (strlen($_GET['invites1'])) {
 			$Invites1 = round($_GET['invites1']);
 			$Invites2 = round($_GET['invites2']);
-			$Where[] = implode(' AND ', num_compare('Invites', $_GET['invites'], $Invites1, $Invites2));
+			$Where[] = legacy_implode(' AND ', num_compare('Invites', $_GET['invites'], $Invites1, $Invites2));
 		}
 
 		if (strlen($_GET['invitees1']) && $_GET['invitees'] != 'off') {
 			$Invitees1 = round($_GET['invitees1']);
 			$Invitees2 = round($_GET['invitees2']);
-			$Having[] = implode(' AND ', num_compare('Invitees', $_GET['invitees'], $Invitees1, $Invitees2));
+			$Having[] = legacy_implode(' AND ', num_compare('Invitees', $_GET['invitees'], $Invitees1, $Invitees2));
 		}
 		
 		if ($_GET['disabled_invites'] == 'yes') {
@@ -363,11 +363,11 @@ if (count($_GET)) {
 		}
 
 		if ($_GET['join1']) {
-			$Where[] = implode(' AND ', date_compare('ui1.JoinDate', $_GET['joined'], $_GET['join1'], $_GET['join2']));
+			$Where[] = legacy_implode(' AND ', date_compare('ui1.JoinDate', $_GET['joined'], $_GET['join1'], $_GET['join2']));
 		}
 
 		if ($_GET['lastactive1']) {
-			$Where[] = implode(' AND ', date_compare('um1.LastAccess', $_GET['lastactive'], $_GET['lastactive1'], $_GET['lastactive2']));
+			$Where[] = legacy_implode(' AND ', date_compare('um1.LastAccess', $_GET['lastactive'], $_GET['lastactive1'], $_GET['lastactive2']));
 		}
 
 		if ($_GET['ratio1']) {
@@ -375,29 +375,29 @@ if (count($_GET)) {
 			if (!$Decimals) {
 				$Decimals = 0;
 			}
-			$Where[] = implode(' AND ', num_compare("ROUND(Uploaded/Downloaded,$Decimals)", $_GET['ratio'], $_GET['ratio1'], $_GET['ratio2']));
+			$Where[] = legacy_implode(' AND ', num_compare("ROUND(Uploaded/Downloaded,$Decimals)", $_GET['ratio'], $_GET['ratio1'], $_GET['ratio2']));
 		}
 
 		if (strlen($_GET['uploaded1'])) {
 			$Upload1 = round($_GET['uploaded1']);
 			$Upload2 = round($_GET['uploaded2']);
 			if ($_GET['uploaded'] != 'buffer') {
-				$Where[] = implode(' AND ', num_compare('ROUND(Uploaded / 1024 / 1024 / 1024)', $_GET['uploaded'], $Upload1, $Upload2));
+				$Where[] = legacy_implode(' AND ', num_compare('ROUND(Uploaded / 1024 / 1024 / 1024)', $_GET['uploaded'], $Upload1, $Upload2));
 			} else {
-				$Where[] = implode(' AND ', num_compare('ROUND((Uploaded / 1024 / 1024 / 1024) - (Downloaded / 1024 / 1024 / 1023))', 'between', $Upload1 * 0.9, $Upload1 * 1.1));
+				$Where[] = legacy_implode(' AND ', num_compare('ROUND((Uploaded / 1024 / 1024 / 1024) - (Downloaded / 1024 / 1024 / 1023))', 'between', $Upload1 * 0.9, $Upload1 * 1.1));
 			}
 		}
 
 		if (strlen($_GET['downloaded1'])) {
 			$Download1 = round($_GET['downloaded1']);
 			$Download2 = round($_GET['downloaded2']);
-			$Where[] = implode(' AND ', num_compare('ROUND(Downloaded / 1024 / 1024 / 1024)', $_GET['downloaded'], $Download1, $Download2));
+			$Where[] = legacy_implode(' AND ', num_compare('ROUND(Downloaded / 1024 / 1024 / 1024)', $_GET['downloaded'], $Download1, $Download2));
 		}
 
 		if (strlen($_GET['snatched1'])) {
 			$Snatched1 = round($_GET['snatched1']);
 			$Snatched2 = round($_GET['snatched2']);
-			$Having[] = implode(' AND ', num_compare('Snatches', $_GET['snatched'], $Snatched1, $Snatched2));
+			$Having[] = legacy_implode(' AND ', num_compare('Snatches', $_GET['snatched'], $Snatched1, $Snatched2));
 		}
 
 		if ($_GET['enabled'] != '') {
@@ -457,18 +457,18 @@ if (count($_GET)) {
 		//---------- Finish generating the search string
 
 		$SQL = 'SELECT '.$Distinct.$SQL;
-		$SQL .= implode(' ', $Join);
+		$SQL .= legacy_implode(' ', $Join);
 
 		if (count($Where)) {
-			$SQL .= ' WHERE '.implode(' AND ', $Where);
+			$SQL .= ' WHERE '.legacy_implode(' AND ', $Where);
 		}
 
 		if (count($Group)) {
-			$SQL .= " GROUP BY " . implode(' ,', $Group);
+			$SQL .= " GROUP BY " . legacy_implode(' ,', $Group);
 		}
 
 		if (count($Having)) {
-			$SQL .= ' HAVING '.implode(' AND ', $Having);
+			$SQL .= ' HAVING '.legacy_implode(' AND ', $Having);
 		}
 
 		$SQL .= $Order;

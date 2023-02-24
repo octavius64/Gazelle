@@ -518,7 +518,7 @@ if (!empty($Alerts) || !empty($ModBar)) { ?>
 	}
 	if (!empty($ModBar)) { ?>
 				<div class="alertbar blend">
-					<?=implode(' | ', $ModBar); echo "\n"?>
+					<?=legacy_implode(' | ', $ModBar); echo "\n"?>
 				</div>
 <?	} ?>
 			</div>

@@ -227,7 +227,7 @@ foreach ($GroupIDs as $GroupID) {
 		$DisplayName = "$DisplayName [$GroupYear]";
 	}
 	$Tags = display_str($TorrentTags->format());
-	$PlainTags = implode(', ', $TorrentTags->get_tags());
+	$PlainTags = legacy_implode(', ', $TorrentTags->get_tags());
 ?>
 		<li class="image_group_<?=$GroupID?>">
 			<a href="torrents.php?id=<?=$GroupID?>" class="bookmark_<?=$GroupID?>">

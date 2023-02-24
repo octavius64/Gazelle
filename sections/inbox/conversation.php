@@ -112,7 +112,7 @@ if (!empty($ReceiverIDs) && (empty($LoggedUser['DisablePM']) || array_intersect(
 		<div class="box pad">
 			<input type="hidden" name="action" value="takecompose" />
 			<input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
-			<input type="hidden" name="toid" value="<?=implode(',', $ReceiverIDs)?>" />
+			<input type="hidden" name="toid" value="<?=legacy_implode(',', $ReceiverIDs)?>" />
 			<input type="hidden" name="convid" value="<?=$ConvID?>" />
 			<textarea id="quickpost" class="required" name="body" cols="90" rows="10" onkeyup="resize('quickpost');"></textarea> <br />
 			<div id="preview" class="box vertical_space body hidden"></div>

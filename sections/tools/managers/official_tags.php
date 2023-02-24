@@ -13,7 +13,7 @@ if (isset($_POST['doit'])) {
 				error(403);
 			}
 		}
-		$OldTagIDs = implode(', ', $OldTagIDs);
+		$OldTagIDs = legacy_implode(', ', $OldTagIDs);
 
 		$DB->query("
 			UPDATE tags

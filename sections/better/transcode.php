@@ -160,7 +160,7 @@ foreach ($TorrentGroups as $GroupID => $Editions) {
 		if (!empty($Edition['RemasterYear'])) {
 			$ExtraInfo .= ' - ';
 		}
-		$ExtraInfo .= implode(' / ', $EditionInfo);
+		$ExtraInfo .= legacy_implode(' / ', $EditionInfo);
 ?>
 		<tr<?=$Edition['IsSnatched'] ? ' class="snatched_torrent"' : ''?>>
 			<td>

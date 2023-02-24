@@ -42,7 +42,7 @@ if (!empty($_GET['searchstr']) || !empty($_GET['groupname'])) {
 // Setting default search options
 if (!empty($_GET['setdefault'])) {
 	$UnsetList = array('page', 'setdefault');
-	$UnsetRegexp = '/(&|^)('.implode('|', $UnsetList).')=.*?(&|$)/i';
+	$UnsetRegexp = '/(&|^)('.legacy_implode('|', $UnsetList).')=.*?(&|$)/i';
 
 	$DB->query("
 		SELECT SiteOptions

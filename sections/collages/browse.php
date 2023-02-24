@@ -88,7 +88,7 @@ if ($BookmarkView) {
 
 if (!empty($Search)) {
 	$SQL .= " AND $Type LIKE '%";
-	$SQL .= implode("%' AND $Type LIKE '%", $Words);
+	$SQL .= legacy_implode("%' AND $Type LIKE '%", $Words);
 	$SQL .= "%'";
 }
 
@@ -101,9 +101,9 @@ if (isset($_GET['tags_type']) && $_GET['tags_type'] === '0') { // Any
 if (!empty($Tags)) {
 	$SQL.= " AND (TagList LIKE '%";
 	if ($_GET['tags_type'] === '0') {
-		$SQL .= implode("%' OR TagList LIKE '%", $Tags);
+		$SQL .= legacy_implode("%' OR TagList LIKE '%", $Tags);
 	} else {
-		$SQL .= implode("%' AND TagList LIKE '%", $Tags);
+		$SQL .= legacy_implode("%' AND TagList LIKE '%", $Tags);
 	}
 	$SQL .= "%')";
 }
@@ -130,7 +130,7 @@ if (!empty($_GET['userid'])) {
 		if (empty($CollageIDs)) {
 			$SQL .= " AND 0";
 		} else {
-			$SQL .= " AND c.ID IN(".db_string(implode(',', $CollageIDs)).')';
+			$SQL .= " AND c.ID IN(".db_string(legacy_implode(',', $CollageIDs)).')';
 		}
 	} else {
 		if (!check_paranoia('collages', $User['Paranoia'], $UserClass, $UserID)) {
@@ -142,7 +142,7 @@ if (!empty($_GET['userid'])) {
 }
 
 if (!empty($Categories)) {
-	$SQL .= " AND CategoryID IN(".db_string(implode(',', $Categories)).')';
+	$SQL .= " AND CategoryID IN(".db_string(legacy_implode(',', $Categories)).')';
 }
 
 if (isset($_GET['action']) && $_GET['action'] === 'mine') {

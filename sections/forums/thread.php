@@ -351,7 +351,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
 			<br />
 			<strong>Votes:</strong> <?=number_format($StaffCount - count($StaffNames))?> / <?=$StaffCount?> current staff, <?=number_format($TotalVotes)?> total
 			<br />
-			<strong>Missing votes:</strong> <?=implode(", ", $StaffNames); echo "\n";?>
+			<strong>Missing votes:</strong> <?=legacy_implode(", ", $StaffNames); echo "\n";?>
 			<br /><br />
 <?
 			}

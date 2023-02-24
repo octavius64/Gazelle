@@ -109,9 +109,9 @@ $QueryID = $DB->query("
            uer.Outcome
     FROM users_enable_requests AS uer
     JOIN users_info ui ON ui.UserID = uer.UserID
-    ".implode(' ', $Joins)."
+    ".legacy_implode(' ', $Joins)."
     WHERE
-    ".implode(' AND ', $Where)."
+    ".legacy_implode(' AND ', $Where)."
     ORDER BY $OrderBy $OrderWay
     LIMIT $Limit");
 

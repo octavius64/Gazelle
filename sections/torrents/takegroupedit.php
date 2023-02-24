@@ -182,7 +182,7 @@ $DB->query("
 	FROM torrents
 	WHERE GroupID = $GroupID");
 if ($DB->has_results()) {
-	$TorrentIDs = implode(',', $DB->collect('ID'));
+	$TorrentIDs = legacy_implode(',', $DB->collect('ID'));
 	$DB->query("
 		SELECT DISTINCT uid
 		FROM xbt_snatched

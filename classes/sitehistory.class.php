@@ -142,7 +142,7 @@ class SiteHistory {
 			$Limit = '';
 		}
 		if (count($Where) > 0) {
-			$Query = ' WHERE ' . implode('AND', $Where);
+			$Query = ' WHERE ' . legacy_implode('AND', $Where);
 		} else {
 			$Query = '';
 		}

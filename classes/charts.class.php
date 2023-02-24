@@ -40,7 +40,7 @@ class GOOGLE_CHARTS {
 	}
 
 	public function legend($Items, $Placement = '') {
-		$this->URL .= '&amp;chdl='.str_replace(' ', '+', implode('|', $Items));
+		$this->URL .= '&amp;chdl='.str_replace(' ', '+', legacy_implode('|', $Items));
 		if (!empty($Placement)) {
 			if (!in_array($Placement, array('b', 't', 'r', 'l', 'bv', 'tv'))) {
 				trigger_error('Invalid legend placement.');
@@ -87,7 +87,7 @@ class AREA_GRAPH extends GOOGLE_CHARTS {
 		foreach ($this->Data as $Value) {
 			$Data[] = $this->encode((($Value - $Min) / ($Max - $Min)) * 4095);
 		}
-		$this->URL .= "&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|".implode('|', $this->Labels).'&amp;chxr=0,'.$Min.','.($Max - $Min).'&amp;chd=e:'.implode('', $Data);
+		$this->URL .= "&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|".legacy_implode('|', $this->Labels).'&amp;chxr=0,'.$Min.','.($Max - $Min).'&amp;chd=e:'.legacy_implode('', $Data);
 	}
 }
 
@@ -138,7 +138,7 @@ class PIE_CHART extends GOOGLE_CHARTS {
 			$Labels[] = $OtherLabel;
 			$Data[] = $this->encode($OtherData);
 		}
-		$this->URL .= "&amp;chl=".implode('|', $Labels).'&amp;chd=e:'.implode('', $Data);
+		$this->URL .= "&amp;chl=".legacy_implode('|', $Labels).'&amp;chd=e:'.legacy_implode('', $Data);
 	}
 }
 
@@ -160,7 +160,7 @@ class LOG_BAR_GRAPH extends GOOGLE_CHARTS {
 		foreach ($this->Data as $Value) {
 			$Data[] = $this->encode((($Value - $Min) / ($Max - $Min)) * 4095);
 		}
-		$this->URL .= "&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|".implode('|', $this->Labels).'&amp;chxr=0,'.$Min.','.($Max-$Min).'&amp;chd=e:'.implode('', $Data);
+		$this->URL .= "&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|".legacy_implode('|', $this->Labels).'&amp;chxr=0,'.$Min.','.($Max-$Min).'&amp;chd=e:'.legacy_implode('', $Data);
 	}
 }
 
@@ -188,6 +188,6 @@ class POLL_GRAPH extends GOOGLE_CHARTS {
 			$Data[] = $this->encode(($Value / $Max) * 4095);
 			$Labels[] = '@t'.str_replace(array(' ', ','),array('+', '\,'), $this->Labels[$Key]).',000000,1,'.round((($Key + 1) / $Count) - (12 / $Height), 2).':0,12';
 		}
-		$this->URL .= "&amp;chbh=25,0,5&amp;chs=214x$Height&amp;chl=0%|".round($Increment, 1)."%|".round($Increment * 2, 1)."%|".round($Increment * 3, 1)."%|".round($Increment * 4, 1)."%&amp;chm=".implode('|', $Labels).'&amp;chd=e:'.implode('', $Data);
+		$this->URL .= "&amp;chbh=25,0,5&amp;chs=214x$Height&amp;chl=0%|".round($Increment, 1)."%|".round($Increment * 2, 1)."%|".round($Increment * 3, 1)."%|".round($Increment * 4, 1)."%&amp;chm=".legacy_implode('|', $Labels).'&amp;chd=e:'.legacy_implode('', $Data);
 	}
 }

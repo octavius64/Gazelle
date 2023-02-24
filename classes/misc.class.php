@@ -127,7 +127,7 @@ class Misc {
 					InInbox = '1',
 					UnRead = '1',
 					ReceivedDate = '".sqltime()."'
-				WHERE UserID IN (".implode(',', $ToID).")
+				WHERE UserID IN (".legacy_implode(',', $ToID).")
 					AND ConvID = '$ConvID'");
 
 			G::$DB->query("
@@ -429,7 +429,7 @@ class Misc {
 			G::$DB->query("
 				SELECT ID, Name
 				FROM tags
-				WHERE Name IN ('".implode("', '", $TagNames)."')");
+				WHERE Name IN ('".legacy_implode("', '", $TagNames)."')");
 			$SQLTagIDs = G::$DB->to_array();
 			G::$DB->set_query_id($QueryID);
 			foreach ($SQLTagIDs as $Tag) {

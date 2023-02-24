@@ -770,9 +770,9 @@ if (empty($LoggedUser['DisableRequests']) && count($Requests) > 0) {
 		$RequestVotes = Requests::get_votes_array($Request['ID']);
 
 		if ($Request['BitrateList'] != '') {
-			$BitrateString = implode(', ', explode('|', $Request['BitrateList']));
-			$FormatString = implode(', ', explode('|', $Request['FormatList']));
-			$MediaString = implode(', ', explode('|', $Request['MediaList']));
+			$BitrateString = legacy_implode(', ', explode('|', $Request['BitrateList']));
+			$FormatString = legacy_implode(', ', explode('|', $Request['FormatList']));
+			$MediaString = legacy_implode(', ', explode('|', $Request['MediaList']));
 			if ($Request['LogCue']) {
 				$FormatString .= ' - '.$Request['LogCue'];
 			}

@@ -74,7 +74,7 @@ while (list($Downloads, $GroupIDs) = $Collector->get_downloads('TorrentID')) {
 	$TorrentFilesQ = $DB->query('
 		SELECT TorrentID, File
 		FROM torrents_files
-		WHERE TorrentID IN ('.implode(',', $TorrentIDs).')', false);
+		WHERE TorrentID IN ('.legacy_implode(',', $TorrentIDs).')', false);
 	if (is_int($TorrentFilesQ)) {
 		// Query failed. Let's not create a broken zip archive
 		foreach ($TorrentIDs as $TorrentID) {

@@ -27,7 +27,7 @@ class Calendar {
 			$Teams[] = 1;
 		}
 		
-		return "Team IN (" . implode(",", $Teams) . ") ";
+		return "Team IN (" . legacy_implode(",", $Teams) . ") ";
 	}
 
 	public static function get_events($Month, $Year) {

@@ -82,7 +82,7 @@ View::show_header('Detailed torrent statistics');
 
 <div class="box pad center">
 	<h1>Uploads by month</h1>
-	<img src="https://chart.googleapis.com/chart?cht=lc&amp;chs=880x160&amp;chco=000D99,99000D,00990D&amp;chg=0,-1,1,1&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|<?=implode('|', $Labels)?>&amp;chxr=0,0,<?=$Max?>&amp;chd=t:<?=implode(',', $InFlow)?>|<?=implode(',', $OutFlow)?>|<?=implode(',', $NetFlow)?>&amp;chls=2,4,0&amp;chdl=Uploads|Deletions|Remaining&amp;chf=bg,s,FFFFFF00" alt="User Flow Chart" />
+	<img src="https://chart.googleapis.com/chart?cht=lc&amp;chs=880x160&amp;chco=000D99,99000D,00990D&amp;chg=0,-1,1,1&amp;chxt=y,x&amp;chxs=0,h&amp;chxl=1:|<?=legacy_implode('|', $Labels)?>&amp;chxr=0,0,<?=$Max?>&amp;chd=t:<?=legacy_implode(',', $InFlow)?>|<?=legacy_implode(',', $OutFlow)?>|<?=legacy_implode(',', $NetFlow)?>&amp;chls=2,4,0&amp;chdl=Uploads|Deletions|Remaining&amp;chf=bg,s,FFFFFF00" alt="User Flow Chart" />
 </div>
 <div class="box pad center">
 	<h1>Torrents by category</h1>

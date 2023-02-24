@@ -134,8 +134,8 @@ switch ($Action) {
 		break;
 }
 $Join[] = "JOIN comments ON comments.Page = '$Action' AND comments.PageID = $Field1";
-$Join = implode("\n\t\t", $Join);
-$Conditions = implode(" AND ", $Conditions);
+$Join = legacy_implode("\n\t\t", $Join);
+$Conditions = legacy_implode(" AND ", $Conditions);
 $Conditions = ($Conditions ? 'WHERE ' . $Conditions : '');
 
 $SQL = "
@@ -226,7 +226,7 @@ switch ($Action) {
 		}
 		break;
 }
-$Links = implode(' ', $ActionLinks) . (count($TypeLinks) ? '<br />' . implode(' ', $TypeLinks) : '');
+$Links = legacy_implode(' ', $ActionLinks) . (count($TypeLinks) ? '<br />' . legacy_implode(' ', $TypeLinks) : '');
 
 View::show_header($Title, 'bbcode,comments');
 ?><div class="thin">
