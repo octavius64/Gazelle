@@ -35,7 +35,7 @@ class Subscriptions {
 			}
 		}
 		// remove any dupes in the array (the fast way)
-		$Usernames = array_flip(array_flip($Usernames));
+		$Usernames = legacy_array_flip(legacy_array_flip($Usernames));
 
 		G::$DB->query("
 			SELECT m.ID

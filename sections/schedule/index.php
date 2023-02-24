@@ -972,7 +972,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 			Forums::add_topic_note($ID, 'Locked automatically by schedule', 0);
 		}
 
-		$ForumIDs = array_flip(array_flip($ForumIDs));
+		$ForumIDs = legacy_array_flip(legacy_array_flip($ForumIDs));
 		foreach ($ForumIDs as $ForumID) {
 			$Cache->delete_value("forums_$ForumID");
 		}

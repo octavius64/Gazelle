@@ -243,6 +243,17 @@ function legacy_array_slice($array, $offset, $length = null, $preserve_keys = fa
 	return array_slice($array, $offset, $length, $preserve_keys);
 }
 
+/**
+ * If the array is null, return an empty array
+ */
+function legacy_array_flip($array) {
+	if ($array == null) {
+		return [];
+	}
+
+	return array_flip($array);
+}
+
 function gzl_log($var) {
 	file_put_contents(DEBUG_LOG_FILE_PATH, var_export($var, true).PHP_EOL, FILE_APPEND);
 }

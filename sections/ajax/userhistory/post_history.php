@@ -29,7 +29,7 @@ if (isset($LoggedUser['PostsPerPage'])) {
 list($Page, $Limit) = Format::page_limit($PerPage);
 
 $UserInfo = Users::user_info($UserID);
-extract(array_intersect_key($UserInfo, array_flip(array('Username', 'Enabled', 'Title', 'Avatar', 'Donor', 'Warned'))));
+extract(array_intersect_key($UserInfo, legacy_array_flip(array('Username', 'Enabled', 'Title', 'Avatar', 'Donor', 'Warned'))));
 
 $ViewingOwn = ($UserID === $LoggedUser['ID']);
 $ShowUnread = ($ViewingOwn && (!isset($_GET['showunread']) || !!$_GET['showunread']));

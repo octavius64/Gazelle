@@ -191,7 +191,7 @@ if (!empty($ProducerAlbums)) {
 
 //Custom sorting for releases
 if (!empty($LoggedUser['SortHide'])) {
-	$SortOrder = array_flip(legacy_array_keys($LoggedUser['SortHide']));
+	$SortOrder = legacy_array_flip(legacy_array_keys($LoggedUser['SortHide']));
 } else {
 	$SortOrder = $ReleaseTypes;
 }
@@ -210,7 +210,7 @@ uasort($Importances, function ($A, $B) use ($SortOrder) {
 	return (($SortOrder[$A['ReleaseType']] < $SortOrder[$B['ReleaseType']]) ? -1 : 1);
 });
 // Sort the anchors at the top of the page the same way as release types
-$UsedReleases = array_flip(array_intersect_key($SortOrder, $UsedReleases));
+$UsedReleases = legacy_array_flip(array_intersect_key($SortOrder, $UsedReleases));
 
 reset($TorrentList);
 if (!empty($UsedReleases)) { ?>

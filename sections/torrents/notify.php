@@ -143,7 +143,7 @@ if (!empty($GroupIDs)) {
 		foreach ($Filter['Artists'] as &$FilterArtist) {
 			$FilterArtist = mb_strtolower($FilterArtist, 'UTF-8');
 		}
-		$Filter['Artists'] = array_flip($Filter['Artists']);
+		$Filter['Artists'] = legacy_array_flip($Filter['Artists']);
 	}
 	unset($Filter);
 

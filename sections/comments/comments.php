@@ -166,14 +166,14 @@ $Pages = Format::get_pages($Page, $Results, $PerPage, 11);
 
 $DB->set_query_id($Comments);
 if ($Action == 'requests') {
-	$RequestIDs = array_flip(array_flip($DB->collect('PageID')));
+	$RequestIDs = legacy_array_flip(legacy_array_flip($DB->collect('PageID')));
 	$Artists = array();
 	foreach ($RequestIDs as $RequestID) {
 		$Artists[$RequestID] = Requests::get_artists($RequestID);
 	}
 	$DB->set_query_id($Comments);
 } elseif ($Action == 'torrents') {
-	$GroupIDs = array_flip(array_flip($DB->collect('PageID')));
+	$GroupIDs = legacy_array_flip(legacy_array_flip($DB->collect('PageID')));
 	$Artists = Artists::get_artists($GroupIDs);
 	$DB->set_query_id($Comments);
 }
