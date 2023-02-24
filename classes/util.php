@@ -213,7 +213,7 @@ function old_array_keys($array, $filter_value = null) {
 }
 
 function gzl_log($var) {
-	file_put_contents(DEBUG_LOG_FILE_PATH, print_r($var, true).PHP_EOL, FILE_APPEND);
+	file_put_contents(DEBUG_LOG_FILE_PATH, var_export($var, true).PHP_EOL, FILE_APPEND);
 }
 
 ?>
