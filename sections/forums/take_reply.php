@@ -201,8 +201,8 @@ if ($ThreadInfo['LastPostAuthorID'] == $LoggedUser['ID'] && ((!check_perms('site
 			}
 		}
 		if ($Stickies > 0) {
-			$Part1 = array_slice($Forum, 0, $Stickies, true); //Stickies
-			$Part3 = array_slice($Forum, $Stickies, TOPICS_PER_PAGE - $Stickies - 1, true); //Rest of page
+			$Part1 = legacy_array_slice($Forum, 0, $Stickies, true); //Stickies
+			$Part3 = legacy_array_slice($Forum, $Stickies, TOPICS_PER_PAGE - $Stickies - 1, true); //Rest of page
 		} else {
 			$Part1 = array();
 			$Part3 = $Forum;

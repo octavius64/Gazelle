@@ -228,6 +228,21 @@ function legacy_implode($separator, $array) {
 	}
 }
 
+/**
+ * If the array is null, return an empty array
+ */
+function legacy_array_slice($array, $offset, $length = null, $preserve_keys = false) {
+	if ($array == null) {
+		return [];
+	}
+
+	if ($length == null) {
+		return array_slice($array, $offset);
+	}
+
+	return array_slice($array, $offset, $length, $preserve_keys);
+}
+
 function gzl_log($var) {
 	file_put_contents(DEBUG_LOG_FILE_PATH, var_export($var, true).PHP_EOL, FILE_APPEND);
 }

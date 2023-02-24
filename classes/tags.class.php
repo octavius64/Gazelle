@@ -157,7 +157,7 @@ class Tags {
 		if (!empty($ArtistName)) {
 			$ArtistName = '&amp;artistname=' . urlencode($ArtistName) . '&amp;action=advanced&amp;searchsubmit=1';
 		}
-		foreach (array_slice(self::sorted(), 0, $Max) as $TagName => $Total) { ?>
+		foreach (legacy_array_slice(self::sorted(), 0, $Max) as $TagName => $Total) { ?>
 			<li><a href="<?=$Link . display_str($TagName) . $ArtistName?>"><?=display_str($TagName)?></a> (<?=$Total?>)</li>
 <?		}
 	}

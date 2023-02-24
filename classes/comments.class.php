@@ -300,7 +300,7 @@ class Comments {
 		}
 
 		//This is a hybrid to reduce the catalogue down to the page elements: We use the page limit % catalogue
-		$Thread = array_slice($Catalogue, ((TORRENT_COMMENTS_PER_PAGE * $CommPage - TORRENT_COMMENTS_PER_PAGE) % THREAD_CATALOGUE), TORRENT_COMMENTS_PER_PAGE, true);
+		$Thread = legacy_array_slice($Catalogue, ((TORRENT_COMMENTS_PER_PAGE * $CommPage - TORRENT_COMMENTS_PER_PAGE) % THREAD_CATALOGUE), TORRENT_COMMENTS_PER_PAGE, true);
 
 		if ($HandleSubscriptions && count($Thread) > 0) {
 			// quote notifications

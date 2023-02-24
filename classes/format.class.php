@@ -203,7 +203,7 @@ class Format {
 	}
 
 	public static function catalogue_select($Catalogue, $Page, $PerPage, $CatalogueSize = 500) {
-		return array_slice($Catalogue, (($PerPage * $Page - $PerPage) % $CatalogueSize), $PerPage, true);
+		return legacy_array_slice($Catalogue, (($PerPage * $Page - $PerPage) % $CatalogueSize), $PerPage, true);
 	}
 
 

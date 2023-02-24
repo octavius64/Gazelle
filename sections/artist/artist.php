@@ -739,7 +739,7 @@ if (count($Collages) > 0) {
 		// Pick some at random
 		$Range = range(0,count($Collages) - 1);
 		shuffle($Range);
-		$Indices = array_slice($Range, 0, MAX_COLLAGES);
+		$Indices = legacy_array_slice($Range, 0, MAX_COLLAGES);
 		$SeeAll = ' <a href="#" onclick="$(\'.collage_rows\').gtoggle(); return false;">(See all)</a>';
 	} else {
 		$Indices = range(0, count($Collages)-1);

@@ -35,7 +35,7 @@ $SnatchedTorrentIDs = array_fill_keys($DB->collect('fid'), true);
 $SnatchedGroupIDs = array_unique($DB->collect('GroupID'));
 if (count($SnatchedGroupIDs) > 1000) {
 	shuffle($SnatchedGroupIDs);
-	$SnatchedGroupIDs = array_slice($SnatchedGroupIDs, 0, 1000);
+	$SnatchedGroupIDs = legacy_array_slice($SnatchedGroupIDs, 0, 1000);
 }
 
 if (count($SnatchedGroupIDs) === 0) {

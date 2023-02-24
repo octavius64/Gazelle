@@ -159,8 +159,8 @@ if (in_array($_GET['filter'], array('all', 'uploaded'))) {
 	shuffle($Snatched); // randomize results
 	while ($ResultCount < TORRENTS_PER_PAGE && count($Snatched) > 0) {
 		// we throw TORRENTS_PER_PAGE results into Sphinx until we have at least TORRENTS_PER_PAGE results (or no snatches left)
-		$SnatchedTmp = array_slice($Snatched, 0, TORRENTS_PER_PAGE);
-		$Snatched = array_slice($Snatched, TORRENTS_PER_PAGE);
+		$SnatchedTmp = legacy_array_slice($Snatched, 0, TORRENTS_PER_PAGE);
+		$Snatched = legacy_array_slice($Snatched, TORRENTS_PER_PAGE);
 
 		$SphQL = transcode_init_sphql();
 		$SphQL->where('groupid', array_map(function ($row) { return $row['GroupID']; }, $SnatchedTmp));

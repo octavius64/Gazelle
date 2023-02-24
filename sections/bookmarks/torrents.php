@@ -246,7 +246,7 @@ foreach ($GroupIDs as $GroupID) {
 $CollageCovers = isset($LoggedUser['CollageCovers']) ? (int)$LoggedUser['CollageCovers'] : 25;
 $CollagePages = array();
 for ($i = 0; $i < $NumGroups / $CollageCovers; $i++) {
-	$Groups = array_slice($Collage, $i * $CollageCovers, $CollageCovers);
+	$Groups = legacy_array_slice($Collage, $i * $CollageCovers, $CollageCovers);
 	$CollagePage = '';
 	foreach ($Groups as $Group) {
 		$CollagePage .= $Group;
@@ -331,7 +331,7 @@ if ($CollageCovers !== 0) { ?>
 			<div class="head" id="coverhead"><strong>Cover art</strong></div>
 			<ul class="collage_images" id="collage_page0">
 <?
-	$Page1 = array_slice($Collage, 0, $CollageCovers);
+	$Page1 = legacy_array_slice($Collage, 0, $CollageCovers);
 	foreach ($Page1 as $Group) {
 		echo $Group;
 	}

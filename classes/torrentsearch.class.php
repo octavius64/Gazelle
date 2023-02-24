@@ -286,7 +286,7 @@ class TorrentSearch {
 				$GroupCount = count($GroupIDs);
 			}
 			if ($GroupCount > $this->PageSize) {
-				$this->SphResults = array_slice($this->SphResults, 0, $this->PageSize, true);
+				$this->SphResults = legacy_array_slice($this->SphResults, 0, $this->PageSize, true);
 			}
 			$this->NumResults = count($this->SphResults);
 		} else {

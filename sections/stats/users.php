@@ -180,7 +180,7 @@ View::show_header('Detailed User Statistics');
 	<img src="https://chart.googleapis.com/chart?cht=map:fixed=-36,-57,37,100&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Africa" />
 	<img src="https://chart.googleapis.com/chart?cht=map:fixed=14.8,15,45,86&amp;chs=440x220&amp;chd=t:<?=legacy_implode(',', $Rank)?>&amp;chco=FFFFFF,EDEDED,1F0066&amp;chld=<?=legacy_implode('|', $Countries)?>&amp;chf=bg,s,CCD6FF" alt="Geographical Distribution Map - Middle East" />
 	<br />
-	<img src="https://chart.googleapis.com/chart?chxt=y,x&amp;chg=0,-1,1,1&amp;chxs=0,h&amp;cht=bvs&amp;chco=76A4FB&amp;chs=880x300&amp;chd=t:<?=legacy_implode(',', array_slice($CountryUsers, 0, 31))?>&amp;chxl=1:|<?=legacy_implode('|', array_slice($Countries, 0, 31))?>|0:|<?=legacy_implode('|', $LogIncrements)?>&amp;chf=bg,s,FFFFFF00" alt="Number of users by country" />
+	<img src="https://chart.googleapis.com/chart?chxt=y,x&amp;chg=0,-1,1,1&amp;chxs=0,h&amp;cht=bvs&amp;chco=76A4FB&amp;chs=880x300&amp;chd=t:<?=legacy_implode(',', legacy_array_slice($CountryUsers, 0, 31))?>&amp;chxl=1:|<?=legacy_implode('|', legacy_array_slice($Countries, 0, 31))?>|0:|<?=legacy_implode('|', $LogIncrements)?>&amp;chf=bg,s,FFFFFF00" alt="Number of users by country" />
 </div>
 <?
 View::show_footer();

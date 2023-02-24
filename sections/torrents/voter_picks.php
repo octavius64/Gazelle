@@ -32,7 +32,7 @@ if ($Top10 === false || isset($Top10[$GroupID])) {
 	}
 
 	arsort($GroupScores);
-	$Top10 = array_slice($GroupScores, 0, 10, true);
+	$Top10 = legacy_array_slice($GroupScores, 0, 10, true);
 	$Cache->cache_value('similar_albums_'.$GroupID, $Top10, 0.5 * 3600);
 }
 if (count($Top10) > 0) {

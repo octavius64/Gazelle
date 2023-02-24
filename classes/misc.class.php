@@ -258,7 +258,7 @@ class Misc {
 				FROM forums_topics
 				WHERE ID ='$TopicID'");
 			list($IsLocked, $IsSticky, $NumPosts) = G::$DB->next_record();
-			$Part1 = array_slice($Forum, 0, $Stickies, true); //Stickys
+			$Part1 = legacy_array_slice($Forum, 0, $Stickies, true); //Stickys
 			$Part2 = array(
 				$TopicID => array(
 					'ID' => $TopicID,
@@ -272,10 +272,10 @@ class Misc {
 					'LastPostAuthorID' => $AuthorID,
 					)
 				); //Bumped thread
-			$Part3 = array_slice($Forum, $Stickies, TOPICS_PER_PAGE, true); //Rest of page
+			$Part3 = legacy_array_slice($Forum, $Stickies, TOPICS_PER_PAGE, true); //Rest of page
 			if ($Stickies > 0) {
-				$Part1 = array_slice($Forum, 0, $Stickies, true); //Stickies
-				$Part3 = array_slice($Forum, $Stickies, TOPICS_PER_PAGE - $Stickies - 1, true); //Rest of page
+				$Part1 = legacy_array_slice($Forum, 0, $Stickies, true); //Stickies
+				$Part3 = legacy_array_slice($Forum, $Stickies, TOPICS_PER_PAGE - $Stickies - 1, true); //Rest of page
 			} else {
 				$Part1 = array();
 				$Part3 = $Forum;
