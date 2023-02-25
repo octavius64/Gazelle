@@ -5,7 +5,7 @@ set -eo pipefail
 echo 'Generating sphinx.conf from config...'
 cat /home/sphinx.conf | sed "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" > /etc/sphinxsearch/sphinx.conf
 
-/db_initializer_pipe/wait_db_ready.sh
+bash /home/wait_db_ready.sh
 
 echo 'Running indexer'
 indexer -c /etc/sphinxsearch/sphinx.conf --all

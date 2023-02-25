@@ -1,5 +1,4 @@
 /docker/mysql_data/**
-/docker/db_initializer_pipe/db_ready
 /docker/secrets
 /docker/gazelle_log_pipe/log
 .git

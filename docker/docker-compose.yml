@@ -30,7 +30,7 @@ services:
       - MYSQL_HOST=mysql
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
-      - ./db_initializer_pipe:/db_initializer_pipe
+      - db_initializer_pipe:/db_initializer_pipe:rw
 
   sphinxsearch:
     build:
@@ -41,7 +41,8 @@ services:
     environment:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
-      - ./db_initializer_pipe:/db_initializer_pipe
+      - db_initializer_pipe:/db_initializer_pipe:ro
+      - ./wait_db_ready.sh:/home/wait_db_ready.sh:ro
 
   ocelot:
     build:
@@ -59,7 +60,8 @@ services:
       - GAZELLE_REPORT_PASSWORD=${GAZELLE_REPORT_PASSWORD}
       - OCELOT_LISTEN_PORT=2710
     volumes:
-      - ./db_initializer_pipe:/db_initializer_pipe
+      - db_initializer_pipe:/db_initializer_pipe:ro
+      - ./wait_db_ready.sh:/home/wait_db_ready.sh:ro
 
   gazelle_log_collector:
     build:
@@ -105,5 +107,6 @@ services:
       - gazelle-config-php:/gazelle-config-php:rw
 
 volumes:
+  db_initializer_pipe:
   gazelle-config-php:
   memcached_socket:
