@@ -68,7 +68,7 @@ services:
       context: .
       dockerfile: gazelle_log_collector.Dockerfile
     volumes:
-      - ./gazelle_log_pipe:/gazelle_log_pipe:ro
+      - gazelle_log_pipe:/gazelle_log_pipe:ro
 
   php_fpm:
     build:
@@ -80,7 +80,7 @@ services:
       - ../www:/var/www/html:ro
       - gazelle-config-php:/gazelle-config-php:ro
       - memcached_socket:/home/memcached_socket:rw
-      - ./gazelle_log_pipe:/gazelle_log_pipe:rw
+      - gazelle_log_pipe:/gazelle_log_pipe:rw
 
   gazelle_nginx:
     build:
@@ -109,4 +109,5 @@ services:
 volumes:
   db_initializer_pipe:
   gazelle-config-php:
+  gazelle_log_pipe:
   memcached_socket:
