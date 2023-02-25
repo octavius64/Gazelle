@@ -7,7 +7,7 @@ services:
       context: .
       dockerfile: memcached.Dockerfile
     volumes:
-      - ./memcached_socket:/home/memcached_socket:rw
+      - memcached_socket:/home/memcached_socket:rw
 
   mysql:
     image: mysql:8.0
@@ -77,7 +77,7 @@ services:
     volumes:
       - ../www:/var/www/html:ro
       - gazelle-config-php:/gazelle-config-php:ro
-      - ./memcached_socket:/home/memcached_socket:rw
+      - memcached_socket:/home/memcached_socket:rw
       - ./gazelle_log_pipe:/gazelle_log_pipe:rw
 
   gazelle_nginx:
@@ -106,3 +106,4 @@ services:
 
 volumes:
   gazelle-config-php:
+  memcached_socket:
