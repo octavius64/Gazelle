@@ -76,6 +76,7 @@ services:
       - gazelle_log_collector
     volumes:
       - ../www:/var/www/html:ro
+      - gazelle-config-php:/gazelle-config-php:ro
       - ./memcached_socket:/home/memcached_socket:rw
       - ./gazelle_log_pipe:/gazelle_log_pipe:rw
 
@@ -100,4 +101,8 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
     volumes:
       - ../nginx.conf:/etc/nginx/conf.d/default.conf:ro
-      - ../www:/var/www/html
+      - ../www:/var/www/html:ro
+      - gazelle-config-php:/gazelle-config-php:rw
+
+volumes:
+  gazelle-config-php:

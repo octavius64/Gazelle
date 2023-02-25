@@ -11,7 +11,7 @@ cat /home/config.template | \
     sed "s/<GAZELLE_SITE_PASSWORD>/"$GAZELLE_SITE_PASSWORD"/g" | \
     sed "s/<GAZELLE_SITE_SALT>/"$GAZELLE_SITE_SALT"/g" | \
     sed "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" > \
-    /var/www/html/classes/config.php
+    /gazelle-config-php/config.php
 
 echo 'Waiting for sphinxsearch...'
 while ! nc -z sphinxsearch 9306; do sleep 3; done

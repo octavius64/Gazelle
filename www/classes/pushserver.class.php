@@ -3,7 +3,7 @@ define("PUSH_SOCKET_LISTEN_ADDRESS", "127.0.0.1");
 define("PUSH_SOCKET_LISTEN_PORT", 6789);
 
 require 'NMA_API.php';
-require 'config.php';
+require('/gazelle-config-php/config.php');
 class PushServer {
 	private $ListenSocket = false;
 	private $State = 1;

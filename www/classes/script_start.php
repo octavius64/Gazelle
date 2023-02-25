@@ -9,7 +9,7 @@
 /* generates the page are at the bottom.				*/
 /*------------------------------------------------------*/
 /********************************************************/
-require 'config.php'; //The config contains all site wide configuration information
+require('/gazelle-config-php/config.php'); //The config contains all site wide configuration information
 //Deal with dumbasses
 if (isset($_REQUEST['info_hash']) && isset($_REQUEST['peer_id'])) {
 	die('d14:failure reason40:Invalid .torrent, try downloading again.e');

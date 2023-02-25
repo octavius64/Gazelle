@@ -1,5 +1,5 @@
 <?
-require 'config.php'; //The config contains all site wide configuration information as well as memcached rules
+require('/gazelle-config-php/config.php'); //The config contains all site wide configuration information as well as memcached rules
 require(SERVER_ROOT.'/classes/debug.class.php');
 require(SERVER_ROOT.'/classes/cache.class.php'); //Require the caching class
 require(SERVER_ROOT.'/classes/encrypt.class.php'); //Require the caching class
