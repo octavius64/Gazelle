@@ -10,7 +10,7 @@ Clone submodules: `git submodule update --init`
 
 Edit a couple values in the file `config.template` under the `Main settings` section and set your own IP address. Note that every time you edit this file, you will have to rebuild the docker containers.
 
-Create a file named `secrets` with key value pairs at `docker/secrets`. Each secret must only contain alpha-numeric characters, and must be 32 characters long. Something like the following:
+Create a file named `secrets` with key value pairs at `docker/secrets`. It should be owned by root, and permissions should be 600. Each secret must only contain alpha-numeric characters, and must be 32 characters long. Something like the following:
 
 ```ini
 GAZELLE_ENCKEY=5iQRiYjQmy44ofLV9OyD7k7dp7f93zy4

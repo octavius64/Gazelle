@@ -2,6 +2,18 @@
 
 set -eo pipefail
 
+if [[ "$(stat -c '%u:%g' secrets)" != "0:0" ]]; then
+    echo "The secrets file must be owned by root for better security"
+    exit 1
+fi
+
+SECRETS_PERMS=$(stat -c '%a' secrets)
+
+if [[ "$SECRETS_PERMS" != "000" ]] && [[ "$SECRETS_PERMS" != "400" ]] && [[ "$SECRETS_PERMS" != "600" ]]; then
+    echo "The secrets file permissions are too open. 600 or stricter is allowed."
+    exit 1
+fi
+
 source secrets
 
 SECRET_NAMES=(
