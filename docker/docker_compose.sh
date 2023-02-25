@@ -33,4 +33,4 @@ if [[ "$ERROR_IN_SECRETS" == "1" ]]; then
     exit 1
 fi
 
-exec docker compose --project-name gazelle "$@"
+exec docker compose --project-name gazelle -f docker-compose.yml "$@"
