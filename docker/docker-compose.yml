@@ -82,10 +82,10 @@ services:
       - memcached_socket:/home/memcached_socket:rw
       - gazelle_log_pipe:/gazelle_log_pipe:rw
 
-  gazelle_nginx:
+  nginx:
     build:
       context: ..
-      dockerfile: docker/gazelle_nginx.Dockerfile
+      dockerfile: docker/nginx.Dockerfile
     depends_on:
       - php_fpm
       - ocelot
