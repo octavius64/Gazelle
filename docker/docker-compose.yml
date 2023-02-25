@@ -31,6 +31,7 @@ services:
       - MYSQL_ROOT_PASSWORD=${MYSQL_ROOT_PASSWORD}
     volumes:
       - db_initializer_pipe:/db_initializer_pipe:rw
+      - db_initializer_mysql:/var/lib/mysql:rw
 
   sphinxsearch:
     build:
@@ -107,6 +108,7 @@ services:
       - gazelle-config-php:/gazelle-config-php:rw
 
 volumes:
+  db_initializer_mysql:
   db_initializer_pipe:
   gazelle-config-php:
   gazelle_log_pipe:
