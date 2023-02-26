@@ -44,6 +44,7 @@ services:
     volumes:
       - db_initializer_pipe:/db_initializer_pipe:ro
       - ./wait_db_ready.sh:/home/wait_db_ready.sh:ro
+      - sphinxsearch_indexes:/var/lib/sphinxsearch:rw
 
   ocelot:
     build:
@@ -113,3 +114,4 @@ volumes:
   gazelle-config-php:
   gazelle_log_pipe:
   memcached_socket:
+  sphinxsearch_indexes:
