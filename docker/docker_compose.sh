@@ -45,4 +45,30 @@ if [[ "$ERROR_IN_SECRETS" == "1" ]]; then
     exit 1
 fi
 
+source config
+
+CONFIG_NAMES=(
+    GAZELLE_DEBUG
+)
+
+ERROR_IN_CONFIG=0
+
+for CONFIG_NAME in "${CONFIG_NAMES[@]}"; do
+    if [[ -z "${!CONFIG_NAME}" ]]; then
+        echo $CONFIG_NAME is empty
+        ERROR_IN_CONFIG=1
+    else
+        export "$CONFIG_NAME"="${!CONFIG_NAME}"
+    fi
+done
+
+if [[ "$GAZELLE_DEBUG" != "1" ]] && [[ "$GAZELLE_DEBUG" != "0" ]]; then
+    echo GAZELLE_DEBUG can be 0 or 1
+    ERROR_IN_CONFIG=1
+fi
+
+if [[ "$ERROR_IN_CONFIG" == "1" ]]; then
+    exit 1
+fi
+
 exec docker compose --project-name gazelle -f docker-compose.yml "$@"

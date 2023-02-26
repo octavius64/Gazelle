@@ -1,4 +1,5 @@
 /docker/mysql_data/**
+/docker/config
 /docker/secrets
 
 release/*

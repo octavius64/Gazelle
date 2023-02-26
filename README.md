@@ -23,6 +23,12 @@ MYSQL_PASSWORD=CBBA8taEd5Sr4pEpD9UZbrGWkWwSJwPy
 MYSQL_ROOT_PASSWORD=X6AKUKX0y4aJX4baPyh5MSxhEGp7s8GW
 ```
 
+Create a file named `config` with key value pairs at `docker/config`. Something like the following:
+
+```ini
+GAZELLE_DEBUG=1
+```
+
 And then you must use the included docker compose wrapper script to launch all containers:
 - `cd docker`
 - `./docker_compose up`
