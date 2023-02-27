@@ -5,7 +5,7 @@ if (PHP_VERSION_ID < 50400) {
 date_default_timezone_set('UTC');
 
 // Main settings
-define('SITE_NAME', 'Test Website'); //The name of your site
+define('SITE_NAME', 'Octavius'); //The name of your site
 define('NONSSL_SITE_URL', '10.0.0.111:8080'); //The FQDN of your site
 define('SSL_SITE_URL', ''); //The FQDN of your site, make this different if you are using a subdomain for ssl
 define('SITE_IP', '10.0.0.111:8080'); //The IP address by which your site can be publicly accessed
