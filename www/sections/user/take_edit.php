@@ -290,7 +290,7 @@ if ($DB->has_results()) {
 G::$Cache->delete_value("lastfm_username_$UserID");
 
 Donations::update_rewards($UserID);
-NotificationsManager::save_settings($UserID);
+NotificationsManager::save_settings($UserID, null);
 
 // Information on how the user likes to download torrents is stored in cache
 if ($DownloadAlt != $LoggedUser['DownloadAlt']) {
