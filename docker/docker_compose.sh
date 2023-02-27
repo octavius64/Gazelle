@@ -50,6 +50,8 @@ source config
 CONFIG_NAMES=(
     GAZELLE_DEBUG
     GAZELLE_SITE_HOST
+    GAZELLE_SSL_CERT_PATH
+    GAZELLE_SSL_PRIV_KEY_PATH
 )
 
 ERROR_IN_CONFIG=0
@@ -71,5 +73,19 @@ fi
 if [[ "$ERROR_IN_CONFIG" == "1" ]]; then
     exit 1
 fi
+
+if [[ "$GAZELLE_SSL_CERT_PATH" != "null" ]]; then
+    cp "$GAZELLE_SSL_CERT_PATH" ./ssl_cert_tmp_store/fullchain.pem
+else
+    echo -n > ./ssl_cert_tmp_store/fullchain.pem
+fi
+chmod 400 ./ssl_cert_tmp_store/fullchain.pem
+
+if [[ "$GAZELLE_SSL_PRIV_KEY_PATH" != "null" ]]; then
+    cp "$GAZELLE_SSL_PRIV_KEY_PATH" ./ssl_cert_tmp_store/privkey.pem
+else
+    echo -n > ./ssl_cert_tmp_store/privkey.pem
+fi
+chmod 400 ./ssl_cert_tmp_store/privkey.pem
 
 exec docker compose --project-name gazelle -f docker-compose.yml "$@"

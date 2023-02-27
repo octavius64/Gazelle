@@ -34,10 +34,14 @@ rm /home/config.template
 echo 'Updating nginx conf...'
 sed -i "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" /etc/nginx/conf.d/default.conf
 
-echo 'Generating a self signed certificate...'
-printf "US\nNY\nNY\nOctavius\nNone\noctavius\noctavius\n" | \
-    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
-    -keyout /home/privkey.pem -out /home/fullchain.pem
+if [ "$(cat /home/fullchain.pem | wc -c)" == "0" ]; then
+    echo 'No cert given, generating a self signed one...'
+    rm /home/fullchain.pem
+    rm /home/privkey.pem
+    printf "US\nNY\nNY\nOctavius\nNone\noctavius\noctavius\n" | \
+        openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+        -keyout /home/privkey.pem -out /home/fullchain.pem
+fi
 
 echo 'Waiting for sphinxsearch...'
 while ! nc -z sphinxsearch 9306; do sleep 3; done
