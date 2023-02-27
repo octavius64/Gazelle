@@ -100,7 +100,7 @@ $DB->query('SELECT MAX(Time) FROM do_not_upload');
 list($Updated) = $DB->next_record();
 
 if (!$Updated) {
-	$Updated = '1970-01-01 00:00:00';
+	$Updated = '0000-00-00 00:00:00';
 }
 
 $DB->query("
