@@ -2,7 +2,6 @@
 /docker/config
 /docker/secrets
 /docker/ssl_cert_tmp_store
-
 release/*
 static/similar
 static/stylespreview
