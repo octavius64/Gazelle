@@ -6,9 +6,8 @@ date_default_timezone_set('UTC');
 
 // Main settings
 define('SITE_NAME', 'Octavius'); //The name of your site
-define('NONSSL_SITE_URL', '10.0.0.111:8080'); //The FQDN of your site
+define('NONSSL_SITE_URL', '10.0.0.111'); //The FQDN of your site
 define('SSL_SITE_URL', ''); //The FQDN of your site, make this different if you are using a subdomain for ssl
-define('SITE_IP', '10.0.0.111:8080'); //The IP address by which your site can be publicly accessed
 define('SERVER_ROOT', '/var/www/html'); //The root of the server, used for includes, purpose is to shorten the path string
 define('ANNOUNCE_URL', 'http://10.0.0.111:2710'); //Announce URL
 

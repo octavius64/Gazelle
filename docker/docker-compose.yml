@@ -68,6 +68,8 @@ services:
       dockerfile: docker/ocelot.Dockerfile
     depends_on:
       - db_initializer
+    ports:
+      - '2710:2710'
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_DATABASE=gazelle
@@ -124,7 +126,7 @@ services:
       - memcached
       - sphinxsearch
     ports:
-      - '8080:80'
+      - '80:80'
     environment:
       - GAZELLE_ENCKEY=${GAZELLE_ENCKEY}
       - GAZELLE_REPORT_PASSWORD=${GAZELLE_REPORT_PASSWORD}
