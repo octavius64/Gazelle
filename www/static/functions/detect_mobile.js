@@ -1,8 +1,8 @@
 var ANDROID_COOKIE_NAME = "mobile_checked_android";
 var OTHER_COOKIE_NAME = "mobile_checked_other";
-var MOBILE_SITE_HOSTNAME = "m.what.cd";
-var MOBILE_SITE_URL = "https://m.what.cd/";
-var ANDROID_APP_URL = "http://bit.ly/whatandroid";
+var MOBILE_SITE_HOSTNAME = "e73a2ab9-4e96-4279-9eb6-fc654db28577"; // random name to disable feature
+var MOBILE_SITE_URL = "4756f984-6b79-4242-88f0-df6848ca6b73"; // random name to disable feature
+var ANDROID_APP_URL = "e1f7cc6e-985b-47d5-99b6-ebd311d6fd2f"; // random name to disable feature
 
 var isMobile = {
 	Android: function() {
@@ -31,18 +31,20 @@ if (window.location.hostname == MOBILE_SITE_HOSTNAME) {
 	if (isMobile.Android()) {
 		if (!hasCookie(ANDROID_COOKIE_NAME)) {
 			setCookie(ANDROID_COOKIE_NAME, true, 365);
-			var result = confirm("An Android app is available for What.CD. Would you like to download it?");
-			if (result == true) {
-				window.location = ANDROID_APP_URL;
-			}
+			// Disable this feature
+			// var result = confirm("An Android app is available for What.CD. Would you like to download it?");
+			// if (result == true) {
+			// 	window.location = ANDROID_APP_URL;
+			// }
 		}
 	} else if (isMobile.NotAndroid()) {
 		if (!hasCookie(OTHER_COOKIE_NAME)) {
 			setCookie(OTHER_COOKIE_NAME, true, 365);
-			var result = confirm("A mobile version of What.CD is available. Would you like to use it?");
-			if (result == true) {
-				window.location = MOBILE_SITE_URL;
-			}
+			// Disable this feature
+			// var result = confirm("A mobile version of What.CD is available. Would you like to use it?");
+			// if (result == true) {
+			// 	window.location = MOBILE_SITE_URL;
+			// }
 		}
 	}
 }
