@@ -2,6 +2,11 @@
 
 set -eo pipefail
 
+if [ "$(id -u)" != "0" ]; then
+    echo "You must be root!"
+    exit 1
+fi
+
 if [[ "$(stat -c '%u:%g' secrets)" != "0:0" ]]; then
     echo "The secrets file must be owned by root for better security"
     exit 1
