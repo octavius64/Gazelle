@@ -202,7 +202,7 @@ ul.thin li { margin:0px 0px; padding:0px; }
 #logo {
 	width: 141px;
 	height: 69px;
-	background: url('http://dl.dropbox.com/u/12148/wcd-logo.png') no-repeat top left;
+	background: url('/wcd-logo.png') no-repeat top left;
 	margin: 66px 0 30px 35px;
 	position: absolute;
 	z-index: 3;
@@ -384,7 +384,7 @@ white-space: normal !important;
 #nav_useredit a{
 	text-indent: -9999px;
 	display: inline-block;
-	background: url(https://dl.dropboxusercontent.com/s/lgkqfoxsxqvf2aq/simple_what_edit-button-n.png) no-repeat;
+	background: url(/simple_what_edit-button-n.png) no-repeat;
 	width: 11px;
 	height: 11px;
 }
@@ -392,7 +392,7 @@ white-space: normal !important;
 #nav_logout a{
 	text-indent: -9999px;
 	display: inline-block;
-	background: url(https://dl.dropboxusercontent.com/s/2t2pn25x63ts41p/simple_what_logout-button.png) no-repeat;
+	background: url(/simple_what_logout-button.png) no-repeat;
 	width: 11px;
 	height: 11px;
 }
