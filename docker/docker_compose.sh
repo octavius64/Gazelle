@@ -49,6 +49,7 @@ source config
 
 CONFIG_NAMES=(
     GAZELLE_DEBUG
+    GAZELLE_SITE_HOST
 )
 
 ERROR_IN_CONFIG=0

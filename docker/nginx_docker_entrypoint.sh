@@ -10,7 +10,8 @@ cat /home/config.template | \
     sed "s/<GAZELLE_SCHEDULE_KEY>/"$GAZELLE_SCHEDULE_KEY"/g" | \
     sed "s/<GAZELLE_SITE_PASSWORD>/"$GAZELLE_SITE_PASSWORD"/g" | \
     sed "s/<GAZELLE_SITE_SALT>/"$GAZELLE_SITE_SALT"/g" | \
-    sed "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" > \
+    sed "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" | \
+    sed "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" > \
     /gazelle-config-php/config.php
 
 mv /gazelle-config-php/config.php /home/config.template
@@ -29,6 +30,14 @@ else
 fi
 
 rm /home/config.template
+
+echo 'Updating nginx conf...'
+sed -i "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" /etc/nginx/conf.d/default.conf
+
+echo 'Generating a self signed certificate...'
+printf "US\nNY\nNY\nOctavius\nNone\noctavius\noctavius\n" | \
+    openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
+    -keyout /home/privkey.pem -out /home/fullchain.pem
 
 echo 'Waiting for sphinxsearch...'
 while ! nc -z sphinxsearch 9306; do sleep 3; done
