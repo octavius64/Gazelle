@@ -61,7 +61,7 @@ a[onclick]:focus {
 
 a[onclick]:active {
 	outline: 0;
-/*	background: url(https://what.cd/static/styles/postmod/images/load.gif) 100% 4px no-repeat; */
+/*	background: url(/static/styles/postmod/images/load.gif) 100% 4px no-repeat; */
 }
 
 a[onclick^="AddArtistField"]:focus, a[onclick^="AddArtistField"]:active {
@@ -70,11 +70,11 @@ a[onclick^="AddArtistField"]:focus, a[onclick^="AddArtistField"]:active {
 	padding: 0 !important;
 }
 
-.main_column a[href^="http"], .main_column a[href^="https"] { padding: 0 10px 0 0; background: url(https://what.cd/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
-.main_column a[href^="http"]:hover, .main_column a[href^="https"]:hover { padding: 0 10px 0 0; background: url(https://what.cd/static/styles/postmod/images/external.png) 100% 4px no-repeat !important; }
-.forum_post a[href^="http"], .forum_post a[href^="https"] { padding: 0 10px 0 0; background: url(https://what.cd/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
-.forum_post a[href^="http"]:hover, .forum_post a[href^="https"]:hover { padding: 0 10px 0 0; background: url(https://what.cd/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
-.head a[href^="http"]:hover, .head a[href^="https"]:hover, .colhead a[href^="http"]:hover, .colhead a[href^="https"]:hover, .colhead_dark a[href^="http"]:hover, .colhead_dark a[href^="https"]:hover { padding: 0 10px 0 0; background: url(https://what.cd/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
+.main_column a[href^="http"], .main_column a[href^="https"] { padding: 0 10px 0 0; background: url(/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
+.main_column a[href^="http"]:hover, .main_column a[href^="https"]:hover { padding: 0 10px 0 0; background: url(/static/styles/postmod/images/external.png) 100% 4px no-repeat !important; }
+.forum_post a[href^="http"], .forum_post a[href^="https"] { padding: 0 10px 0 0; background: url(/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
+.forum_post a[href^="http"]:hover, .forum_post a[href^="https"]:hover { padding: 0 10px 0 0; background: url(/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
+.head a[href^="http"]:hover, .head a[href^="https"]:hover, .colhead a[href^="http"]:hover, .colhead a[href^="https"]:hover, .colhead_dark a[href^="http"]:hover, .colhead_dark a[href^="https"]:hover { padding: 0 10px 0 0; background: url(/static/styles/postmod/images/external.png) 100% 4px no-repeat; }
 .forum_post a[href^="http"] img, .forum_post a[href^="https"] img { padding: 0 0 0 0; background: transparent !important; border: none; }
 .forum_post a[href^="http"] img:hover, .forum_post a[href^="https"] img:hover { padding: 0 0 0 0; background: transparent !important; border: none; }
 
@@ -115,7 +115,7 @@ img {
 	border: none;
 -webkit-filter: grayscale(1); -webkit-filter: grayscale(100%); -moz-filter: grayscale(100%);
 filter: gray; filter: grayscale(100%);
-filter: url(https://what.cd/static/styles/80char/desaturate.svg#greyscale);
+filter: url(/static/styles/80char/desaturate.svg#greyscale);
 
 }
 
@@ -156,7 +156,7 @@ ul.thin li { margin:0px 0px; padding:0px; }
 #header {
 	width: 950px;
 	margin: 0 auto 0 auto;
-	/*background: url('https://what.cd/static/styles/postmod/images/bg_header.png') 11px 65px no-repeat;*/
+	/*background: url('/static/styles/postmod/images/bg_header.png') 11px 65px no-repeat;*/
 	height: 275px;
 	padding: 0 0 0 0;
 }
@@ -181,7 +181,7 @@ ul.thin li { margin:0px 0px; padding:0px; }
 }
 
 #footer {
-	background: transparent url('https://what.cd/static/styles/postmod/images/bg_footer.png');
+	background: transparent url('/static/styles/postmod/images/bg_footer.png');
 	margin-top: 40px;
 	width: 100%;
 	text-align: center;
@@ -191,7 +191,7 @@ ul.thin li { margin:0px 0px; padding:0px; }
 }
 
 #footer:after {
-	content: url('https://what.cd/static/styles/postmod/images/gazelle.png');
+	content: url('/static/styles/postmod/images/gazelle.png');
 }
 
 #disclaimer_container {
@@ -531,7 +531,7 @@ input[type="search"]::-webkit-search-cancel-button {
   -webkit-appearance: none;
 }
 #autocomplete {
-	background: url('https://what.cd/static/styles/postmod/images/content.png');
+	background: url('/static/styles/postmod/images/content.png');
 	border: 1px solid #000;
 	list-style: none;
 }
@@ -571,7 +571,7 @@ input[type="search"]::-webkit-search-cancel-button {
 	left: 0;
 	z-index: 1000;
 	border: 1px solid #FFF;
-	background: url('https://what.cd/static/styles/postmod/images/content.png');
+	background: url('/static/styles/postmod/images/content.png');
 	width: 12em;
 	margin-top: 12px;
 }
@@ -626,7 +626,7 @@ table.grouping>tbody>tr.colhead>td:first-child+td+td,
 table.no_grouping>tbody>tr.group>td:first-child+td,
 table.no_grouping>tbody>tr.colhead>td:first-child+td { /*text-indent:-20px;*/ border-left: none;}
 
-.last_read {width: 15px; height: 15px; background: url('https://what.cd/static/styles/postmod/images/go_last_read.png') no-repeat center center; margin-left: 5px;}
+.last_read {width: 15px; height: 15px; background: url('/static/styles/postmod/images/go_last_read.png') no-repeat center center; margin-left: 5px;}
 .last_read a { border: none; width: 100%; height: 100%; display: block; }
 .last_read a:hover { border: none; }
 .last_read a:active, .last_read a:focus { outline: 0; }
@@ -886,7 +886,7 @@ ul.poll li.graph {
 .show_torrents {
 	width: 28px;
 	height: 28px;
-	background: url('https://what.cd/static/styles/postmod/images/show.png') no-repeat center center;
+	background: url('/static/styles/postmod/images/show.png') no-repeat center center;
 	-moz-opacity: 0.5;
 	opacity: 0.50;
 	filter: alpha(opacity=50);
@@ -895,7 +895,7 @@ ul.poll li.graph {
 .hide_torrents {
 	width: 28px;
 	height: 28px;
-	background: url('https://what.cd/static/styles/postmod/images/hide.png') no-repeat center center;
+	background: url('/static/styles/postmod/images/hide.png') no-repeat center center;
 	-moz-opacity: 0.5;
 	opacity: 0.50;
 	filter: alpha(opacity=50);
@@ -984,14 +984,14 @@ tr.torrent td {
 
 /* Layout (Forums) */
 
-.unread_locked_sticky{background: url('https://what.cd/static/styles/postmod/images/locked_sticky_unread.png') no-repeat center center;}
-.read_locked_sticky{background: url('https://what.cd/static/styles/postmod/images/locked_sticky_read.png') no-repeat center center;}
-.read_sticky{background: url('https://what.cd/static/styles/postmod/images/sticky_read.png') no-repeat center center;}
-.unread_sticky{background: url('https://what.cd/static/styles/postmod/images/sticky_unread.png') no-repeat center center;}
-.unread_locked{background: url('https://what.cd/static/styles/postmod/images/locked_unread.png') no-repeat center center;}
-.read_locked{background: url('https://what.cd/static/styles/postmod/images/locked_read.png') no-repeat center center;}
-.unread{background: url('https://what.cd/static/styles/postmod/images/unread.png') no-repeat center center;}
-.read{background: url('https://what.cd/static/styles/postmod/images/read.png') no-repeat center center;}
+.unread_locked_sticky{background: url('/static/styles/postmod/images/locked_sticky_unread.png') no-repeat center center;}
+.read_locked_sticky{background: url('/static/styles/postmod/images/locked_sticky_read.png') no-repeat center center;}
+.read_sticky{background: url('/static/styles/postmod/images/sticky_read.png') no-repeat center center;}
+.unread_sticky{background: url('/static/styles/postmod/images/sticky_unread.png') no-repeat center center;}
+.unread_locked{background: url('/static/styles/postmod/images/locked_unread.png') no-repeat center center;}
+.read_locked{background: url('/static/styles/postmod/images/locked_read.png') no-repeat center center;}
+.unread{background: url('/static/styles/postmod/images/unread.png') no-repeat center center;}
+.read{background: url('/static/styles/postmod/images/read.png') no-repeat center center;}
 
 table.forum_post {
 	margin: 10px 0px;
@@ -1101,9 +1101,9 @@ ul .invitetree {
 .poll li{clear:both}
 .poll .graph{padding:0 0 15px 0}
 .poll .graph span{display:block; height:19px; float:left}
-.poll .graph .left_poll{width:9px; background:url('https://what.cd/static/styles/postmod/images/poll_left.png') top left no-repeat}
-.poll .graph .center_poll{background:url('https://what.cd/static/styles/postmod/images/poll_middle.png') top left repeat-x}
-.poll .graph .right_poll{width:11px; background:url('https://what.cd/static/styles/postmod/images/poll_right.png') top left no-repeat}
+.poll .graph .left_poll{width:9px; background:url('/static/styles/postmod/images/poll_left.png') top left no-repeat}
+.poll .graph .center_poll{background:url('/static/styles/postmod/images/poll_middle.png') top left repeat-x}
+.poll .graph .right_poll{width:11px; background:url('/static/styles/postmod/images/poll_right.png') top left no-repeat}
 
 .curtain {
 	position: fixed;
