@@ -84,6 +84,7 @@ if [[ "$GAZELLE_SSL_CERT_PATH" != "null" ]]; then
 else
     echo -n > ./ssl_cert_tmp_store/fullchain.pem
 fi
+chown 0:0 ./ssl_cert_tmp_store/fullchain.pem
 chmod 400 ./ssl_cert_tmp_store/fullchain.pem
 
 if [[ "$GAZELLE_SSL_PRIV_KEY_PATH" != "null" ]]; then
@@ -91,6 +92,7 @@ if [[ "$GAZELLE_SSL_PRIV_KEY_PATH" != "null" ]]; then
 else
     echo -n > ./ssl_cert_tmp_store/privkey.pem
 fi
+chown 0:0 ./ssl_cert_tmp_store/privkey.pem
 chmod 400 ./ssl_cert_tmp_store/privkey.pem
 
 exec docker compose --project-name gazelle -f docker-compose.yml "$@"
