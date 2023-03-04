@@ -1,9 +1,4 @@
-FROM php:8.1-fpm
-
-COPY external/install-php-extensions /usr/local/bin/
-
-RUN chmod +x /usr/local/bin/install-php-extensions && \
-    install-php-extensions memcache mcrypt gd mysqli
+FROM octavius64/php-gazelle:v1
 
 ARG GAZELLE_DEBUG
 
