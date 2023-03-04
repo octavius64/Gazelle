@@ -5,6 +5,7 @@
 release/*
 static/similar
 static/stylespreview
+.vscode
 *.swp
 *.project
 *.php~
