@@ -49,5 +49,8 @@ If you want to use Let's Encrypt (which is also free but only valid for 3 months
 sudo certbot certonly --manual --preferred-challenges dns
 ```
 
+## Other Tips
+- If using Cloudflare reverse proxy, it's a good idea to whitelist their IP addresses and deny all other IP addresses. See nginx.conf for how to enable the whitelist.
+
 ## Original WCD/Gazelle Change Log
-You may have noticed that commits in the repository do not have descriptive messages. If you are looking for a change log of Gazelle, it can be [viewed here](https://raw.github.com/WhatCD/Gazelle/master/docs/CHANGES.txt).
+The original WCD change log is available here: docs/CHANGES.txt
