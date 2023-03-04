@@ -25,10 +25,13 @@ Create a file named `config` with key value pairs at `docker/config`. Something 
 
 ```ini
 GAZELLE_DEBUG=1
-# In a production environment you will use a FQDN like "example.com".
-GAZELLE_SITE_HOST=10.0.0.123
+# When testing locally you can set up a local DNS mapping for this test domain
+GAZELLE_SITE_HOST=myawesometracker.com
+OCELOT_SITE_HOST=tracker.myawesometracker.com
 # You can set the value of these 2 props to the file paths of SSL cert and private key.
 # You can also set them to "null", in which case a self signed cert will be generated.
+# Note that the same cert will be used for both domains, so make sure this cert is
+# for a wildcard domain. And that both domains above belong to the same root domain.
 GAZELLE_SSL_CERT_PATH=null
 GAZELLE_SSL_PRIV_KEY_PATH=null
 ```

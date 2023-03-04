@@ -68,8 +68,6 @@ services:
       dockerfile: docker/ocelot.Dockerfile
     depends_on:
       - db_initializer
-    ports:
-      - '2710:2710'
     environment:
       - MYSQL_HOST=mysql
       - MYSQL_DATABASE=gazelle
@@ -138,6 +136,7 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - GAZELLE_DEBUG=${GAZELLE_DEBUG}
       - GAZELLE_SITE_HOST=${GAZELLE_SITE_HOST}
+      - OCELOT_SITE_HOST=${OCELOT_SITE_HOST}
     volumes:
       - ../www:/var/www/html:ro
       - gazelle-config-php:/gazelle-config-php:rw

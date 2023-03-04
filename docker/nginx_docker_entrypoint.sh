@@ -11,7 +11,8 @@ cat /home/config.template | \
     sed "s/<GAZELLE_SITE_PASSWORD>/"$GAZELLE_SITE_PASSWORD"/g" | \
     sed "s/<GAZELLE_SITE_SALT>/"$GAZELLE_SITE_SALT"/g" | \
     sed "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" | \
-    sed "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" > \
+    sed "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" | \
+    sed "s/<OCELOT_SITE_HOST>/"$OCELOT_SITE_HOST"/g" > \
     /gazelle-config-php/config.php
 
 mv /gazelle-config-php/config.php /home/config.template
@@ -33,6 +34,7 @@ rm /home/config.template
 
 echo 'Updating nginx conf...'
 sed -i "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" /etc/nginx/conf.d/default.conf
+sed -i "s/<OCELOT_SITE_HOST>/"$OCELOT_SITE_HOST"/g" /etc/nginx/conf.d/default.conf
 
 if [ "$(cat /home/fullchain.pem | wc -c)" == "0" ]; then
     echo 'No cert given, generating a self signed one...'
