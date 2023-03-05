@@ -18,14 +18,14 @@ if (isset($_REQUEST['info_hash']) && isset($_REQUEST['peer_id'])) {
 require(SERVER_ROOT.'/classes/proxies.class.php');
 
 // Get the user's actual IP address if they're proxied.
-if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])
-		&& proxyCheck($_SERVER['REMOTE_ADDR'])
-		&& filter_var($_SERVER['HTTP_X_FORWARDED_FOR'],
-				FILTER_VALIDATE_IP,
-				FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
-	$_SERVER['REMOTE_ADDR'] = $_SERVER['HTTP_X_FORWARDED_FOR'];
+if (!empty($_SERVER['HTTP_X_FORWARDED_FOR']) {
+	$RealIpBehindProxy = trim((explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']))[0]);
+	if (proxyCheck($_SERVER['REMOTE_ADDR'])
+			&& filter_var($RealIpBehindProxy,
+			FILTER_VALIDATE_IP,
+			FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
+	$_SERVER['REMOTE_ADDR'] = $RealIpBehindProxy;
 }
-
 
 $SSL = (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
 if (!isset($argv) && !empty($_SERVER['HTTP_HOST'])) {

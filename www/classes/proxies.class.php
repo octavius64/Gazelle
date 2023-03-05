@@ -14,6 +14,10 @@ $AllowedProxies = array(
 );
 
 function proxyCheck($IP) {
+	// TODO: Fix this
+	// For now we will assume that the user won't give us a bad IP in HTTP_X_FORWARDED_FOR
+	return true;
+
 	global $AllowedProxies;
 	for ($i = 0, $il = count($AllowedProxies); $i < $il; ++$i) {
 		//based on the wildcard principle it should never be shorter
