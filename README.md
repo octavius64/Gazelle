@@ -25,13 +25,14 @@ Create a file named `config` with key value pairs at `docker/config`. Something 
 
 ```ini
 GAZELLE_DEBUG=1
-# When testing locally you can set up a local DNS mapping for this test domain
-GAZELLE_SITE_HOST=myawesometracker.com
-OCELOT_SITE_HOST=tracker.myawesometracker.com
+# In production you will have to use a fully qualified domain name here.
+# When testing locally you can set up a local DNS mapping for this test domain,
+# Or use an IP address.
+GAZELLE_SITE_HOST=10.0.0.123
 # You can set the value of these 2 props to the file paths of SSL cert and private key.
 # You can also set them to "null", in which case a self signed cert will be generated.
-# Note that the same cert will be used for both domains, so make sure this cert is
-# for a wildcard domain. And that both domains above belong to the same root domain.
+# You will have to figure out how to make your torrent client disable cert validation if
+# using a self signed cert.
 GAZELLE_SSL_CERT_PATH=null
 GAZELLE_SSL_PRIV_KEY_PATH=null
 ```
@@ -42,9 +43,10 @@ And then you must use the included docker compose wrapper script to build and la
 - `./docker_compose up`
 
 ## SSL Tips
-If you want to use Cloudflare's reverse proxy, then you can get an origin server SSL cert from them which is free and is valid for 15 years. It is a wildcard domain cert which means you can use it for both the web app and the tracker (assuming they both use the same wildcard domain). Note that only Cloudflare servers trust it though so you can't use it if you're not using Cloudflare's reverse proxy.
+If you want to use Cloudflare's reverse proxy, then you can get an origin server SSL cert from them which is free and is valid for 15 years.
+Note that only Cloudflare servers trust it though so you can't use it if you're not using Cloudflare's reverse proxy.
 
-If you want to use Let's Encrypt (which is also free but only valid for 3 months) then use the following command line and make sure to give it a wildcard domain name like `*.example.com`:
+If you want to use Let's Encrypt (which is also free but only valid for 3 months) then use the following command line:
 ```
 sudo certbot certonly --manual --preferred-challenges dns
 ```

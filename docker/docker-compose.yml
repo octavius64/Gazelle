@@ -138,7 +138,6 @@ services:
       - MYSQL_PASSWORD=${MYSQL_PASSWORD}
       - GAZELLE_DEBUG=${GAZELLE_DEBUG}
       - GAZELLE_SITE_HOST=${GAZELLE_SITE_HOST}
-      - OCELOT_SITE_HOST=${OCELOT_SITE_HOST}
     volumes:
       - ../www:/var/www/html:ro
       - gazelle-config-php:/gazelle-config-php:rw
