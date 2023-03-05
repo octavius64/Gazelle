@@ -51,6 +51,17 @@ If you want to use Let's Encrypt (which is also free but only valid for 3 months
 sudo certbot certonly --manual --preferred-challenges dns
 ```
 
+## Ocelot Development Tips
+The current Docker setup allows making changes to the Ocelot source code, build it incrementally, and deploy it without rebuilding or restarting any containers.
+- Make changes to the source code (it is mounted read-only in the Ocelot container)
+- Open up a shell in the container: `sudo docker exec -it gazelle-ocelot-1 /bin/bash`
+- Run an incremental build: `make`
+- Kill the current Ocelot process and wait for it to exit: `kill -SIGTERM $(pgrep ocelot)`
+- Run the newly built Ocelot version:
+    - `cp ocelot ocelot.live`
+    - `./ocelot.live -c ocelot.cnf > /proc/1/fd/1 2> /proc/1/fd/2`
+- In order to kill this new version of Ocelot, you can use Ctrl-C
+
 ## Other Tips
 - If using Cloudflare reverse proxy, it's a good idea to whitelist their IP addresses and deny all other IP addresses. See nginx.conf for how to enable the whitelist.
 
