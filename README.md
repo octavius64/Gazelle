@@ -42,6 +42,7 @@ If this file is empty, then no restrictions will be applied to source IP address
 This is useful when using a reverse proxy like Cloudflare, in which case we would only want
 Cloudflare IPs to talk to our server. The list of Cloudflare IP addresses can be retrieved
 from `https://www.cloudflare.com/ips-v4`
+
 This is an example file with some whitelisted subnets:
 
 ```
