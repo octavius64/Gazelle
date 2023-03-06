@@ -6,4 +6,4 @@ WORKDIR /home
 RUN chmod +x db_initializer_docker_entrypoint.sh
 
 ENTRYPOINT []
-CMD ./db_initializer_docker_entrypoint.sh
+CMD ["./db_initializer_docker_entrypoint.sh"]

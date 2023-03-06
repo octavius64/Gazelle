@@ -14,4 +14,4 @@ COPY php_fpm_docker_entrypoint.sh /home/
 RUN chmod +x /home/php_fpm_docker_entrypoint.sh
 
 ENTRYPOINT []
-CMD /home/php_fpm_docker_entrypoint.sh
+CMD ["/home/php_fpm_docker_entrypoint.sh"]

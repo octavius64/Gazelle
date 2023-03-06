@@ -5,4 +5,4 @@ FROM memcached:1.6
 USER root
 WORKDIR /home
 
-CMD memcached -u root -a 0666 -s /home/memcached_socket/memcached.sock
+CMD ["memcached", "-u", "root", "-a", "0666", "-s", "/home/memcached_socket/memcached.sock"]

@@ -8,4 +8,4 @@ COPY docker/ssl_cert_tmp_store/fullchain.pem docker/ssl_cert_tmp_store/privkey.p
 RUN chmod +x /home/nginx_docker_entrypoint.sh
 
 ENTRYPOINT []
-CMD /home/nginx_docker_entrypoint.sh
+CMD ["/home/nginx_docker_entrypoint.sh"]

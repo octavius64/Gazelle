@@ -68,6 +68,8 @@ sudo certbot certonly --manual --preferred-challenges dns
 
 ## Ocelot Development Tips
 The current Docker setup allows making changes to the Ocelot source code, build it incrementally, and deploy it without rebuilding or restarting any containers.
+You will have to make an edit to `docker-entrypoint.sh` inside `Ocelot/docker`. Look at the comment in that file for more info. After making that change,
+you'll be able to follow this development workflow:
 - Make changes to the source code (it is mounted read-only in the Ocelot container)
 - Open up a shell in the container: `sudo docker exec -it gazelle-ocelot-1 /bin/bash`
 - Run an incremental build: `make`

@@ -40,6 +40,7 @@ services:
     volumes:
       - db_initializer_pipe:/db_initializer_pipe:rw
       - db_initializer_mysql:/var/lib/mysql:rw
+    stop_grace_period: 0s
     logging:
       options:
         max-size: 50m
@@ -93,6 +94,7 @@ services:
       dockerfile: gazelle_log_collector.Dockerfile
     volumes:
       - gazelle_log_pipe:/gazelle_log_pipe:ro
+    stop_grace_period: 0s
     logging:
       options:
         max-size: 50m

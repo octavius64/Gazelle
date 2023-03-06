@@ -10,4 +10,4 @@ COPY sphinx.conf docker/sphinxsearch_docker_entrypoint.sh /home/
 RUN sed -i 's/START=no/START=yes/' /etc/default/sphinxsearch
 
 RUN chmod +x /home/sphinxsearch_docker_entrypoint.sh
-CMD /home/sphinxsearch_docker_entrypoint.sh
+CMD ["/home/sphinxsearch_docker_entrypoint.sh"]
