@@ -19,13 +19,22 @@ require(SERVER_ROOT.'/classes/proxies.class.php');
 
 // Get the user's actual IP address if they're proxied.
 if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
-	$RealIpBehindProxy = trim((explode(',', $_SERVER['HTTP_X_FORWARDED_FOR']))[0]);
+	// We intentionally assume that there is only 1 IP address in this list.
+	// If we add support for multiple IP addresses, then the user could inject a
+	// fake one and our reverse proxy would append the real one to it, and
+	// we would end up using the fake IP address.
+	$RealIpBehindProxy = trim($_SERVER['HTTP_X_FORWARDED_FOR']);
 	if (proxyCheck($_SERVER['REMOTE_ADDR'])
 			&& filter_var($RealIpBehindProxy,
 			FILTER_VALIDATE_IP,
 			FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
 		$_SERVER['REMOTE_ADDR'] = $RealIpBehindProxy;
+		die ('REVERSE PROXY DETECTED: ' . $RealIpBehindProxy);
+	} else {
+		die ('NO REVERSE PROXY DETECTED');
 	}
+} else {
+	die ('HEADER NOT PRESENT');
 }
 
 $SSL = (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);

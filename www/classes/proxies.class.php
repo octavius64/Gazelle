@@ -13,35 +13,25 @@ $AllowedProxies = array(
 	'195.189.143.*', //Norway
 );
 
+function cidrMatch($ip, $range) {
+    list ($subnet, $bits) = explode('/', $range);
+    if ($bits === null) {
+        $bits = 32;
+    }
+    $ip = ip2long($ip);
+    $subnet = ip2long($subnet);
+    $mask = -1 << (32 - $bits);
+    $subnet &= $mask; # nb: in case the supplied subnet wasn't correctly aligned
+    return ($ip & $mask) == $subnet;
+}
+
 function proxyCheck($IP) {
-	// TODO: Fix this
-	// For now we will assume that the user won't give us a bad IP in HTTP_X_FORWARDED_FOR
-	return true;
-
-	global $AllowedProxies;
-	for ($i = 0, $il = count($AllowedProxies); $i < $il; ++$i) {
-		//based on the wildcard principle it should never be shorter
-		if (strlen($IP) < strlen($AllowedProxies[$i])) {
-			continue;
-		}
-
-		//since we're matching bit for bit iterating from the start
-		for ($j = 0, $jl = strlen($IP); $j < $jl; ++$j) {
-			//completed iteration and no inequality
-			if ($j == $jl - 1 && $IP[$j] === $AllowedProxies[$i][$j]) {
-				return true;
-			}
-
-			//wildcard
-			if ($AllowedProxies[$i][$j] === '*') {
-				return true;
-			}
-
-			//inequality found
-			if ($IP[$j] !== $AllowedProxies[$i][$j]) {
-				break;
-			}
+	global $AllowedProxySubnets;
+	foreach ($AllowedProxySubnets as $ipSubnet) {
+		if (cidrMatch($IP, $ipSubnet)) {
+			return true;
 		}
 	}
+
 	return false;
 }

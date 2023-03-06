@@ -37,6 +37,20 @@ GAZELLE_SSL_CERT_PATH=null
 GAZELLE_SSL_PRIV_KEY_PATH=null
 ```
 
+Create a file named `whitelist_ips.txt` with IP address subnets at `docker/whitelist_ips.txt`.
+If this file is empty, then no restrictions will be applied to source IP addresses.
+This is useful when using a reverse proxy like Cloudflare, in which case we would only want
+Cloudflare IPs to talk to our server. The list of Cloudflare IP addresses can be retrieved
+from `https://www.cloudflare.com/ips-v4`
+This is an example file with some whitelisted subnets:
+
+```
+173.245.48.0/20
+103.21.244.0/22
+103.22.200.0/22
+103.31.4.0/22
+```
+
 And then you must use the included docker compose wrapper script to build and launch all containers:
 - `cd docker`
 - `./docker_compose build`
