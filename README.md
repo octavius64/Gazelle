@@ -79,8 +79,5 @@ you'll be able to follow this development workflow:
     - `./ocelot.live -c ocelot.cnf > /proc/1/fd/1 2> /proc/1/fd/2`
 - In order to kill this new version of Ocelot, you can use Ctrl-C
 
-## Other Tips
-- If using Cloudflare reverse proxy, it's a good idea to whitelist their IP addresses and deny all other IP addresses. See nginx.conf for how to enable the whitelist.
-
 ## Original WCD/Gazelle Change Log
 The original WCD change log is available here: docs/CHANGES.txt
