@@ -128,8 +128,8 @@ services:
       - memcached
       - sphinxsearch
     ports:
-      - '80:80'
-      - '443:443'
+      - '0.0.0.0:80:80'
+      - '0.0.0.0:443:443'
     environment:
       - GAZELLE_ENCKEY=${GAZELLE_ENCKEY}
       - GAZELLE_REPORT_PASSWORD=${GAZELLE_REPORT_PASSWORD}
