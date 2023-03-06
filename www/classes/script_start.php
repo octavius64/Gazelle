@@ -29,12 +29,7 @@ if (!empty($_SERVER['HTTP_X_FORWARDED_FOR'])) {
 			FILTER_VALIDATE_IP,
 			FILTER_FLAG_NO_PRIV_RANGE | FILTER_FLAG_NO_RES_RANGE)) {
 		$_SERVER['REMOTE_ADDR'] = $RealIpBehindProxy;
-		die ('REVERSE PROXY DETECTED: ' . $RealIpBehindProxy);
-	} else {
-		die ('NO REVERSE PROXY DETECTED');
 	}
-} else {
-	die ('HEADER NOT PRESENT');
 }
 
 $SSL = (isset($_SERVER['SERVER_PORT']) && $_SERVER['SERVER_PORT'] == 443);
