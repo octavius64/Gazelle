@@ -2,9 +2,37 @@
 
 set -eo pipefail
 
-echo 'Generating config.php from config.template...'
+# Arg 1 - file which contains IP addresses
+function print_nginx_whitelist() {
+    CONTENTS=$(cat "$1" | { grep -P '^\s*\d' || test $? = 1; } | perl -pe "s/\s*(\d\S+)\s*/allow \1;\n/g")
+    if [ "$CONTENTS" != "" ]; then
+        echo "$CONTENTS"
+        echo 'deny all;'
+    fi
+}
 
-cp /home/config.template /gazelle-config-php/config.php
+# Arg 1 - file which contains IP addresses
+function print_php_whitelist() {
+    cat "$1" | { grep -P '^\s*\d' || test $? = 1; } | perl -pe "s/\s*(\d\S+)\s*/'\1',/g"
+}
+
+# Arg 1 - file to do the replacement in
+# Arg 2 - file which contains the IP addresses
+# Arg 3 - output file
+# Arg 4 - function to use to output the whitelist 
+function populate_ip_whitelist() {
+    IP_WHITELIST_LINE=$(grep -n "<ALLOWED_PROXY_SUBNETS>" "$1" | cut -f1 -d:)
+    IP_WHITELIST_LINE_BEFORE=$(expr "$IP_WHITELIST_LINE" - 1)
+    IP_WHITELIST_LINE_AFTER=$(expr "$IP_WHITELIST_LINE" + 1)
+
+    head -n"$IP_WHITELIST_LINE_BEFORE" "$1" > "$3"
+    "$4" "$2" >> "$3"
+    tail --lines=+"$IP_WHITELIST_LINE_AFTER" "$1" >> "$3"
+}
+
+echo 'Generating config.php from config.template...'
+populate_ip_whitelist /home/config.template /home/whitelist_ips.txt \
+    /gazelle-config-php/config.php print_php_whitelist
 
 sed -i "s/<GAZELLE_ENCKEY>/"$GAZELLE_ENCKEY"/g" /gazelle-config-php/config.php
 sed -i "s/<GAZELLE_REPORT_PASSWORD>/"$GAZELLE_REPORT_PASSWORD"/g" /gazelle-config-php/config.php
@@ -26,6 +54,8 @@ else
 fi
 
 echo 'Updating nginx conf...'
+populate_ip_whitelist /home/nginx.conf /home/whitelist_ips.txt \
+    /etc/nginx/conf.d/default.conf print_nginx_whitelist
 sed -i "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" /etc/nginx/conf.d/default.conf
 
 if [ "$(cat /home/fullchain.pem | wc -c)" == "0" ]; then

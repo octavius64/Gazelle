@@ -2,6 +2,7 @@
 /docker/config
 /docker/secrets
 /docker/ssl_cert_tmp_store
+/docker/whitelist_ips.txt
 release/*
 static/similar
 static/stylespreview

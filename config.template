@@ -240,4 +240,9 @@ $CaptchaBGs = array(
 $SpecialChars = array(
 		'&' => 'and'
 );
+
+// This is useful when using a reverse proxy like Cloudflare
+$AllowedProxySubnets = array(
+	<ALLOWED_PROXY_SUBNETS>
+);
 ?>

@@ -95,4 +95,9 @@ fi
 chown 0:0 ./ssl_cert_tmp_store/privkey.pem
 chmod 400 ./ssl_cert_tmp_store/privkey.pem
 
+if [[ ! -e whitelist_ips.txt ]]; then
+    echo Please create whitelist_ips.txt with IP address subnets. It can be empty.
+    exit 1
+fi
+
 exec docker compose --project-name gazelle -f docker-compose.yml "$@"
