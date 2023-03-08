@@ -28,6 +28,17 @@ services:
         max-size: 50m
     restart: unless-stopped
 
+  phpmyadmin:
+    image: phpmyadmin:5.2
+    ports:
+      - '127.0.0.1:8080:80'
+    environment:
+      - PMA_HOST=mysql
+    logging:
+      options:
+        max-size: 50m
+    restart: unless-stopped
+
   db_initializer:
     build:
       context: ..

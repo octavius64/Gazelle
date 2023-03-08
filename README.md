@@ -79,5 +79,9 @@ you'll be able to follow this development workflow:
     - `./ocelot.live -c ocelot.cnf > /proc/1/fd/1 2> /proc/1/fd/2`
 - In order to kill this new version of Ocelot, you can use Ctrl-C
 
+## Other Tips
+- PhpMyAdmin container is also available for more convenient DB management. It only listens on 127.0.0.1 though for security reasons, so you
+  will have to forward that port to your local machine to access it. Something like this: `ssh -L 127.0.0.1:8080:127.0.0.1:8080 user@remote -N -v`
+
 ## Original WCD/Gazelle Change Log
 The original WCD change log is available here: docs/CHANGES.txt
