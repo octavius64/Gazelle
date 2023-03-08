@@ -3,10 +3,10 @@ Gazelle is a web framework geared towards private BitTorrent trackers. Although 
 
 Forked from: https://github.com/WhatCD/Gazelle
 
-*This repo is a work in progress*
+**This repo is a work in progress**
 
 ## Goals of this Fork
-- Update the codebase and depenencies
+- Update the codebase and depenencies (PHP, MySQL, sphinxsearch, etc.)
 - Dockerize it
 - Make it easy to run for both development and production workloads
 
@@ -14,6 +14,7 @@ Forked from: https://github.com/WhatCD/Gazelle
 - Only one domain required for both the web app (Gazelle) and the BitTorrent tracker (Ocelot). Both apps use SSL by default.
     - This allows the entire system to run behind Cloudflare, which means no need to pay for SSL certs and no renewals required.
 - One central way to configure many settings and secrets which are automatically propagated to many containers in the app.
+- The `gzl_log` PHP function allows logging custom messages/variables to a separate container in debug mode (`gazelle_log_collector`).
 
 ## Deployment Instructions
 Clone submodules: `git submodule update --init`
