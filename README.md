@@ -94,6 +94,7 @@ you'll be able to follow this development workflow:
 - PhpMyAdmin container is also available for more convenient DB management. It only listens on 127.0.0.1 though for security reasons, so you
   will have to forward that port to your local machine to access it. Something like this: `ssh -L 127.0.0.1:8080:127.0.0.1:8080 user@remote -N -v`.
   This will also ensure that everything is encrypted in transit, even though it's running without SSL.
+- The script `docker/create_backup.sh` can be used to backup the database, secrets, etc.
 
 ## Original WCD/Gazelle Change Log
 The original WCD change log is available here: docs/CHANGES.txt
