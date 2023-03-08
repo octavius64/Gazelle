@@ -3,7 +3,17 @@ Gazelle is a web framework geared towards private BitTorrent trackers. Although 
 
 Forked from: https://github.com/WhatCD/Gazelle
 
-This repo is a work in progress to update the codebase and depenencies, dockerize it, and fix any bugs.
+*This repo is a work in progress*
+
+## Goals of this Fork
+- Update the codebase and depenencies
+- Dockerize it
+- Make it easy to run for both development and production workloads
+
+## Some Nice Features of this Fork
+- Only one domain required for both the web app (Gazelle) and the BitTorrent tracker (Ocelot). Both apps use SSL by default.
+    - This allows the entire system to run behind Cloudflare, which means no need to pay for SSL certs and no renewals required.
+- One central way to configure many settings and secrets which are automatically propagated to many containers in the app.
 
 ## Deployment Instructions
 Clone submodules: `git submodule update --init`
@@ -81,7 +91,8 @@ you'll be able to follow this development workflow:
 
 ## Other Tips
 - PhpMyAdmin container is also available for more convenient DB management. It only listens on 127.0.0.1 though for security reasons, so you
-  will have to forward that port to your local machine to access it. Something like this: `ssh -L 127.0.0.1:8080:127.0.0.1:8080 user@remote -N -v`
+  will have to forward that port to your local machine to access it. Something like this: `ssh -L 127.0.0.1:8080:127.0.0.1:8080 user@remote -N -v`.
+  This will also ensure that everything is encrypted in transit, even though it's running without SSL.
 
 ## Original WCD/Gazelle Change Log
 The original WCD change log is available here: docs/CHANGES.txt
