@@ -16,7 +16,7 @@ tar --numeric-owner -cf mysql_data.tar mysql_data
 echo copying all files into "$BACKUP_NAME"...
 mkdir "$BACKUP_NAME"
 mv mysql_data.tar "$BACKUP_NAME"
-cp secrets config "$BACKUP_NAME"
+cp secrets config whitelist_ips.txt "$BACKUP_NAME"
 echo "Git commit:" > "$BACKUP_NAME/git_version_info"
 echo "$(git rev-parse HEAD)" >> "$BACKUP_NAME/git_version_info"
 echo "Current time:" >> "$BACKUP_NAME/git_version_info"
