@@ -188,7 +188,8 @@ foreach ($GroupIDs as $GroupID) {
 	} else {
 		// Viewing a type that does not require grouping
 
-		list($TorrentID, $Torrent) = each($Torrents);
+		$TorrentID = array_key_first($Torrents);
+		$Torrent = $Torrents[$TorrentID];
 
 		$DisplayName = "<a href=\"torrents.php?id=$GroupID\" class=\"tooltip\" title=\"View torrent group\" dir=\"ltr\">$GroupName</a>";
 
