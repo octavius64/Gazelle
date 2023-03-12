@@ -1,0 +1,9 @@
+This is the base PHP-FPM image used for Gazelle.
+It contains all the PHP extensions and tools required for Gazelle.
+It is uploaded to Docker Hub.
+
+Note that this image isn't used as-is by Gazelle. There is another Dockerfile that builds on top of this
+image to add/edit some config, custom entrypoint, etc. But that image is very quick to build. This
+image takes a long time to build, which is why it's built separately and uploaded to Docker Hub.
+
+https://hub.docker.com/r/octavius64/php-gazelle
