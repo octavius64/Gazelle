@@ -17,9 +17,11 @@ Forked from: https://github.com/WhatCD/Gazelle
 - The `gzl_log` PHP function allows logging custom messages/variables to a separate container in debug mode (`gazelle_log_collector`).
 
 ## Deployment Instructions
+*Note that these instructions assume you're using a Linux distribution and have Docker Engine and Docker Compose installed already.*
+
 Clone submodules: `git submodule update --init`
 
-Create a file named `secrets` with key value pairs at `docker/secrets`. It should be owned by root, and permissions should be 600. Each secret must only contain alpha-numeric characters, and must be 32 characters long. Something like the following:
+Create a file named `secrets` with key value pairs at `docker/secrets`. It should be owned by root, and permissions should be 600. Each secret must only contain alpha-numeric characters, and must be 32 characters long. As a tip, you can run `cat /dev/urandom | tr -dc '[:alnum:]' | fold -w 32 | head -n10` to generate 10 random alphanumeric strings, 32 characters long each. Something like the following:
 
 ```ini
 GAZELLE_ENCKEY=5iQRiYjQmy44ofLV9OyD7k7dp7f93zy4
