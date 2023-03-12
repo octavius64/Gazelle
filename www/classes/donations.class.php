@@ -221,11 +221,11 @@ class Donations {
 	public static function expire_ranks() {
 		$QueryID = G::$DB->get_query_id();
 		G::$DB->query("
-			SELECT UserID, Rank
-			FROM users_donor_ranks
-			WHERE Rank > 1
-				AND SpecialRank != 3
-				AND RankExpirationTime < NOW() - INTERVAL 766 HOUR");
+			SELECT udr.UserID, udr.Rank
+			FROM users_donor_ranks as udr
+			WHERE udr.Rank > 1
+				AND udr.SpecialRank != 3
+				AND udr.RankExpirationTime < NOW() - INTERVAL 766 HOUR");
 				// 2 hours less than 32 days to account for schedule run times
 
 		if (G::$DB->record_count() > 0) {

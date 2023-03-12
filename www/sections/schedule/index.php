@@ -44,12 +44,12 @@ function next_biweek() {
 }
 
 function next_day() {
-	$Tomorrow = time(0, 0, 0, date('m'), date('d') + 1, date('Y'));
+	$Tomorrow = time() + 86400;
 	return date('d', $Tomorrow);
 }
 
 function next_hour() {
-	$Hour = time(date('H') + 1, 0, 0, date('m'), date('d'), date('Y'));
+	$Hour = time() + 3600;
 	return date('H', $Hour);
 }
 
