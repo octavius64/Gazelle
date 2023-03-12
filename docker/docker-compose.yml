@@ -119,6 +119,8 @@ services:
         GAZELLE_DEBUG: ${GAZELLE_DEBUG}
     depends_on:
       - gazelle_log_collector
+    environment:
+      - GAZELLE_SCHEDULE_KEY=${GAZELLE_SCHEDULE_KEY}
     volumes:
       - ../www:/var/www/html:ro
       - gazelle-config-php:/gazelle-config-php:ro
