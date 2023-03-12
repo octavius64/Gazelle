@@ -42,7 +42,8 @@ if (isset($_POST['Username'])) {
 		//Default stylesheet
 		$DB->query("
 			SELECT ID
-			FROM stylesheets");
+			FROM stylesheets
+			WHERE `Default` = '1'");
 		list($StyleID) = $DB->next_record();
 
 		//Auth key
