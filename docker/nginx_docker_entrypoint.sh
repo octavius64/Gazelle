@@ -32,25 +32,25 @@ function populate_ip_whitelist() {
 
 echo 'Generating config.php from config.template...'
 populate_ip_whitelist /home/config.template /home/whitelist_ips.txt \
-    /gazelle-config-php/config.php print_php_whitelist
+    /gazelle_config_php/config.php print_php_whitelist
 
-sed -i "s/<GAZELLE_ENCKEY>/"$GAZELLE_ENCKEY"/g" /gazelle-config-php/config.php
-sed -i "s/<GAZELLE_REPORT_PASSWORD>/"$GAZELLE_REPORT_PASSWORD"/g" /gazelle-config-php/config.php
-sed -i "s/<GAZELLE_RSS_KEY>/"$GAZELLE_RSS_KEY"/g" /gazelle-config-php/config.php
-sed -i "s/<GAZELLE_SCHEDULE_KEY>/"$GAZELLE_SCHEDULE_KEY"/g" /gazelle-config-php/config.php
-sed -i "s/<GAZELLE_SITE_PASSWORD>/"$GAZELLE_SITE_PASSWORD"/g" /gazelle-config-php/config.php
-sed -i "s/<GAZELLE_SITE_SALT>/"$GAZELLE_SITE_SALT"/g" /gazelle-config-php/config.php
-sed -i "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" /gazelle-config-php/config.php
-sed -i "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" /gazelle-config-php/config.php
+sed -i "s/<GAZELLE_ENCKEY>/"$GAZELLE_ENCKEY"/g" /gazelle_config_php/config.php
+sed -i "s/<GAZELLE_REPORT_PASSWORD>/"$GAZELLE_REPORT_PASSWORD"/g" /gazelle_config_php/config.php
+sed -i "s/<GAZELLE_RSS_KEY>/"$GAZELLE_RSS_KEY"/g" /gazelle_config_php/config.php
+sed -i "s/<GAZELLE_SCHEDULE_KEY>/"$GAZELLE_SCHEDULE_KEY"/g" /gazelle_config_php/config.php
+sed -i "s/<GAZELLE_SITE_PASSWORD>/"$GAZELLE_SITE_PASSWORD"/g" /gazelle_config_php/config.php
+sed -i "s/<GAZELLE_SITE_SALT>/"$GAZELLE_SITE_SALT"/g" /gazelle_config_php/config.php
+sed -i "s/<MYSQL_PASSWORD>/"$MYSQL_PASSWORD"/g" /gazelle_config_php/config.php
+sed -i "s/<GAZELLE_SITE_HOST>/"$GAZELLE_SITE_HOST"/g" /gazelle_config_php/config.php
 
 if [ "$GAZELLE_DEBUG" == "1" ]; then
-    sed -i "s/<DEBUG_WARNINGS>/true/g" /gazelle-config-php/config.php
-    sed -i "s/<DEBUG_MODE>/true/g" /gazelle-config-php/config.php
-    sed -i "s|<DEBUG_LOG_FILE_PATH>|/gazelle_log_pipe/log|g" /gazelle-config-php/config.php
+    sed -i "s/<DEBUG_WARNINGS>/true/g" /gazelle_config_php/config.php
+    sed -i "s/<DEBUG_MODE>/true/g" /gazelle_config_php/config.php
+    sed -i "s|<DEBUG_LOG_FILE_PATH>|/gazelle_log_pipe/log|g" /gazelle_config_php/config.php
 else
-    sed -i "s/<DEBUG_WARNINGS>/false/g" /gazelle-config-php/config.php
-    sed -i "s/<DEBUG_MODE>/false/g" /gazelle-config-php/config.php
-    sed -i "s|<DEBUG_LOG_FILE_PATH>|/dev/null|g" /gazelle-config-php/config.php
+    sed -i "s/<DEBUG_WARNINGS>/false/g" /gazelle_config_php/config.php
+    sed -i "s/<DEBUG_MODE>/false/g" /gazelle_config_php/config.php
+    sed -i "s|<DEBUG_LOG_FILE_PATH>|/dev/null|g" /gazelle_config_php/config.php
 fi
 
 echo 'Updating nginx conf...'

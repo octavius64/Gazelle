@@ -11,7 +11,7 @@ if (isset($_GET['clearcache'])) {
 	unset($_GET['clearcache']);
 }
 
-require('/gazelle-config-php/config.php'); // The config contains all site-wide configuration information as well as memcached rules
+require('/gazelle_config_php/config.php'); // The config contains all site-wide configuration information as well as memcached rules
 
 require(SERVER_ROOT.'/classes/misc.class.php'); // Require the misc class
 require(SERVER_ROOT.'/classes/cache.class.php'); // Require the caching class

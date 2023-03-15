@@ -1,6 +1,6 @@
 <?
 header('Content-type: application/opensearchdescription+xml');
-require('/gazelle-config-php/config.php');
+require('/gazelle_config_php/config.php');
 
 $SSL = ($_SERVER['SERVER_PORT'] === '443');
 

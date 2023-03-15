@@ -123,7 +123,7 @@ services:
       - GAZELLE_SCHEDULE_KEY=${GAZELLE_SCHEDULE_KEY}
     volumes:
       - ../www:/var/www/html:ro
-      - gazelle-config-php:/gazelle-config-php:ro
+      - gazelle_config_php:/gazelle_config_php:ro
       - memcached_socket:/home/memcached_socket:rw
       - gazelle_log_pipe:/gazelle_log_pipe:rw
     logging:
@@ -155,7 +155,7 @@ services:
       - GAZELLE_SITE_HOST=${GAZELLE_SITE_HOST}
     volumes:
       - ../www:/var/www/html:ro
-      - gazelle-config-php:/gazelle-config-php:rw
+      - gazelle_config_php:/gazelle_config_php:rw
     logging:
       options:
         max-size: 50m
@@ -164,7 +164,7 @@ services:
 volumes:
   db_initializer_mysql:
   db_initializer_pipe:
-  gazelle-config-php:
+  gazelle_config_php:
   gazelle_log_pipe:
   memcached_socket:
   ocelot_build:
