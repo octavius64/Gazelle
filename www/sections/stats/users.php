@@ -7,6 +7,10 @@ if (!list($Countries, $Rank, $CountryUsers, $CountryMax, $CountryMin, $LogIncrem
 	$Data = $DB->to_array();
 	$Count = $DB->record_count() - 1;
 
+	$Countries = [];
+	$Rank = [];
+	$CountryUsers = [];
+
 	if ($Count < 30) {
 		$CountryMinThreshold = $Count;
 	} else {
