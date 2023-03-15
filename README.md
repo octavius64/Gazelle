@@ -97,6 +97,8 @@ you'll be able to follow this development workflow:
   will have to forward that port to your local machine to access it. Something like this: `ssh -L 127.0.0.1:8080:127.0.0.1:8080 user@remote -N -v`.
   This will also ensure that everything is encrypted in transit, even though it's running without SSL.
 - The script `docker/create_backup.sh` can be used to backup the database, secrets, etc.
+- You can connect to the memcached socket using netcat for debugging. Connecting to a socket file works on OpenBSD netcat, not sure about others.
+  `sudo nc -U /var/lib/docker/volumes/gazelle_memcached_socket/_data/memcached.sock`. You can then enter commands like `get user_info_1` in the REPL.
 
 ## Original WCD/Gazelle Change Log
 The original WCD change log is available here: docs/CHANGES.txt
