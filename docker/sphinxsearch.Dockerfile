@@ -1,6 +1,6 @@
 FROM ubuntu:22.04
 
-RUN apt-get update; apt-get install -y sphinxsearch netcat-openbsd
+RUN apt-get update; apt-get install -y sphinxsearch netcat-openbsd; true
 
 # This is where indexes are stored
 VOLUME /var/lib/sphinxsearch
