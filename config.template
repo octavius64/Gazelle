@@ -69,9 +69,7 @@ define('STARTING_INVITES', 0); //# of invites to give to newly registered users
 define('BLOCK_TOR', false); //Set to true to block Tor users
 define('BLOCK_OPERA_MINI', false); //Set to true to block Opera Mini proxy
 define('DONOR_INVITES', 2);
-if (!defined('FEATURE_EMAIL_REENABLE')) {
-	define('FEATURE_EMAIL_REENABLE', true);
-}
+define('FEATURE_EMAIL_REENABLE', false);
 
 // User class IDs needed for automatic promotions. Found in the 'permissions' table
 // Name of class	Class ID (NOT level)
@@ -108,6 +106,7 @@ define('LOG_ENTRIES_PER_PAGE', 50);
 define('THREAD_CATALOGUE', 500); // Limit to THREAD_CATALOGUE posts per cache key.
 
 // Email delivery method and information
+define('EMAIL_ENABLE', false);
 define('EMAIL_DELIVERY_TYPE', 'local'); // should be either 'mailgun' to use mailgun services or 'local' to use a local SMTP server or relay
 define('MAILGUN_API_KEY', '');
 define('MAILGUN_API_URL', '');

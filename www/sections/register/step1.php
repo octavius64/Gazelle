@@ -25,12 +25,14 @@ if (empty($Sent)) {
 				<p>Use common sense when choosing your username. Offensive usernames will not be tolerated. <strong>Do not choose a username that can be associated with your real name.</strong> If you do so, we will not be changing it for you.</p>
 			</td>
 		</tr>
+	<? if (EMAIL_ENABLE) { ?>
 		<tr valign="top">
 			<td align="right">Email address&nbsp;</td>
 			<td align="left">
 				<input type="email" name="email" id="email" class="inputtext" placeholder="Email" value="<?=(!empty($_REQUEST['email']) ? display_str($_REQUEST['email']) : (!empty($InviteEmail) ? display_str($InviteEmail) : ''))?>" />
 			</td>
 		</tr>
+	<? } ?>
 		<tr valign="top">
 			<td align="right">Password&nbsp;</td>
 			<td align="left">
@@ -72,12 +74,14 @@ if (empty($Sent)) {
 			<td colspan="2" align="right"><input type="submit" name="submit" value="Submit" class="submit" /></td>
 		</tr>
 	</table>
-<? } else { ?>
-	An email has been sent to the address that you provided. After you confirm your email address, you will be able to log into your account.
-
-<? 		if ($NewInstall) {
-			echo "Since this is a new installation, you can log in directly without having to confirm your account.";
-		}
+<? } else {
+	if (!EMAIL_ENABLE) {
+		echo "Success! Please log into your account now.";
+	} else if ($NewInstall) {
+		echo "Since this is a new installation, you can log in directly without having to confirm your account.";
+	} else {
+		echo "An email has been sent to the address that you provided. After you confirm your email address, you will be able to log into your account.";
+	}
 } ?>
 </div>
 </form>

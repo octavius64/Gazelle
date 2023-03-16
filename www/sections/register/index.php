@@ -13,6 +13,12 @@ include(SERVER_ROOT.'/classes/validate.class.php');
 
 $Val = NEW VALIDATE;
 
+// Use a dummy email if emails are disabled
+if (!EMAIL_ENABLE) {
+	$_POST['email'] = 'none@example.com';
+	$_REQUEST['email'] = $_POST['email'];
+}
+
 if (!empty($_REQUEST['confirm'])) {
 	// Confirm registration
 	$DB->query("
@@ -100,7 +106,7 @@ if (!empty($_REQUEST['confirm'])) {
 			} else {
 				$NewInstall = false;
 				$Class = USER;
-				$Enabled = '0';
+				$Enabled = EMAIL_ENABLE ? '0' : '1';
 			}
 
 			$IPcc = Tools::geoip($_SERVER['REMOTE_ADDR']);
@@ -245,7 +251,9 @@ if (!empty($_REQUEST['confirm'])) {
 			$TPL->set('SITE_NAME', SITE_NAME);
 			$TPL->set('SITE_URL', SITE_URL);
 
-			Misc::send_email($_REQUEST['email'], 'New account confirmation at '.SITE_NAME, $TPL->get(), 'noreply', '');
+			if (EMAIL_ENABLE) {
+				Misc::send_email($_REQUEST['email'], 'New account confirmation at '.SITE_NAME, $TPL->get(), 'noreply', '');
+			}
 			Tracker::update_tracker('add_user', array('id' => $UserID, 'passkey' => $torrent_pass));
 			$Sent = 1;
 
