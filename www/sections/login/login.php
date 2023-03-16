@@ -39,7 +39,7 @@ if (strtotime($BannedUntil) < time()) {
 			<td></td>
 			<td>
 				<input type="checkbox" id="keeplogged" name="keeplogged" value="1" checked="checked" />
-				<label for="keeplogged">Remember me</label>
+				<label for="keeplogged">Keep me logged in</label>
 			</td>
 			<td><input type="submit" name="login" value="Log in" class="submit" /></td>
 		</tr>
