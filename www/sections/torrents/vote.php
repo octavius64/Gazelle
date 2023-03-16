@@ -6,9 +6,13 @@
 	$UpVotes	= $GroupVotes['Ups'];
 	$DownVotes	= $TotalVotes - $UpVotes;
 
-	// Work around divide by zero DIVIDE_BY_ZERO
-	if ($TotalVotes == 0) {
-		$TotalVotes = 1;
+	$UpVotePercentage = '0';
+	if ($UpVotes == 0) {
+		$UpVotePercentage = '0';
+	} else if ($TotalVotes == 0) {
+		$UpVotePercentage = '∞';
+	} else {
+		$UpVotePercentage = number_format($UpVotes / $TotalVotes * 100, 1);
 	}
 
 	$Voted = isset($UserVotes[$GroupID]) ? $UserVotes[$GroupID]['Type'] : false;
@@ -25,7 +29,7 @@
 		<br /><br />
 		<span class="tooltip_interactive" title="&lt;span style=&quot;font-weight: bold;&quot;&gt;Score: <?=number_format($Score * 100, 4)?>&lt;/span&gt;&lt;br /&gt;&lt;br /&gt;This is the lower bound of the binomial confidence interval &lt;a href=&quot;wiki.php?action=article&amp;id=1037&quot;&gt;described here&lt;/a&gt;, multiplied by 100." data-title-plain="Score: <?=number_format($Score * 100, 4)?>. This is the lower bound of the binomial confidence interval described in the Favorite Album Votes wiki article, multiplied by 100.">Score: <span class="favoritecount"><?=number_format($Score * 100, 1)?></span></span>
 		&nbsp; | &nbsp;
-		<span class="favoritecount"><?=number_format($UpVotes / $TotalVotes * 100, 1)?>%</span> positive
+		<span class="favoritecount"><?=$UpVotePercentage?>%</span> positive
 		<br /><br />
 		<span id="upvoted"<?=(($Voted != 'Up') ? ' class="hidden"' : '')?>>You have upvoted.<br /><br /></span>
 		<span id="downvoted"<?=(($Voted != 'Down') ? ' class="hidden"' : '')?>>You have downvoted.<br /><br /></span>
