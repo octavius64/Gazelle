@@ -26,7 +26,7 @@ class CommentsView {
 	 * @param bool $Tools Whether or not to show [Edit], [Report] etc.
 	 * @todo Find a better way to pass the page (artist, collages, requests, torrents) to this function than extracting it from $Link
 	 */
-	function render_comment($AuthorID, $PostID, $Body, $AddedTime, $EditedUserID, $EditedTime, $Link, $Unread = false, $Header = '', $Tools = true) {
+	static function render_comment($AuthorID, $PostID, $Body, $AddedTime, $EditedUserID, $EditedTime, $Link, $Unread = false, $Header = '', $Tools = true) {
 		$UserInfo = Users::user_info($AuthorID);
 		$Header = '<strong>' . Users::format_username($AuthorID, true, true, true, true, false) . '</strong> ' . time_diff($AddedTime) . $Header;
 ?>
