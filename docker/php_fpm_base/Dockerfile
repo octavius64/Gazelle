@@ -6,4 +6,4 @@ ADD https://github.com/mlocati/docker-php-extension-installer/releases/latest/do
 RUN chmod +x /usr/local/bin/install-php-extensions && \
     install-php-extensions memcache mcrypt gd mysqli
 
-RUN apt update && apt install -y procps && apt purge -y --auto-remove
+RUN apt-get update; apt-get install -y procps; apt purge -y --auto-remove
