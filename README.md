@@ -19,6 +19,8 @@ Forked from: https://github.com/WhatCD/Gazelle
 ## Deployment Instructions
 *Note that these instructions assume you're using a Linux distribution and have Docker Engine and Docker Compose installed already.*
 
+*Make sure you are using the Docker Compose plugin. Run `docker compose version` to see if it's already installed. The old `docker-compose` is not supported.*
+
 Clone submodules: `git submodule update --init`
 
 Create a file named `secrets` with key value pairs at `docker/secrets`. It should be owned by root, and permissions should be 600. Each secret must only contain alpha-numeric characters, and must be 32 characters long. As a tip, you can run `cat /dev/urandom | tr -dc '[:alnum:]' | fold -w 32 | head -n10` to generate 10 random alphanumeric strings, 32 characters long each. Something like the following:
