@@ -273,7 +273,7 @@ class TorrentSearch {
 			$TotalCount = $SphQLResult->get_meta('total_found');
 			$this->SphResults = $SphQLResult->collect('groupid');
 			$GroupIDs = legacy_array_keys($this->SphResults);
-			$GroupCount = count($GroupIDs);
+			$GroupCount = legacy_count($GroupIDs);
 			while ($SphQLResult->get_meta('total') < $TotalCount && $GroupCount < $this->PageSize) {
 				// Make sure we get $PageSize results, or all of them if there are less than $PageSize hits
 				$this->SphQL->where('groupid', $GroupIDs, true);
@@ -283,12 +283,12 @@ class TorrentSearch {
 				}
 				$this->SphResults += $SphQLResult->collect('groupid');
 				$GroupIDs = legacy_array_keys($this->SphResults);
-				$GroupCount = count($GroupIDs);
+				$GroupCount = legacy_count($GroupIDs);
 			}
 			if ($GroupCount > $this->PageSize) {
 				$this->SphResults = legacy_array_slice($this->SphResults, 0, $this->PageSize, true);
 			}
-			$this->NumResults = count($this->SphResults);
+			$this->NumResults = legacy_count($this->SphResults);
 		} else {
 			$this->NumResults = (int)$SphQLResult->get_meta('total_found');
 			if ($this->GroupResults) {
@@ -556,10 +556,10 @@ class TorrentSearch {
 	 */
 	private function search_year($Term) {
 		$Years = explode('-', $Term);
-		if (count($Years) === 1 && is_number($Years[0])) {
+		if (legacy_count($Years) === 1 && is_number($Years[0])) {
 			// Exact year
 			$this->SphQL->where('year', $Years[0]);
-		} elseif (count($Years) === 2) {
+		} elseif (legacy_count($Years) === 2) {
 			if (empty($Years[0]) && is_number($Years[1])) {
 				// Range: 0 - 2005
 				$this->SphQL->where_lt('year', $Years[1], true);
@@ -658,7 +658,7 @@ class TorrentSearch {
 	 * Get torrent group info and remove any torrents that don't match
 	 */
 	private function process_results() {
-		if (count($this->SphResults) == 0) {
+		if (legacy_count($this->SphResults) == 0) {
 			return;
 		}
 		$this->Groups = Torrents::get_groups($this->SphResults);
@@ -683,7 +683,7 @@ class TorrentSearch {
 				$AllTorrents += array_fill_keys(legacy_array_keys($Group['Torrents']), $GroupID);
 			}
 		}
-		$TorrentCount = count($AllTorrents);
+		$TorrentCount = legacy_count($AllTorrents);
 		$this->SphQLTor = new SphinxqlQuery();
 		$this->SphQLTor->select('id')->from('torrents, delta');
 		foreach ($this->UsedTorrentFields as $Field => $Term) {

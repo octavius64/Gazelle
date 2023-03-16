@@ -88,7 +88,7 @@ if (!$NumResults) {
 		$NewTorrentCount = $DB->record_count();
 
 		$GroupIDs = $DB->collect('GroupID', false);
-		if (count($GroupIDs) > 0) {
+		if (legacy_count($GroupIDs) > 0) {
 			$TorrentList = Torrents::get_groups($GroupIDs);
 		} else {
 			$TorrentList = array();
@@ -112,7 +112,7 @@ if (!$NumResults) {
 				unset($ExtendedArtists[2]);
 				unset($ExtendedArtists[3]);
 				$DisplayName .= Artists::display_artists($ExtendedArtists);
-			} elseif (count($Artists) > 0) {
+			} elseif (legacy_count($Artists) > 0) {
 				$DisplayName .= Artists::display_artists(array('1' => $Artists));
 			}
 			$DisplayName .= "<a href=\"torrents.php?id=$GroupID\" class=\"tooltip\" title=\"View torrent group\" dir=\"ltr\">$GroupName</a>";
@@ -127,7 +127,7 @@ if (!$NumResults) {
 
 			// Start an output buffer, so we can store this output in $TorrentTable
 			ob_start();
-			if (count($Torrents) > 1 || $GroupCategoryID == 1) {
+			if (legacy_count($Torrents) > 1 || $GroupCategoryID == 1) {
 ?>
 			<tr class="group discog<?=$SnatchedGroupClass?>" id="group_<?=$CollageID?><?=$GroupID?>">
 				<td class="center">

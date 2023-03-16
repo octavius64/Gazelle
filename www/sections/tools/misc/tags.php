@@ -254,7 +254,7 @@ if (isset($_GET['tag']) || isset($_GET['replace'])) {
 			</td>
 		</tr>
 <?
-			if (count($AffectedTorrents)) {
+			if (legacy_count($AffectedTorrents)) {
 				foreach ($AffectedTorrents as $Row) {
 					echo "\n\t\t<tr><td>$Row</td></tr>";
 				}
@@ -266,7 +266,7 @@ if (isset($_GET['tag']) || isset($_GET['replace'])) {
 			</td>
 		</tr>
 <?
-			if (count($AffectedRequests)) {
+			if (legacy_count($AffectedRequests)) {
 				foreach ($AffectedRequests as $Row) {
 					echo "\n\t\t<tr><td>$Row</td></tr>";
 				}

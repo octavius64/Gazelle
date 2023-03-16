@@ -38,7 +38,7 @@ if (!$NewRequest) {
 		$GroupID = $Request['GroupID'];
 
 		$VoteArray = Requests::get_votes_array($RequestID);
-		$VoteCount = count($VoteArray['Voters']);
+		$VoteCount = legacy_count($VoteArray['Voters']);
 
 		$LogCue = $Request['LogCue'];
 		$NeedCue = (strpos($LogCue, 'Cue') !== false);
@@ -291,7 +291,7 @@ View::show_header(($NewRequest ? 'Create a request' : 'Edit a request'), 'reques
 				<tr id="formats_tr">
 					<td class="label">Allowed formats</td>
 					<td>
-						<input type="checkbox" name="all_formats" id="toggle_formats" onchange="Toggle('formats', <?=($NewRequest ? 1 : 0)?>);"<?=!empty($FormatArray) && (count($FormatArray) === count($Formats)) ? ' checked="checked"' : ''; ?> /><label for="toggle_formats"> All</label>
+						<input type="checkbox" name="all_formats" id="toggle_formats" onchange="Toggle('formats', <?=($NewRequest ? 1 : 0)?>);"<?=!empty($FormatArray) && (legacy_count($FormatArray) === legacy_count($Formats)) ? ' checked="checked"' : ''; ?> /><label for="toggle_formats"> All</label>
 						<span style="float: right;"><strong>NB: You cannot require a log or cue unless FLAC is an allowed format</strong></span>
 <?		foreach ($Formats as $Key => $Val) {
 			if ($Key % 8 === 0) {
@@ -305,7 +305,7 @@ View::show_header(($NewRequest ? 'Create a request' : 'Edit a request'), 'reques
 				<tr id="bitrates_tr">
 					<td class="label">Allowed bitrates</td>
 					<td>
-						<input type="checkbox" name="all_bitrates" id="toggle_bitrates" onchange="Toggle('bitrates', <?=($NewRequest ? 1 : 0)?>);"<?=(!empty($BitrateArray) && (count($BitrateArray) === count($Bitrates)) ? ' checked="checked"' : '')?> /><label for="toggle_bitrates"> All</label>
+						<input type="checkbox" name="all_bitrates" id="toggle_bitrates" onchange="Toggle('bitrates', <?=($NewRequest ? 1 : 0)?>);"<?=(!empty($BitrateArray) && (legacy_count($BitrateArray) === legacy_count($Bitrates)) ? ' checked="checked"' : '')?> /><label for="toggle_bitrates"> All</label>
 <?		foreach ($Bitrates as $Key => $Val) {
 			if ($Key % 8 === 0) {
 				echo '<br />';
@@ -319,7 +319,7 @@ View::show_header(($NewRequest ? 'Create a request' : 'Edit a request'), 'reques
 				<tr id="media_tr">
 					<td class="label">Allowed media</td>
 					<td>
-						<input type="checkbox" name="all_media" id="toggle_media" onchange="Toggle('media', <?=($NewRequest ? 1 : 0)?>);"<?=(!empty($MediaArray) && (count($MediaArray) === count($Media)) ? ' checked="checked"' : '')?> /><label for="toggle_media"> All</label>
+						<input type="checkbox" name="all_media" id="toggle_media" onchange="Toggle('media', <?=($NewRequest ? 1 : 0)?>);"<?=(!empty($MediaArray) && (legacy_count($MediaArray) === legacy_count($Media)) ? ' checked="checked"' : '')?> /><label for="toggle_media"> All</label>
 <?		foreach ($Media as $Key => $Val) {
 			if ($Key % 8 === 0) {
 				echo '<br />';

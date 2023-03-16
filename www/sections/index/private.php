@@ -18,7 +18,7 @@ if (!$News = $Cache->get_value('news')) {
 	$Cache->cache_value('news_latest_title', $News[0][1], 0);
 }
 
-if (count($News) > 0) {
+if (legacy_count($News) > 0) {
 	if ($LoggedUser['LastReadNews'] != $News[0][0]) {
 		$Cache->begin_transaction("user_info_heavy_$UserID");
 		$Cache->update_row(false, array('LastReadNews' => $News[0][0]));
@@ -75,7 +75,7 @@ if (($SBlogReadTime = $Cache->get_value('staff_blog_read_'.$LoggedUser['ID'])) =
 ?>
 			<ul class="stats nobullet">
 <?
-$End = min(count($Blog), 5);
+$End = min(legacy_count($Blog), 5);
 for ($i = 0; $i < $End; $i++) {
 	list($BlogID, $Author, $Title, $Body, $BlogTime) = $Blog[$i];
 	$BlogTime = strtotime($BlogTime);
@@ -114,8 +114,8 @@ if (($Blog = $Cache->get_value('blog')) === false) {
 ?>
 			<ul class="stats nobullet">
 <?
-if (count($Blog) < 5) {
-	$Limit = count($Blog);
+if (legacy_count($Blog) < 5) {
+	$Limit = legacy_count($Blog);
 } else {
 	$Limit = 5;
 }
@@ -323,7 +323,7 @@ if ($TopicID) {
 			$Votes[$Key] = $Value;
 		}
 
-		for ($i = 1, $il = count($Answers); $i <= $il; ++$i) {
+		for ($i = 1, $il = legacy_count($Answers); $i <= $il; ++$i) {
 			if (!isset($Votes[$i])) {
 				$Votes[$i] = 0;
 			}
@@ -425,7 +425,7 @@ if (!is_array($Recommend) || !is_array($Recommend_artists)) {
 	$Cache->cache_value('recommend_artists', $Recommend_artists, 1209600);
 }
 
-if (count($Recommend) >= 4) {
+if (legacy_count($Recommend) >= 4) {
 $Cache->increment('usage_index');
 ?>
 	<div class="box" id="recommended">

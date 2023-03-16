@@ -83,7 +83,7 @@ class Tools {
 	 */
 	public static function get_host_by_ip($IP) {
 		$testar = explode('.', $IP);
-		if (count($testar) != 4) {
+		if (legacy_count($testar) != 4) {
 			return $IP;
 		}
 		for ($i = 0; $i < 4; ++$i) {
@@ -131,12 +131,12 @@ class Tools {
 	public static function lookup_ip($IP) {
 		//TODO: use the G::$Cache
 		$Output = explode(' ',shell_exec('host -W 1 '.escapeshellarg($IP)));
-		if (count($Output) == 1 && empty($Output[0])) {
+		if (legacy_count($Output) == 1 && empty($Output[0])) {
 			//No output at all implies the command failed
 			return '';
 		}
 
-		if (count($Output) != 5) {
+		if (legacy_count($Output) != 5) {
 			return false;
 		} else {
 			return trim($Output[4]);

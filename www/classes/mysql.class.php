@@ -429,7 +429,7 @@ class DB_MYSQL {
 				$Warnings[] = 'Code ' . $e->errno . ': ' . display_str($e->message);
 			} while ($e->next());
 		}
-		$this->Queries[count($this->Queries) - 1][2] = $Warnings;
+		$this->Queries[legacy_count($this->Queries) - 1][2] = $Warnings;
 	}
 }
 ?>

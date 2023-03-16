@@ -31,7 +31,7 @@ if (!list($Question,$Answers,$Votes,$Featured,$Closed) = $Cache->get_value('poll
 		$Votes[$Key] = $Value;
 	}
 
-	for ($i = 1, $il = count($Answers); $i <= $il; ++$i) {
+	for ($i = 1, $il = legacy_count($Answers); $i <= $il; ++$i) {
 		if (!isset($Votes[$i])) {
 			$Votes[$i] = 0;
 		}

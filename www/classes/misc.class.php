@@ -249,7 +249,7 @@ class Misc {
 		// Bump this topic to head of the cache
 		list($Forum,,, $Stickies) = G::$Cache->get_value("forums_$ForumID");
 		if (!empty($Forum)) {
-			if (count($Forum) == TOPICS_PER_PAGE && $Stickies < TOPICS_PER_PAGE) {
+			if (legacy_count($Forum) == TOPICS_PER_PAGE && $Stickies < TOPICS_PER_PAGE) {
 				array_pop($Forum);
 			}
 			G::$DB->query("
@@ -423,7 +423,7 @@ class Misc {
 				$TagIDs[$Tag['ID']] = $Tag['Name'];
 			}
 		}
-		if (count($TagNames) > 0) {
+		if (legacy_count($TagNames) > 0) {
 			$QueryID = G::$DB->get_query_id();
 			G::$DB->query("
 				SELECT ID, Name

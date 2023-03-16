@@ -112,10 +112,10 @@ function get_group_info($GroupID, $Return = true, $RevisionID = 0, $PersonalProp
 				t.ID");
 
 		$TorrentList = $DB->to_array('ID', MYSQLI_ASSOC);
-		if (count($TorrentList) === 0 && $ApiCall == false) {
+		if (legacy_count($TorrentList) === 0 && $ApiCall == false) {
 			header('Location: log.php?search='.(empty($_GET['torrentid']) ? "Group+$GroupID" : "Torrent+$_GET[torrentid]"));
 			die();
-		} elseif (count($TorrentList) === 0 && $ApiCall == true) {
+		} elseif (legacy_count($TorrentList) === 0 && $ApiCall == true) {
 			return null;
 		}
 		if (in_array(0, $DB->collect('Seeders'))) {
@@ -284,7 +284,7 @@ function build_torrents_table($Cache, $DB, $LoggedUser, $GroupID, $GroupName, $G
 	$Reported = false;
 	unset($ReportedTimes);
 	$Reports = Torrents::get_reports($TorrentID);
-	$NumReports = count($Reports);
+	$NumReports = legacy_count($Reports);
 
 	if ($NumReports > 0) {
 		$Reported = true;

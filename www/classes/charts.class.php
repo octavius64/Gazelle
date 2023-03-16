@@ -177,7 +177,7 @@ class POLL_GRAPH extends GOOGLE_CHARTS {
 	}
 
 	public function generate() {
-		$Count = count($this->Data);
+		$Count = legacy_count($this->Data);
 		$Height = (30 * $Count) + 20;
 		$Max = max($this->Data);
 		$Sum = array_sum($this->Data);

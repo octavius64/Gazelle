@@ -66,7 +66,7 @@ Thanks!";
 	Misc::send_pm($UserID, 0, "Re-seed request for torrent $Name", $Request);
 }
 
-$NumUsers = count($usersToNotify);
+$NumUsers = legacy_count($usersToNotify);
 
 View::show_header();
 ?>

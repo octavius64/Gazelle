@@ -175,7 +175,7 @@ foreach ($TopVotes as $GroupID => $Group) {
 			unset($ExtendedArtists[2]);
 			unset($ExtendedArtists[3]);
 			$DisplayName .= Artists::display_artists($ExtendedArtists);
-	} elseif (count($Artists) > 0) {
+	} elseif (legacy_count($Artists) > 0) {
 			$DisplayName .= Artists::display_artists(array('1' => $Artists));
 	}
 
@@ -189,7 +189,7 @@ foreach ($TopVotes as $GroupID => $Group) {
 	// Start an output buffer, so we can store this output in $TorrentTable
 	ob_start();
 
-	if (count($Torrents) > 1 || $GroupCategoryID == 1) {
+	if (legacy_count($Torrents) > 1 || $GroupCategoryID == 1) {
 		// Grouped torrents
 		$GroupSnatched = false;
 		foreach ($Torrents as &$Torrent) {
@@ -261,7 +261,7 @@ foreach ($TopVotes as $GroupID => $Group) {
 			//Get report info, use the cache if available, if not, add to it.
 			$Reported = false;
 			$Reports = Torrents::get_reports($TorrentID);
-			if (count($Reports) > 0) {
+			if (legacy_count($Reports) > 0) {
 				$Reported = true;
 			}
 			if ($Torrent['Remastered'] && !$Torrent['RemasterYear']) {
@@ -307,7 +307,7 @@ foreach ($TopVotes as $GroupID => $Group) {
 		</tr>
 <?
 		}
-	} else { //if (count($Torrents) > 1 || $GroupCategoryID == 1)
+	} else { //if (legacy_count($Torrents) > 1 || $GroupCategoryID == 1)
 		// Viewing a type that does not require grouping
 
 		$TorrentID = array_key_first($Torrents);
@@ -364,7 +364,7 @@ foreach ($TopVotes as $GroupID => $Group) {
 			<td class="number_column"><?=number_format($Torrent['Leechers'])?></td>
 		</tr>
 <?
-	} //if (count($Torrents) > 1 || $GroupCategoryID == 1)
+	} //if (legacy_count($Torrents) > 1 || $GroupCategoryID == 1)
 	$TorrentTable .= ob_get_clean();
 }
 ?>
@@ -384,7 +384,7 @@ if ($TopVotes === false) { ?>
 		<td colspan="7" class="center">Server is busy processing another top list request. Please try again in a minute.</td>
 	</tr>
 <?
-} elseif (count($TopVotes) === 0) { ?>
+} elseif (legacy_count($TopVotes) === 0) { ?>
 	<tr>
 		<td colspan="7" class="center">No torrents were found that meet your criteria.</td>
 	</tr>

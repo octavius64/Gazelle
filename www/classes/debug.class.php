@@ -25,12 +25,12 @@ class DEBUG {
 			$Reason[] = number_format($Micro, 3).' ms';
 		}
 
-		$Errors = count($this->get_errors());
+		$Errors = legacy_count($this->get_errors());
 		if ($Errors > MAX_ERRORS && !defined('ERROR_EXCEPTION')) {
 			$Reason[] = $Errors.' PHP errors';
 		}
 		/*
-		$Queries = count($this->get_queries());
+		$Queries = legacy_count($this->get_queries());
 		if ($Queries > MAX_QUERIES && !defined('QUERY_EXCEPTION')) {
 			$Reason[] = $Queries.' Queries';
 		}
@@ -45,7 +45,7 @@ class DEBUG {
 		$DBWarningCount = 0;
 		foreach ($Queries as $Query) {
 			if (!empty($Query[2])) {
-				$DBWarningCount += count($Query[2]);
+				$DBWarningCount += legacy_count($Query[2]);
 			}
 		}
 		if ($DBWarningCount) {
@@ -349,7 +349,7 @@ class DEBUG {
 ?>
 	<table class="layout" width="100%">
 		<tr>
-			<td align="left"><strong><a href="#" onclick="$(this).parents('.layout').next('#debug_include').gtoggle(); return false;" class="brackets">View</a> <?=number_format(count($Includes))?> Includes:</strong></td>
+			<td align="left"><strong><a href="#" onclick="$(this).parents('.layout').next('#debug_include').gtoggle(); return false;" class="brackets">View</a> <?=number_format(legacy_count($Includes))?> Includes:</strong></td>
 		</tr>
 	</table>
 	<table id="debug_include" class="debug_table hidden" width="100%">
@@ -478,7 +478,7 @@ class DEBUG {
 ?>
 	<table class="layout" width="100%">
 		<tr>
-			<td align="left"><strong><a href="#" onclick="$('#debug_ocelot').gtoggle(); return false;" class="brackets">View</a> <?=number_format(count($OcelotRequests))?> Ocelot requests:</strong></td>
+			<td align="left"><strong><a href="#" onclick="$('#debug_ocelot').gtoggle(); return false;" class="brackets">View</a> <?=number_format(legacy_count($OcelotRequests))?> Ocelot requests:</strong></td>
 		</tr>
 	</table>
 	<table id="debug_ocelot" class="debug_table hidden" width="100%">
@@ -509,7 +509,7 @@ class DEBUG {
 		if (empty($CacheKeys)) {
 			return;
 		}
-		$Header = ' '.number_format(count($CacheKeys))." $Header:";
+		$Header = ' '.number_format(legacy_count($CacheKeys))." $Header:";
 
 ?>
 	<table class="layout" width="100%">
@@ -545,7 +545,7 @@ class DEBUG {
 ?>
 	<table class="layout" width="100%">
 		<tr>
-			<td align="left"><strong><a href="#" onclick="$(this).parents('.layout').next('#debug_error').gtoggle(); return false;" class="brackets">View</a> <?=number_format(count($Errors))?> Errors:</strong></td>
+			<td align="left"><strong><a href="#" onclick="$(this).parents('.layout').next('#debug_error').gtoggle(); return false;" class="brackets">View</a> <?=number_format(legacy_count($Errors))?> Errors:</strong></td>
 		</tr>
 	</table>
 	<table id="debug_error" class="debug_table hidden" width="100%">
@@ -578,7 +578,7 @@ class DEBUG {
 		if (empty($Queries)) {
 			return;
 		}
-		$Header = ' '.number_format(count($Queries))." $Header:";
+		$Header = ' '.number_format(legacy_count($Queries))." $Header:";
 ?>
 	<table class="layout" width="100%">
 		<tr>
@@ -612,7 +612,7 @@ class DEBUG {
 		if (empty($Queries)) {
 			return;
 		}
-		$Header = ' '.number_format(count($Queries))." $Header:";
+		$Header = ' '.number_format(legacy_count($Queries))." $Header:";
 ?>
 	<table class="layout" width="100%">
 		<tr>
@@ -641,7 +641,7 @@ class DEBUG {
 			}
 			$Vars = $this->LoggedVars;
 		}
-		$Header = ' '.number_format(count($Vars))." $Header:";
+		$Header = ' '.number_format(legacy_count($Vars))." $Header:";
 
 ?>
 	<table class="layout" width="100%">
@@ -654,7 +654,7 @@ class DEBUG {
 		foreach ($Vars as $ID => $Var) {
 			$Key = array_key_first($Var);
 			$Data = $Var[$Key];
-			$Size = is_countable($Data['data']) ? count($Data['data']) : 1;
+			$Size = is_countable($Data['data']) ? legacy_count($Data['data']) : 1;
 ?>
 		<tr>
 			<td align="left" class="debug_info debug_loggedvars_name">

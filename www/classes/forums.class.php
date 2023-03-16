@@ -304,11 +304,11 @@ class Forums {
 			$PermittedForums[] = DONOR_FORUM;
 		}
 		$SQL = "((f.MinClassRead <= '" . G::$LoggedUser['Class'] . "'";
-		if (count($RestrictedForums)) {
+		if (legacy_count($RestrictedForums)) {
 			$SQL .= " AND f.ID NOT IN ('" . legacy_implode("', '", $RestrictedForums) . "')";
 		}
 		$SQL .= ')';
-		if (count($PermittedForums)) {
+		if (legacy_count($PermittedForums)) {
 			$SQL .= " OR f.ID IN ('" . legacy_implode("', '", $PermittedForums) . "')";
 		}
 		$SQL .= ')';

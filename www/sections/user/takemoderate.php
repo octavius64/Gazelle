@@ -422,7 +422,7 @@ if ($Donor != $Cur['Donor'] && check_perms('users_give_donor')) {
 $OldClasses = $Cur['SecondaryClasses'] ? explode(',', $Cur['SecondaryClasses']) : array();
 $DroppedClasses = array_diff($OldClasses, $SecondaryClasses);
 $AddedClasses   = array_diff($SecondaryClasses, $OldClasses);
-if (count($DroppedClasses) > 0) {
+if (legacy_count($DroppedClasses) > 0) {
 	$ClassChanges = array();
 	foreach ($DroppedClasses as $PermID) {
 		$ClassChanges[] = $Classes[$PermID]['Name'];
@@ -432,14 +432,14 @@ if (count($DroppedClasses) > 0) {
 		DELETE FROM users_levels
 		WHERE UserID = '$UserID'
 			AND PermissionID IN (".legacy_implode(',', $DroppedClasses).')');
-	if (count($SecondaryClasses) > 0) {
+	if (legacy_count($SecondaryClasses) > 0) {
 		$LightUpdates['ExtraClasses'] = array_fill_keys($SecondaryClasses, 1);
 	} else {
 		$LightUpdates['ExtraClasses'] = array();
 	}
 	$DeleteKeys = true;
 }
-if (count($AddedClasses) > 0) {
+if (legacy_count($AddedClasses) > 0) {
 	$ClassChanges = array();
 	foreach ($AddedClasses as $PermID) {
 		$ClassChanges[] = $Classes[$PermID]['Name'];
@@ -804,7 +804,7 @@ if (empty($UpdateSet) && empty($EditSummary)) {
 	}
 }
 
-if (count($TrackerUserUpdates) > 1) {
+if (legacy_count($TrackerUserUpdates) > 1) {
 	Tracker::update_tracker('update_user', $TrackerUserUpdates);
 }
 

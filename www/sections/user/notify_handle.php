@@ -30,7 +30,7 @@ if ($_POST['artists'.$FormID]) {
 			$ParsedArtists[] = db_string(trim($Artist));
 		}
 	}
-	if (count($ParsedArtists) > 0) {
+	if (legacy_count($ParsedArtists) > 0) {
 		$ArtistList = '|'.legacy_implode('|', $ParsedArtists).'|';
 		$HasFilter = true;
 	}

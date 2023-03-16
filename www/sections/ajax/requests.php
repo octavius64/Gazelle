@@ -108,14 +108,14 @@ $EnableNegation = false; // Sphinx needs at least one positive search condition 
 
 if (!empty($_GET['formats'])) {
 	$FormatArray = $_GET['formats'];
-	if (count($FormatArray) !== count($Formats)) {
+	if (legacy_count($FormatArray) !== legacy_count($Formats)) {
 		$FormatNameArray = array();
 		foreach ($FormatArray as $Index => $MasterIndex) {
 			if (isset($Formats[$MasterIndex])) {
 				$FormatNameArray[$Index] = '"' . strtr(Sphinxql::sph_escape_string($Formats[$MasterIndex]), '-.', '  ') . '"';
 			}
 		}
-		if (count($FormatNameArray) >= 1) {
+		if (legacy_count($FormatNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['formats_strict'])) {
 				$SearchString = '(' . legacy_implode(' | ', $FormatNameArray) . ')';
@@ -129,7 +129,7 @@ if (!empty($_GET['formats'])) {
 
 if (!empty($_GET['media'])) {
 	$MediaArray = $_GET['media'];
-	if (count($MediaArray) !== count($Media)) {
+	if (legacy_count($MediaArray) !== legacy_count($Media)) {
 		$MediaNameArray = array();
 		foreach ($MediaArray as $Index => $MasterIndex) {
 			if (isset($Media[$MasterIndex])) {
@@ -137,7 +137,7 @@ if (!empty($_GET['media'])) {
 			}
 		}
 
-		if (count($MediaNameArray) >= 1) {
+		if (legacy_count($MediaNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['media_strict'])) {
 				$SearchString = '(' . legacy_implode(' | ', $MediaNameArray) . ')';
@@ -151,7 +151,7 @@ if (!empty($_GET['media'])) {
 
 if (!empty($_GET['bitrates'])) {
 	$BitrateArray = $_GET['bitrates'];
-	if (count($BitrateArray) !== count($Bitrates)) {
+	if (legacy_count($BitrateArray) !== legacy_count($Bitrates)) {
 		$BitrateNameArray = array();
 		foreach ($BitrateArray as $Index => $MasterIndex) {
 			if (isset($Bitrates[$MasterIndex])) {
@@ -159,7 +159,7 @@ if (!empty($_GET['bitrates'])) {
 			}
 		}
 
-		if (count($BitrateNameArray) >= 1) {
+		if (legacy_count($BitrateNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['bitrate_strict'])) {
 				$SearchString = '(' . legacy_implode(' | ', $BitrateNameArray) . ')';
@@ -255,13 +255,13 @@ if (isset($SearchWords)) {
 
 if (!empty($_GET['filter_cat'])) {
 	$CategoryArray = legacy_array_keys($_GET['filter_cat']);
-	if (count($CategoryArray) !== count($Categories)) {
+	if (legacy_count($CategoryArray) !== legacy_count($Categories)) {
 		foreach ($CategoryArray as $Key => $Index) {
 			if (!isset($Categories[$Index - 1])) {
 				unset($CategoryArray[$Key]);
 			}
 		}
-		if (count($CategoryArray) >= 1) {
+		if (legacy_count($CategoryArray) >= 1) {
 			$SphQL->where('categoryid', $CategoryArray);
 		}
 	}
@@ -269,13 +269,13 @@ if (!empty($_GET['filter_cat'])) {
 
 if (!empty($_GET['releases'])) {
 	$ReleaseArray = $_GET['releases'];
-	if (count($ReleaseArray) !== count($ReleaseTypes)) {
+	if (legacy_count($ReleaseArray) !== legacy_count($ReleaseTypes)) {
 		foreach ($ReleaseArray as $Index => $Value) {
 			if (!isset($ReleaseTypes[$Value])) {
 				unset($ReleaseArray[$Index]);
 			}
 		}
-		if (count($ReleaseArray) >= 1) {
+		if (legacy_count($ReleaseArray) >= 1) {
 			$SphQL->where('releasetype', $ReleaseArray);
 		}
 	}
@@ -311,7 +311,7 @@ $NumResults = (int)$SphQLResult->get_meta('total_found');
 if ($NumResults > 0) {
 	$SphRequests = $SphQLResult->to_array('id');
 	if ($OrderBy === 'random') {
-		$NumResults = count($RequestIDs);
+		$NumResults = legacy_count($RequestIDs);
 	}
 	if ($NumResults > REQUESTS_PER_PAGE) {
 		if (($Page - 1) * REQUESTS_PER_PAGE > $NumResults) {

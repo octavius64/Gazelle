@@ -162,7 +162,7 @@ echo $Pages;
 		</tr>
 <?
 // Check that we have content to process
-if (count($Forum) === 0) {
+if (legacy_count($Forum) === 0) {
 ?>
 		<tr>
 			<td colspan="4">
@@ -240,7 +240,7 @@ if (count($Forum) === 0) {
 		<td>
 			<span style="float: left;" class="last_topic">
 <?
-		$TopicLength = 75 - (2 * count($PageLinks));
+		$TopicLength = 75 - (2 * legacy_count($PageLinks));
 		unset($PageLinks);
 		$Title = display_str($Title);
 		$DisplayTitle = $Title;

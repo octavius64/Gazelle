@@ -15,12 +15,12 @@ if (!is_number($GroupID) || !$GroupID) {
 	error(0);
 }
 
-if (count($Images) != count($Summaries)) {
+if (legacy_count($Images) != legacy_count($Summaries)) {
 	error('Missing an image or a summary');
 }
 
 $Changed = false;
-for ($i = 0; $i < count($Images); $i++) {
+for ($i = 0; $i < legacy_count($Images); $i++) {
 	$Image = $Images[$i];
 	$Summary = $Summaries[$i];
 

@@ -8,7 +8,7 @@
 	</div>
 <?
 	}
-	if (count($UserSessions) > 1) {
+	if (legacy_count($UserSessions) > 1) {
 		foreach ($UserSessions as $ThisSessionID => $Session) {
 			if ($ThisSessionID != $SessionID) {
 				$LastActive = $Session;

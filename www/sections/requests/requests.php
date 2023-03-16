@@ -108,14 +108,14 @@ $EnableNegation = false; // Sphinx needs at least one positive search condition 
 
 if (!empty($_GET['formats'])) {
 	$FormatArray = $_GET['formats'];
-	if (count($FormatArray) !== count($Formats)) {
+	if (legacy_count($FormatArray) !== legacy_count($Formats)) {
 		$FormatNameArray = array();
 		foreach ($FormatArray as $Index => $MasterIndex) {
 			if (isset($Formats[$MasterIndex])) {
 				$FormatNameArray[$Index] = '"' . strtr(Sphinxql::sph_escape_string($Formats[$MasterIndex]), '-.', '  ') . '"';
 			}
 		}
-		if (count($FormatNameArray) >= 1) {
+		if (legacy_count($FormatNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['formats_strict'])) {
 				$SearchString = '(' . legacy_implode(' | ', $FormatNameArray) . ')';
@@ -129,7 +129,7 @@ if (!empty($_GET['formats'])) {
 
 if (!empty($_GET['media'])) {
 	$MediaArray = $_GET['media'];
-	if (count($MediaArray) !== count($Media)) {
+	if (legacy_count($MediaArray) !== legacy_count($Media)) {
 		$MediaNameArray = array();
 		foreach ($MediaArray as $Index => $MasterIndex) {
 			if (isset($Media[$MasterIndex])) {
@@ -137,7 +137,7 @@ if (!empty($_GET['media'])) {
 			}
 		}
 
-		if (count($MediaNameArray) >= 1) {
+		if (legacy_count($MediaNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['media_strict'])) {
 				$SearchString = '(' . legacy_implode(' | ', $MediaNameArray) . ')';
@@ -151,7 +151,7 @@ if (!empty($_GET['media'])) {
 
 if (!empty($_GET['bitrates'])) {
 	$BitrateArray = $_GET['bitrates'];
-	if (count($BitrateArray) !== count($Bitrates)) {
+	if (legacy_count($BitrateArray) !== legacy_count($Bitrates)) {
 		$BitrateNameArray = array();
 		foreach ($BitrateArray as $Index => $MasterIndex) {
 			if (isset($Bitrates[$MasterIndex])) {
@@ -159,7 +159,7 @@ if (!empty($_GET['bitrates'])) {
 			}
 		}
 
-		if (count($BitrateNameArray) >= 1) {
+		if (legacy_count($BitrateNameArray) >= 1) {
 			$EnableNegation = true;
 			if (!empty($_GET['bitrate_strict'])) {
 				$SearchString = '(' . legacy_implode(' | ', $BitrateNameArray) . ')';
@@ -259,13 +259,13 @@ if (isset($SearchWords)) {
 
 if (!empty($_GET['filter_cat'])) {
 	$CategoryArray = legacy_array_keys($_GET['filter_cat']);
-	if (count($CategoryArray) !== count($Categories)) {
+	if (legacy_count($CategoryArray) !== legacy_count($Categories)) {
 		foreach ($CategoryArray as $Key => $Index) {
 			if (!isset($Categories[$Index - 1])) {
 				unset($CategoryArray[$Key]);
 			}
 		}
-		if (count($CategoryArray) >= 1) {
+		if (legacy_count($CategoryArray) >= 1) {
 			$SphQL->where('categoryid', $CategoryArray);
 		}
 	}
@@ -273,13 +273,13 @@ if (!empty($_GET['filter_cat'])) {
 
 if (!empty($_GET['releases'])) {
 	$ReleaseArray = $_GET['releases'];
-	if (count($ReleaseArray) !== count($ReleaseTypes)) {
+	if (legacy_count($ReleaseArray) !== legacy_count($ReleaseTypes)) {
 		foreach ($ReleaseArray as $Index => $Value) {
 			if (!isset($ReleaseTypes[$Value])) {
 				unset($ReleaseArray[$Index]);
 			}
 		}
-		if (count($ReleaseArray) >= 1) {
+		if (legacy_count($ReleaseArray) >= 1) {
 			$SphQL->where('releasetype', $ReleaseArray);
 		}
 	}
@@ -315,7 +315,7 @@ $NumResults = (int)$SphQLResult->get_meta('total_found');
 if ($NumResults > 0) {
 	$SphRequests = $SphQLResult->to_array('id');
 	if ($OrderBy === 'random') {
-		$NumResults = count($SphRequests);
+		$NumResults = legacy_count($SphRequests);
 	}
 	if ($NumResults > REQUESTS_PER_PAGE) {
 		if (($Page - 1) * REQUESTS_PER_PAGE > $NumResults) {
@@ -427,7 +427,7 @@ View::show_header($Title, 'requests');
 			<tr id="release_list">
 				<td class="label">Release types</td>
 				<td>
-					<input type="checkbox" id="toggle_releases" onchange="Toggle('releases', 0);"<?=(!$Submitted || !empty($ReleaseArray) && count($ReleaseArray) === count($ReleaseTypes) ? ' checked="checked"' : '') ?> /> <label for="toggle_releases">All</label>
+					<input type="checkbox" id="toggle_releases" onchange="Toggle('releases', 0);"<?=(!$Submitted || !empty($ReleaseArray) && legacy_count($ReleaseArray) === legacy_count($ReleaseTypes) ? ' checked="checked"' : '') ?> /> <label for="toggle_releases">All</label>
 <?
 		$i = 0;
 		foreach ($ReleaseTypes as $Key => $Val) {
@@ -447,7 +447,7 @@ View::show_header($Title, 'requests');
 			<tr id="format_list">
 				<td class="label">Formats</td>
 				<td>
-					<input type="checkbox" id="toggle_formats" onchange="Toggle('formats', 0);"<?=(!$Submitted || !empty($FormatArray) && count($FormatArray) === count($Formats) ? ' checked="checked"' : '') ?> />
+					<input type="checkbox" id="toggle_formats" onchange="Toggle('formats', 0);"<?=(!$Submitted || !empty($FormatArray) && legacy_count($FormatArray) === legacy_count($Formats) ? ' checked="checked"' : '') ?> />
 					<label for="toggle_formats">All</label>
 					<input type="checkbox" id="formats_strict" name="formats_strict"<?=(!empty($_GET['formats_strict']) ? ' checked="checked"' : '')?> />
 					<label for="formats_strict">Only specified</label>
@@ -466,7 +466,7 @@ View::show_header($Title, 'requests');
 			<tr id="bitrate_list">
 				<td class="label">Bitrates</td>
 				<td>
-					<input type="checkbox" id="toggle_bitrates" onchange="Toggle('bitrates', 0);"<?=(!$Submitted || !empty($BitrateArray) && count($BitrateArray) === count($Bitrates) ? ' checked="checked"' : '')?> />
+					<input type="checkbox" id="toggle_bitrates" onchange="Toggle('bitrates', 0);"<?=(!$Submitted || !empty($BitrateArray) && legacy_count($BitrateArray) === legacy_count($Bitrates) ? ' checked="checked"' : '')?> />
 					<label for="toggle_bitrates">All</label>
 					<input type="checkbox" id="bitrate_strict" name="bitrate_strict"<?=(!empty($_GET['bitrate_strict']) ? ' checked="checked"' : '') ?> />
 					<label for="bitrate_strict">Only specified</label>
@@ -487,7 +487,7 @@ View::show_header($Title, 'requests');
 			<tr id="media_list">
 				<td class="label">Media</td>
 				<td>
-					<input type="checkbox" id="toggle_media" onchange="Toggle('media', 0);"<?=(!$Submitted || !empty($MediaArray) && count($MediaArray) === count($Media) ? ' checked="checked"' : '')?> />
+					<input type="checkbox" id="toggle_media" onchange="Toggle('media', 0);"<?=(!$Submitted || !empty($MediaArray) && legacy_count($MediaArray) === legacy_count($Media) ? ' checked="checked"' : '')?> />
 					<label for="toggle_media">All</label>
 					<input type="checkbox" id="media_strict" name="media_strict"<?=(!empty($_GET['media_strict']) ? ' checked="checked"' : '')?> />
 					<label for="media_strict">Only specified</label>

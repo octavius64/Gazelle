@@ -16,7 +16,7 @@ $DB->query("
 
 $GroupIDs = $DB->collect('GroupID');
 $Contributors = $DB->to_pair('GroupID', 'UserID', false);
-if (count($GroupIDs) > 0) {
+if (legacy_count($GroupIDs) > 0) {
 	$TorrentList = Torrents::get_groups($GroupIDs);
 	$UserVotes = Votes::get_user_votes($LoggedUser['ID']);
 } else {
@@ -28,7 +28,7 @@ if (count($GroupIDs) > 0) {
 $Collage = array();
 $TorrentTable = '';
 
-$NumGroups = count($TorrentList);
+$NumGroups = legacy_count($TorrentList);
 $NumGroupsByUser = 0;
 $TopArtists = array();
 $UserAdditions = array();
@@ -84,7 +84,7 @@ foreach ($GroupIDs as $GroupID) {
 		unset($ExtendedArtists[2]);
 		unset($ExtendedArtists[3]);
 		$DisplayName .= Artists::display_artists($ExtendedArtists);
-	} elseif (count($GroupArtists) > 0) {
+	} elseif (legacy_count($GroupArtists) > 0) {
 		$DisplayName .= Artists::display_artists(array('1' => $GroupArtists));
 	}
 
@@ -100,7 +100,7 @@ foreach ($GroupIDs as $GroupID) {
 	// Start an output buffer, so we can store this output in $TorrentTable
 	ob_start();
 
-	if (count($Torrents) > 1 || $GroupCategoryID == 1) {
+	if (legacy_count($Torrents) > 1 || $GroupCategoryID == 1) {
 		// Grouped torrents
 		$ShowGroups = !(!empty($LoggedUser['TorrentGrouping']) && $LoggedUser['TorrentGrouping'] == 1);
 ?>
@@ -245,7 +245,7 @@ foreach ($GroupIDs as $GroupID) {
 		unset($ExtendedArtists[2]);
 		unset($ExtendedArtists[3]);
 		$DisplayName .= Artists::display_artists($ExtendedArtists, false);
-	} elseif (count($GroupArtists) > 0) {
+	} elseif (legacy_count($GroupArtists) > 0) {
 		$DisplayName .= Artists::display_artists(array('1' => $GroupArtists), false);
 	}
 	$DisplayName .= $GroupName;
@@ -422,10 +422,10 @@ foreach ($ZIPOptions as $Option) {
 			<ul class="stats nobullet">
 				<li>Torrents: <?=number_format($NumGroups)?></li>
 <? if (!empty($TopArtists)) { ?>
-				<li>Artists: <?=number_format(count($TopArtists))?></li>
+				<li>Artists: <?=number_format(legacy_count($TopArtists))?></li>
 <? } ?>
 				<li>Subscribers: <?=number_format((int)$Subscribers)?></li>
-				<li>Built by <?=number_format(count($UserAdditions))?> user<?=(count($UserAdditions) > 1 ? 's' : '')?></li>
+				<li>Built by <?=number_format(legacy_count($UserAdditions))?> user<?=(legacy_count($UserAdditions) > 1 ? 's' : '')?></li>
 				<li>Last updated: <?=time_diff($Updated)?></li>
 			</ul>
 		</div>

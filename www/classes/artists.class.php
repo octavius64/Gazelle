@@ -31,7 +31,7 @@ class Artists {
 				$DBs[] = $GroupID;
 			}
 		}
-		if (count($DBs) > 0) {
+		if (legacy_count($DBs) > 0) {
 			$IDs = legacy_implode(',', $DBs);
 			if (empty($IDs)) {
 				$IDs = "null";
@@ -103,11 +103,11 @@ class Artists {
 			$Conductors		= isset($Artists[5]) ? $Artists[5] : null;
 			$DJs			= isset($Artists[6]) ? $Artists[6] : null;
 
-			if ((count($MainArtists) + count($Conductors) + count($DJs) == 0) && (count($Composers) == 0)) {
+			if ((legacy_count($MainArtists) + legacy_count($Conductors) + legacy_count($DJs) == 0) && (legacy_count($Composers) == 0)) {
 				return '';
 			}
 			// Various Composers is not needed and is ugly and should die
-			switch (count($Composers)) {
+			switch (legacy_count($Composers)) {
 				case 0:
 					break;
 				case 1:
@@ -118,13 +118,13 @@ class Artists {
 					break;
 			}
 
-			if ((count($Composers) > 0) && (count($Composers) < 3) && (count($MainArtists) > 0)) {
+			if ((legacy_count($Composers) > 0) && (legacy_count($Composers) < 3) && (legacy_count($MainArtists) > 0)) {
 				$link .= ' performed by ';
 			}
 
 			$ComposerStr = $link;
 
-			switch (count($MainArtists)) {
+			switch (legacy_count($MainArtists)) {
 				case 0:
 					break;
 				case 1:
@@ -137,8 +137,8 @@ class Artists {
 					$link .= 'Various Artists';
 			}
 
-			/*if (!empty($Guests) &&  (count($MainArtists) + count($Composers) > 0) && (count($MainArtists) + count($Composers) + count($Conductors) < 3)) {
-				switch (count($Guests)) {
+			/*if (!empty($Guests) &&  (legacy_count($MainArtists) + legacy_count($Composers) > 0) && (legacy_count($MainArtists) + legacy_count($Composers) + legacy_count($Conductors) < 3)) {
+				switch (legacy_count($Guests)) {
 					case 1:
 						$link .= ' with '.Artists::display_artist($Guests[0], $MakeLink, $Escape);
 						break;
@@ -148,10 +148,10 @@ class Artists {
 				}
 			}*/
 
-			if ((count($Conductors) > 0) && (count($MainArtists) + count($Composers) > 0) && (count($Composers) < 3 || count($MainArtists) > 0)) {
+			if ((legacy_count($Conductors) > 0) && (legacy_count($MainArtists) + legacy_count($Composers) > 0) && (legacy_count($Composers) < 3 || legacy_count($MainArtists) > 0)) {
 				$link .= ' under ';
 			}
-			switch (count($Conductors)) {
+			switch (legacy_count($Conductors)) {
 				case 0:
 					break;
 				case 1:
@@ -164,14 +164,14 @@ class Artists {
 					$link .= ' Various Conductors';
 			}
 
-			if ((count($Composers) > 0) && (count($MainArtists) + count($Conductors) > 3) && (count($MainArtists) > 1) && (count($Conductors) > 1)) {
+			if ((legacy_count($Composers) > 0) && (legacy_count($MainArtists) + legacy_count($Conductors) > 3) && (legacy_count($MainArtists) > 1) && (legacy_count($Conductors) > 1)) {
 				$link = $ComposerStr . 'Various Artists';
-			} elseif ((count($Composers) > 2) && (count($MainArtists) + count($Conductors) == 0)) {
+			} elseif ((legacy_count($Composers) > 2) && (legacy_count($MainArtists) + legacy_count($Conductors) == 0)) {
 				$link = 'Various Composers';
 			}
 
 			// DJs override everything else
-			switch (count($DJs)) {
+			switch (legacy_count($DJs)) {
 				case 0:
 					break;
 				case 1:

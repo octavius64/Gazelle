@@ -322,7 +322,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
 				GROUP BY fpv.Vote");
 
 			$StaffVotesTmp = $DB->to_array();
-			$StaffCount = count($StaffNames);
+			$StaffCount = legacy_count($StaffNames);
 
 			$StaffVotes = array();
 			foreach ($StaffVotesTmp as $StaffVote) {
@@ -349,7 +349,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
 			if ($ForumID == STAFF_FORUM) {
 ?>
 			<br />
-			<strong>Votes:</strong> <?=number_format($StaffCount - count($StaffNames))?> / <?=$StaffCount?> current staff, <?=number_format($TotalVotes)?> total
+			<strong>Votes:</strong> <?=number_format($StaffCount - legacy_count($StaffNames))?> / <?=$StaffCount?> current staff, <?=number_format($TotalVotes)?> total
 			<br />
 			<strong>Missing votes:</strong> <?=legacy_implode(", ", $StaffNames); echo "\n";?>
 			<br /><br />
@@ -370,7 +370,7 @@ if ($ThreadInfo['NoPoll'] == 0) {
 					<input type="hidden" name="large" value="1" />
 					<input type="hidden" name="topicid" value="<?=$ThreadID?>" />
 					<ul style="list-style: none;" id="poll_options">
-<?		foreach ($Answers as $i => $Answer) { //for ($i = 1, $il = count($Answers); $i <= $il; $i++) { ?>
+<?		foreach ($Answers as $i => $Answer) { //for ($i = 1, $il = legacy_count($Answers); $i <= $il; $i++) { ?>
 						<li>
 							<input type="radio" name="vote" id="answer_<?=$i?>" value="<?=$i?>" />
 							<label for="answer_<?=$i?>"><?=display_str($Answer)?></label>
@@ -419,7 +419,7 @@ if ($ThreadInfo['StickyPostID']) {
 	if ($ThreadInfo['StickyPostID'] != $Thread[0]['ID']) {
 		array_unshift($Thread, $ThreadInfo['StickyPost']);
 	}
-	if ($ThreadInfo['StickyPostID'] != $Thread[count($Thread) - 1]['ID']) {
+	if ($ThreadInfo['StickyPostID'] != $Thread[legacy_count($Thread) - 1]['ID']) {
 		$Thread[] = $ThreadInfo['StickyPost'];
 	}
 }

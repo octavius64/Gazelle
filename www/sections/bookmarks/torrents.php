@@ -64,7 +64,7 @@ foreach ($GroupIDs as $GroupID) {
 			unset($ExtendedArtists[2]);
 			unset($ExtendedArtists[3]);
 			$DisplayName = Artists::display_artists($ExtendedArtists);
-	} elseif (count($Artists) > 0) {
+	} elseif (legacy_count($Artists) > 0) {
 			$DisplayName = Artists::display_artists(array('1' => $Artists));
 	} else {
 		$DisplayName = '';
@@ -80,7 +80,7 @@ foreach ($GroupIDs as $GroupID) {
 
 	// Start an output buffer, so we can store this output in $TorrentTable
 	ob_start();
-	if (count($Torrents) > 1 || $GroupCategoryID == 1) {
+	if (legacy_count($Torrents) > 1 || $GroupCategoryID == 1) {
 			// Grouped torrents
 			$ShowGroups = !(!empty($LoggedUser['TorrentGrouping']) && $LoggedUser['TorrentGrouping'] === 1);
 ?>
@@ -220,7 +220,7 @@ foreach ($GroupIDs as $GroupID) {
 		unset($ExtendedArtists[2]);
 		unset($ExtendedArtists[3]);
 		$DisplayName .= Artists::display_artists($ExtendedArtists, false);
-	} elseif (count($Artists) > 0) {
+	} elseif (legacy_count($Artists) > 0) {
 		$DisplayName .= Artists::display_artists(array('1' => $Artists), false);
 	}
 	$DisplayName .= $GroupName;
@@ -265,14 +265,14 @@ View::show_header($Title, 'browse,collage');
 			<a href="bookmarks.php?type=artists" class="brackets">Artists</a>
 			<a href="bookmarks.php?type=collages" class="brackets">Collages</a>
 			<a href="bookmarks.php?type=requests" class="brackets">Requests</a>
-<? if (count($TorrentList) > 0) { ?>
+<? if (legacy_count($TorrentList) > 0) { ?>
 			<br /><br />
 			<a href="bookmarks.php?action=remove_snatched&amp;auth=<?=$LoggedUser['AuthKey']?>" class="brackets" onclick="return confirm('Are you sure you want to remove the bookmarks for all items you\'ve snatched?');">Remove snatched</a>
 			<a href="bookmarks.php?action=edit&amp;type=torrents" class="brackets">Manage torrents</a>
 <? } ?>
 		</div>
 	</div>
-<? if (count($TorrentList) === 0) { ?>
+<? if (legacy_count($TorrentList) === 0) { ?>
 	<div class="box pad" align="center">
 		<h2>You have not bookmarked any torrents.</h2>
 	</div>
@@ -286,7 +286,7 @@ View::show_header($Title, 'browse,collage');
 			<div class="head"><strong>Stats</strong></div>
 			<ul class="stats nobullet">
 				<li>Torrent groups: <?=$NumGroups?></li>
-				<li>Artists: <?=count($ArtistCount)?></li>
+				<li>Artists: <?=legacy_count($ArtistCount)?></li>
 			</ul>
 		</div>
 		<div class="box box_tags">
@@ -302,7 +302,7 @@ View::show_header($Title, 'browse,collage');
 			<div class="pad">
 <?
 	$Indent = "\t\t\t\t";
-	if (count($ArtistCount) > 0) {
+	if (legacy_count($ArtistCount) > 0) {
 		echo "$Indent<ol style=\"padding-left: 5px;\">\n";
 		uasort($ArtistCount, 'compare');
 		$i = 0;

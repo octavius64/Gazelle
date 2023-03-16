@@ -25,7 +25,7 @@ if ($Type == "resolve") {
         json_error("Invalid resolution option");
     }
 
-    if (is_array($IDs) && count($IDs) == 0) {
+    if (is_array($IDs) && legacy_count($IDs) == 0) {
         json_error("You must select at least one reuqest to use this option");
     } else if (!is_array($IDs) && !is_number($IDs)) {
         json_error("You must select at least 1 request");

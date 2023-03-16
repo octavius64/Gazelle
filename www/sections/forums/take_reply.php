@@ -167,7 +167,7 @@ if ($ThreadInfo['LastPostAuthorID'] == $LoggedUser['ID'] && ((!check_perms('site
 		// if we're bumping from an older page
 		} else {
 			// Remove the last thread from the index
-			if (count($Forum) == TOPICS_PER_PAGE && $Stickies < TOPICS_PER_PAGE) {
+			if (legacy_count($Forum) == TOPICS_PER_PAGE && $Stickies < TOPICS_PER_PAGE) {
 				array_pop($Forum);
 			}
 			// Never know if we get a page full of stickies...

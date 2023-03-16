@@ -20,7 +20,7 @@ class Subscriptions {
 		$Matches = array();
 		preg_match_all('/\[quote(?:=(.*)(?:\|.*)?)?]|\[\/quote]/iU', $Body, $Matches, PREG_SET_ORDER);
 
-		if (count($Matches)) {
+		if (legacy_count($Matches)) {
 			$Usernames = array();
 			$Level = 0;
 			foreach ($Matches as $M) {

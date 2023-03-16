@@ -228,7 +228,7 @@ class MASS_USER_TORRENTS_TABLE_VIEW {
 				|| !empty($ExtendedArtists[5]) || !empty($ExtendedArtists[6])) {
 			unset($ExtendedArtists[2], $ExtendedArtists[3]);
 			$DisplayName = Artists::display_artists($ExtendedArtists, true, false);
-		} elseif (count($Artists) > 0) {
+		} elseif (legacy_count($Artists) > 0) {
 			$DisplayName = Artists::display_artists(array('1'=>$Artists), true, false);
 		}
 		if ($VanityHouse) {

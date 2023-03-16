@@ -87,7 +87,7 @@ $History = $DB->to_array();
 $Current['Email'] = $CurrentEmail['Email'];
 $Current['StartTime'] = $History[0]['Time'];
 $Current['CurrentIP'] = $CurrentEmail['IP'];
-$Current['IP'] = $History[(count($History) - 1)]['IP'];
+$Current['IP'] = $History[(legacy_count($History) - 1)]['IP'];
 
 // Matches for current email
 if ($CurrentEmail['Usernames'] != '') {
@@ -107,7 +107,7 @@ if ($CurrentEmail['Usernames'] != '') {
 }
 
 // Email history records
-if (count($History) === 1) {
+if (legacy_count($History) === 1) {
 	$Invite['Email'] = $History[0]['Email'];
 	$Invite['EndTime'] = $Joined;
 	$Invite['AccountAge'] = date(time() + time() - strtotime($Joined)); // Same as EndTime but without ' ago'
@@ -158,7 +158,7 @@ if (count($History) === 1) {
 // Clean up arrays
 if ($Old) {
 	$Old = array_reverse(array_reverse($Old));
-	$LastOld = count($Old) - 1;
+	$LastOld = legacy_count($Old) - 1;
 	if ($Old[$LastOld]['StartTime'] != $Invite['EndTime']) {
 		// Make sure the timeline is intact (invite email was used as email for the account in the beginning)
 		$Old[$LastOld + 1]['Email'] = $Invite['Email'];

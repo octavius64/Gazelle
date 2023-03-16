@@ -27,7 +27,7 @@ foreach ($Results as $GroupID => $FlacID) {
 	extract(Torrents::array_group($Group));
 
 	$JsonArtists = array();
-	if (count($Artists) > 0) {
+	if (legacy_count($Artists) > 0) {
 		foreach ($Artists as $Artist) {
 			$JsonArtists[] = array(
 				'id' => (int)$Artist['id'],

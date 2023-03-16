@@ -63,7 +63,7 @@ class Torrents {
 			}
 		}
 		// Make sure there's something in $GroupIDs, otherwise the SQL will break
-		if (count($GroupIDs) === 0) {
+		if (legacy_count($GroupIDs) === 0) {
 			return array();
 		}
 
@@ -75,7 +75,7 @@ class Torrents {
 		Update self::array_group(), too
 		*/
 
-		if (count($NotFound) > 0) {
+		if (legacy_count($NotFound) > 0) {
 			$IDs = legacy_implode(',', legacy_array_keys($NotFound));
 			$NotFound = array();
 			$QueryID = G::$DB->get_query_id();
@@ -673,7 +673,7 @@ class Torrents {
 			if (!empty($Data['RemasterTitle'])) {
 				$EditionInfo[] = $Data['RemasterTitle'];
 			}
-			if (count($EditionInfo)) {
+			if (legacy_count($EditionInfo)) {
 				$Info[] = legacy_implode(' ', $EditionInfo);
 			}
 		}

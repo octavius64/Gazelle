@@ -58,7 +58,7 @@ if (isset($_GET['forums']) && is_array($_GET['forums'])) {
 			$ForumArray[] = $Forum;
 		}
 	}
-	if (count($ForumArray) > 0) {
+	if (legacy_count($ForumArray) > 0) {
 		$SearchForums = legacy_implode(', ', $ForumArray);
 	}
 }

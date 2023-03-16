@@ -47,7 +47,7 @@ class Testing {
 					$IsClass = true;
 				} else if ($IsClass && $Token[0] == T_STRING) {
 					$ReflectionClass = new ReflectionClass($Token[1]);
-					if (count(self::get_testable_methods($ReflectionClass))) {
+					if (legacy_count(self::get_testable_methods($ReflectionClass))) {
 						self::$Classes[$Token[1]] = new ReflectionClass($Token[1]);
 					}
 					$IsTestable = false;

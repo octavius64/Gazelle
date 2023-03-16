@@ -61,7 +61,7 @@ if (!list($Question, $Answers, $Votes, $Featured, $Closed) = $Cache->get_value("
 		$Votes[$Key] = $Value;
 	}
 
-	for ($i = 1, $il = count($Answers); $i <= $il; ++$i) {
+	for ($i = 1, $il = legacy_count($Answers); $i <= $il; ++$i) {
 		if (!isset($Votes[$i])) {
 			$Votes[$i] = 0;
 		}
@@ -90,7 +90,7 @@ if (!isset($_POST['vote']) || !is_number($_POST['vote'])) {
 	<input type="hidden" name="auth" value="<?=$LoggedUser['AuthKey']?>" />
 	<input type="hidden" name="large" value="<?=display_str($_POST['large'])?>" />
 	<input type="hidden" name="topicid" value="<?=$TopicID?>" />
-<?	for ($i = 1, $il = count($Answers); $i <= $il; $i++) { ?>
+<?	for ($i = 1, $il = legacy_count($Answers); $i <= $il; $i++) { ?>
 	<input type="radio" name="vote" id="answer_<?=$i?>" value="<?=$i?>" />
 	<label for="answer_<?=$i?>"><?=display_str($Answers[$i])?></label><br />
 <?	} ?>
@@ -128,7 +128,7 @@ if (!isset($_POST['vote']) || !is_number($_POST['vote'])) {
 		<ul class="poll nobullet">
 <?
 		if ($ForumID != STAFF_FORUM) {
-			for ($i = 1, $il = count($Answers); $i <= $il; $i++) {
+			for ($i = 1, $il = legacy_count($Answers); $i <= $il; $i++) {
 				if (!empty($Votes[$i]) && $TotalVotes > 0) {
 					$Ratio = $Votes[$i] / $MaxVotes;
 					$Percent = $Votes[$i] / $TotalVotes;

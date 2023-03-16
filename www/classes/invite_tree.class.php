@@ -181,7 +181,7 @@ class INVITE_TREE {
 
 				$ClassStrings[] = $LastClass;
 			}
-			if (count($ClassStrings) > 1) {
+			if (legacy_count($ClassStrings) > 1) {
 				array_pop($ClassStrings);
 				echo legacy_implode(', ', $ClassStrings);
 				echo ' and '.$LastClass;

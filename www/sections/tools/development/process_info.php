@@ -16,7 +16,7 @@ $Debug->log_var($PIDs, 'PIDs');
 		</colgroup>
 		<tr class="colhead_dark">
 			<td colspan="2">
-				<?=count($PIDs) . ' processes'?>
+				<?=legacy_count($PIDs) . ' processes'?>
 			</td>
 		</tr>
 <?

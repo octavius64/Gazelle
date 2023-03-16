@@ -171,12 +171,12 @@ function sqltime($timestamp = false) {
 
 function validDate($DateString) {
 	$DateTime = explode(' ', $DateString);
-	if (count($DateTime) != 2) {
+	if (legacy_count($DateTime) != 2) {
 		return false;
 	}
 	list($Date, $Time) = $DateTime;
 	$SplitTime = explode(':', $Time);
-	if (count($SplitTime) != 3) {
+	if (legacy_count($SplitTime) != 3) {
 		return false;
 	}
 	list($H, $M, $S) = $SplitTime;
@@ -184,7 +184,7 @@ function validDate($DateString) {
 	if ($M != 0 && !(is_number($M) && $M < 60 && $M >= 0)) { return false; }
 	if ($S != 0 && !(is_number($S) && $S < 60 && $S >= 0)) { return false; }
 	$SplitDate = explode('-', $Date);
-	if (count($SplitDate) != 3) {
+	if (legacy_count($SplitDate) != 3) {
 		return false;
 	}
 	list($Y, $M, $D) = $SplitDate;

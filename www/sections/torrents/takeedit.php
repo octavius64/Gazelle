@@ -105,7 +105,7 @@ if ($Properties['UnknownRelease'] && !($Remastered == '1' && !$RemasterYear) && 
 	}
 }
 
-$Validate->SetFields('type', '1', 'number', 'Not a valid type.', array('maxlength' => count($Categories), 'minlength' => 1));
+$Validate->SetFields('type', '1', 'number', 'Not a valid type.', array('maxlength' => legacy_count($Categories), 'minlength' => 1));
 switch ($Type) {
 	case 'Music':
 		if (!empty($Properties['Remastered']) && !$Properties['UnknownRelease']) {

@@ -321,7 +321,7 @@ if ($Hour != $NextHour || $_GET['runhour'] || isset($argv[2])) {
 
 		$UserIDs = $DB->collect('ID');
 
-		if (count($UserIDs) > 0) {
+		if (legacy_count($UserIDs) > 0) {
 			$DB->query("
 				UPDATE users_main
 				SET PermissionID = ".$L['To']."
@@ -365,7 +365,7 @@ if ($Hour != $NextHour || $_GET['runhour'] || isset($argv[2])) {
 		$DB->query($Query);
 		$UserIDs = $DB->collect('ID');
 
-		if (count($UserIDs) > 0) {
+		if (legacy_count($UserIDs) > 0) {
 			$DB->query("
 				UPDATE users_main
 				SET PermissionID = ".$L['From']."
@@ -492,7 +492,7 @@ if ($Hour != $NextHour || $_GET['runhour'] || isset($argv[2])) {
 			AND m.can_leech = '1'");
 	$Users = $DB->to_pair('torrent_pass', 'ID');
 
-	if (count($Users) > 0) {
+	if (legacy_count($Users) > 0) {
 		$Subject = 'Leeching Disabled';
 		$Message = 'You have downloaded more than 10 GB while on Ratio Watch. Your leeching privileges have been disabled. Please reread the rules and refer to this guide on how to improve your ratio ' . site_url() . 'wiki.php?action=article&amp;id=110';
 		foreach ($Users as $TorrentPass => $UserID) {
@@ -652,7 +652,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 				AND m.can_leech = '0'
 				AND m.Enabled = '1'");
 	$OffRatioWatch = $DB->collect('ID');
-	if (count($OffRatioWatch) > 0) {
+	if (legacy_count($OffRatioWatch) > 0) {
 		$DB->query("
 			UPDATE users_info AS ui
 				JOIN users_main AS um ON um.ID = ui.UserID
@@ -685,7 +685,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 					AND i.RatioWatchEnds != '0000-00-00 00:00:00'
 					AND m.Enabled = '1'");
 	$OffRatioWatch = $DB->collect('ID');
-	if (count($OffRatioWatch) > 0) {
+	if (legacy_count($OffRatioWatch) > 0) {
 		$DB->query("
 			UPDATE users_info AS ui
 				JOIN users_main AS um ON um.ID = ui.UserID
@@ -720,7 +720,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 			AND m.can_leech = '1'");
 	$OnRatioWatch = $DB->collect('ID');
 
-	if (count($OnRatioWatch) > 0) {
+	if (legacy_count($OnRatioWatch) > 0) {
 		$DB->query("
 			UPDATE users_info AS i
 				JOIN users_main AS m ON m.ID = i.UserID
@@ -778,7 +778,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 				AND m.can_leech != '0'");
 
 	$UserIDs = $DB->collect('ID');
-	if (count($UserIDs) > 0) {
+	if (legacy_count($UserIDs) > 0) {
 		$DB->query("
 			UPDATE users_info AS i
 				JOIN users_main AS m ON m.ID = i.UserID
@@ -952,7 +952,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 	$IDs = $DB->collect('ID');
 	$ForumIDs = $DB->collect('ForumID');
 
-	if (count($IDs) > 0) {
+	if (legacy_count($IDs) > 0) {
 		$LockIDs = legacy_implode(',', $IDs);
 		$DB->query("
 			UPDATE forums_topics
@@ -1000,7 +1000,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 			OR
 			(t.Time < '".time_minus(3600 * 24 * 2)."' AND t.last_action = 0)");
 	$Torrents = $DB->to_array(false, MYSQLI_NUM, false);
-	echo 'Found '.count($Torrents)." inactive torrents to be deleted.\n";
+	echo 'Found '.legacy_count($Torrents)." inactive torrents to be deleted.\n";
 
 	$LogEntries = $DeleteNotes = array();
 
@@ -1044,7 +1044,7 @@ if (!$NoDaily && $Day != $NextDay || $_GET['runday']) {
 	}
 	unset($DeleteNotes);
 
-	if (count($LogEntries) > 0) {
+	if (legacy_count($LogEntries) > 0) {
 		$Values = "('".legacy_implode("', '$sqltime'), ('", $LogEntries) . "', '$sqltime')";
 		$DB->query("
 			INSERT INTO log (Message, Time)
@@ -1402,7 +1402,7 @@ if ($BiWeek != $NextBiWeek || $_GET['runbiweek']) {
 					AND um.Invites < 4)
 				)");
 	$UserIDs = $DB->collect('ID');
-	if (count($UserIDs) > 0) {
+	if (legacy_count($UserIDs) > 0) {
 		foreach ($UserIDs as $UserID) {
 				$Cache->begin_transaction("user_info_heavy_$UserID");
 				$Cache->update_row(false, array('Invites' => '+1'));
@@ -1445,7 +1445,7 @@ if ($BiWeek != $NextBiWeek || $_GET['runbiweek']) {
 						AND um.Invites < 4)
 					)');
 		$UserIDs = $DB->collect('ID');
-		if (count($UserIDs) > 0) {
+		if (legacy_count($UserIDs) > 0) {
 			foreach ($UserIDs as $UserID) {
 					$Cache->begin_transaction("user_info_heavy_$UserID");
 					$Cache->update_row(false, array('Invites' => '+1'));

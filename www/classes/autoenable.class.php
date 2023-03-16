@@ -100,7 +100,7 @@ class AutoEnable {
         $UserInfo = array();
         $IDs = (!is_array($IDs)) ? [$IDs] : $IDs;
 
-        if (count($IDs) == 0) {
+        if (legacy_count($IDs) == 0) {
             error(404);
         }
 
@@ -177,7 +177,7 @@ class AutoEnable {
                     CheckedBy = '".G::$LoggedUser['ID']."',
                     Outcome = '$Status'
                 WHERE ID IN (".legacy_implode(',', $IDs).")");
-        G::$Cache->decrement_value(self::CACHE_KEY_NAME, count($IDs));
+        G::$Cache->decrement_value(self::CACHE_KEY_NAME, legacy_count($IDs));
     }
 
     /**

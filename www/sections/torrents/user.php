@@ -461,7 +461,7 @@ foreach ($Categories as $CatKey => $CatName) {
 			</div>
 		</form>
 	</div>
-<?	if (count($GroupIDs) === 0) { ?>
+<?	if (legacy_count($GroupIDs) === 0) { ?>
 	<div class="center">
 		Nothing found!
 	</div>

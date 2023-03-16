@@ -130,7 +130,7 @@ class TorrentsDL {
 		$Time = number_format(1000 * (microtime(true) - $ScriptStartTime), 2)." ms";
 		$Used = Format::get_size(memory_get_usage(true));
 		$Date = date("M d Y, H:i");
-		$NumSkipped = count($this->SkippedFiles);
+		$NumSkipped = legacy_count($this->SkippedFiles);
 		return "Collector Download Summary for $this->Title - " . SITE_NAME . "\r\n"
 			. "\r\n"
 			. "User:		{$this->User[Username]}\r\n"

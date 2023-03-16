@@ -284,7 +284,7 @@ View::show_header(($BookmarkView) ? 'Your bookmarked collages' : 'Browse collage
 	echo $Pages;
 ?>
 	</div>
-<?	if (count($Collages) === 0) { ?>
+<?	if (legacy_count($Collages) === 0) { ?>
 <div class="box pad" align="center">
 <?		if ($BookmarkView) { ?>
 	<h2>You have not bookmarked any collages.</h2>

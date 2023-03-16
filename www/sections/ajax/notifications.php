@@ -28,7 +28,7 @@ $GroupIDs = array_unique($DB->collect('GroupID'));
 $DB->query('SELECT FOUND_ROWS()');
 list($TorrentCount) = $DB->next_record();
 
-if (count($GroupIDs)) {
+if (legacy_count($GroupIDs)) {
 	$TorrentGroups = Torrents::get_groups($GroupIDs);
 	$DB->query("
 		UPDATE users_notify_torrents

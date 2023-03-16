@@ -76,7 +76,7 @@ class Requests {
 			}
 		}
 		// Make sure there's something in $RequestIDs, otherwise the SQL will break
-		if (count($RequestIDs) === 0) {
+		if (legacy_count($RequestIDs) === 0) {
 			return array();
 		}
 		$IDs = legacy_implode(',', legacy_array_keys($NotFound));
@@ -85,7 +85,7 @@ class Requests {
 			Don't change without ensuring you change everything else that uses get_requests()
 		*/
 
-		if (count($NotFound) > 0) {
+		if (legacy_count($NotFound) > 0) {
 			$QueryID = G::$DB->get_query_id();
 
 			G::$DB->query("
@@ -125,7 +125,7 @@ class Requests {
 			G::$DB->set_query_id($QueryID);
 
 			// Orphan requests. There shouldn't ever be any
-			if (count($NotFound) > 0) {
+			if (legacy_count($NotFound) > 0) {
 				foreach (legacy_array_keys($NotFound) as $GroupID) {
 					unset($Found[$GroupID]);
 				}

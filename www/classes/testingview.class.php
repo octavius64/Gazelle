@@ -30,7 +30,7 @@ class TestingView {
 			</tr>
 <?			foreach($Classes as $Key => $Value) {
 				$Doc = Testing::get_class_comment($Key);
-				$Methods = count(Testing::get_testable_methods($Key));
+				$Methods = legacy_count(Testing::get_testable_methods($Key));
 ?>
 				<tr>
 					<td>
@@ -142,10 +142,10 @@ class TestingView {
 					<td>
 						<?=!empty($ClassComment) ? "Yes" : "No"?>
 					<td>
-						<?=count(Testing::get_undocumented_methods($Key))?>
+						<?=legacy_count(Testing::get_undocumented_methods($Key))?>
 					</td>
 					<td>
-						<?=count(Testing::get_documented_methods($Key))?>
+						<?=legacy_count(Testing::get_documented_methods($Key))?>
 					</td>
 				</tr>
 <?			} ?>

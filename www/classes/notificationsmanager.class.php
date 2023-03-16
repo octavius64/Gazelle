@@ -189,7 +189,7 @@ class NotificationsManager {
 		$OneReads = G::$Cache->get_value('notifications_one_reads_' . G::$LoggedUser['ID']);
 		if ($OneReads) {
 			unset($OneReads[$ID]);
-			if (count($OneReads) > 0) {
+			if (legacy_count($OneReads) > 0) {
 				G::$Cache->cache_value('notifications_one_reads_' . G::$LoggedUser['ID'], $OneReads, 0);
 			} else {
 				G::$Cache->delete_value('notifications_one_reads_' . G::$LoggedUser['ID']);
@@ -614,7 +614,7 @@ class NotificationsManager {
 
 	public static function clear_notification($UserID, $Index) {
 		$Notifications = G::$Cache->get_value("user_cache_notifications_$UserID");
-		if (count($Notifications)) {
+		if (legacy_count($Notifications)) {
 			unset($Notifications[$Index]);
 			$Notifications = array_values($Notifications);
 			G::$Cache->cache_value("user_cache_notifications_$UserID", $Notifications, 0);

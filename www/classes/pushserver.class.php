@@ -84,7 +84,7 @@ class PushServer {
 
 		$Curl = curl_init();
 		curl_setopt($Curl, CURLOPT_URL, $API);
-		curl_setopt($Curl, CURLOPT_POST, count($Fields));
+		curl_setopt($Curl, CURLOPT_POST, legacy_count($Fields));
 		curl_setopt($Curl, CURLOPT_POSTFIELDS, $FieldsString);
 		curl_exec($Curl);
 		curl_close($Curl);
@@ -109,7 +109,7 @@ class PushServer {
 
 		$Curl = curl_init();
 		curl_setopt($Curl, CURLOPT_URL, $API);
-		curl_setopt($Curl, CURLOPT_POST, count($Fields));
+		curl_setopt($Curl, CURLOPT_POST, legacy_count($Fields));
 		curl_setopt($Curl, CURLOPT_POSTFIELDS, $FieldsString);
 		curl_exec($Curl);
 		curl_close($Curl);

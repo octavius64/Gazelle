@@ -19,7 +19,7 @@ $Artists = $DB->to_array('ArtistID', MYSQLI_ASSOC);
 $Collage = array();
 $ArtistTable = '';
 
-$NumGroups = count($Artists);
+$NumGroups = legacy_count($Artists);
 $NumGroupsByUser = 0;
 $UserAdditions = array();
 
@@ -136,7 +136,7 @@ View::show_header($Name, 'browse,collage,bbcode,voting,recommend');
 			<ul class="stats nobullet">
 				<li>Artists: <?=number_format($NumGroups)?></li>
 				<li>Subscribers: <?=number_format((int)$Subscribers)?></li>
-				<li>Built by <?=number_format(count($UserAdditions))?> user<?=(count($UserAdditions) > 1 ? 's' : '')?></li>
+				<li>Built by <?=number_format(legacy_count($UserAdditions))?> user<?=(legacy_count($UserAdditions) > 1 ? 's' : '')?></li>
 				<li>Last updated: <?=time_diff($Updated)?></li>
 			</ul>
 		</div>

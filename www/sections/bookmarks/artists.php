@@ -47,7 +47,7 @@ View::show_header($Title, 'browse');
 		</div>
 	</div>
 	<div class="box pad" align="center">
-<? if (count($ArtistList) === 0) { ?>
+<? if (legacy_count($ArtistList) === 0) { ?>
 		<h2>You have not bookmarked any artists.</h2>
 	</div>
 </div><!--content-->

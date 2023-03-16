@@ -134,7 +134,7 @@ class ARTISTS_SIMILAR extends ARTIST{
 		// The script later chooses which side to put them on
 
 		// We create more very low x values because they're more likely to be skipped
-		for ($i = 0; $i <= count($this->Artists) * 4; $i++) {
+		for ($i = 0; $i <= legacy_count($this->Artists) * 4; $i++) {
 			if ($Offset >= ((WIDTH / 4))) {
 				$Offset = $Offset % (WIDTH / 4);
 			}

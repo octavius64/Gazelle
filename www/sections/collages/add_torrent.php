@@ -125,10 +125,10 @@ if ($_REQUEST['action'] == 'add_torrent') {
 	unset($URL);
 
 	if (!check_perms('site_collages_delete')) {
-		if ($MaxGroups > 0 && ($NumTorrents + count($URLs) > $MaxGroups)) {
+		if ($MaxGroups > 0 && ($NumTorrents + legacy_count($URLs) > $MaxGroups)) {
 			$Err = "This collage can only hold $MaxGroups torrents.";
 		}
-		if ($MaxGroupsPerUser > 0 && ($GroupsForUser + count($URLs) > $MaxGroupsPerUser)) {
+		if ($MaxGroupsPerUser > 0 && ($GroupsForUser + legacy_count($URLs) > $MaxGroupsPerUser)) {
 			$Err = "You may only have $MaxGroupsPerUser torrents in this collage.";
 		}
 	}

@@ -52,7 +52,7 @@ $Results = Torrents::get_groups($GroupIDs);
 </div>
 
 <div class="thin box pad">
-	<h3>There are <?=number_format(count($TorrentsInfo))?> torrents remaining</h3>
+	<h3>There are <?=number_format(legacy_count($TorrentsInfo))?> torrents remaining</h3>
 	<table class="torrent_table">
 <?
 foreach ($TorrentsInfo as $TorrentID => $Info) {

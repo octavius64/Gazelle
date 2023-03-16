@@ -71,9 +71,9 @@ if (empty($_POST['question']) || empty($_POST['answers']) || !check_perms('forum
 		$Votes[$i + 1] = 0;
 	}
 
-	if (count($Answers) < 2) {
+	if (legacy_count($Answers) < 2) {
 		error('You cannot create a poll with only one answer.');
-	} elseif (count($Answers) > 25) {
+	} elseif (legacy_count($Answers) > 25) {
 		error('You cannot create a poll with greater than 25 answers.');
 	}
 }
@@ -135,7 +135,7 @@ if ($Forum = $Cache->get_value("forums_$ForumID")) {
 	list($Forum,,,$Stickies) = $Forum;
 
 	// Remove the last thread from the index
-	if (count($Forum) == TOPICS_PER_PAGE && $Stickies < TOPICS_PER_PAGE) {
+	if (legacy_count($Forum) == TOPICS_PER_PAGE && $Stickies < TOPICS_PER_PAGE) {
 		array_pop($Forum);
 	}
 

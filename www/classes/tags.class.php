@@ -200,7 +200,7 @@ class Tags {
 		$TagAliases = self::get_aliases();
 
 		if (isset($Tags['include'])) {
-			$End = count($Tags['include']);
+			$End = legacy_count($Tags['include']);
 			for ($i = 0; $i < $End; $i++) {
 				foreach ($TagAliases as $TagAlias) {
 					if ($Tags['include'][$i] === $TagAlias['BadTag']) {
@@ -214,7 +214,7 @@ class Tags {
 		}
 
 		if (isset($Tags['exclude'])) {
-			$End = count($Tags['exclude']);
+			$End = legacy_count($Tags['exclude']);
 			for ($i = 0; $i < $End; $i++) {
 				foreach ($TagAliases as $TagAlias) {
 					if (substr($Tags['exclude'][$i], 1) === $TagAlias['BadTag']) {

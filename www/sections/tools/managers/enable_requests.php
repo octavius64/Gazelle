@@ -90,7 +90,7 @@ if (isset($_GET['search'])) {
 
 $ShowChecked = $Checked || !empty($HandledUsername) || !empty($HandledTimestamp1) || !empty($OutcomeSearch);
 
-if (!$ShowChecked || count($Where) == 0) {
+if (!$ShowChecked || legacy_count($Where) == 0) {
     // If no search is entered, add this to the query to only show unchecked requests
     $Where[] = 'Outcome IS NULL';
 }

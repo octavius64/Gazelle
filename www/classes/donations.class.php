@@ -755,7 +755,7 @@ class Donations {
 	}
 
 	public static function get_forum_description() {
-		return self::$ForumDescriptions[rand(0, count(self::$ForumDescriptions) - 1)];
+		return self::$ForumDescriptions[rand(0, legacy_count(self::$ForumDescriptions) - 1)];
 	}
 
 	private static function get_pm_body($Source, $Currency, $DonationAmount, $ReceivedRank, $CurrentRank) {

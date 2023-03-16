@@ -21,7 +21,7 @@ list($GroupName) = $DB->next_record(MYSQLI_NUM, false);
 
 $Changed = false;
 
-for ($i = 0; $i < count($AliasNames); $i++) {
+for ($i = 0; $i < legacy_count($AliasNames); $i++) {
 	$AliasName = Artists::normalise_artist_name($AliasNames[$i]);
 	$Importance = $Importances[$i];
 

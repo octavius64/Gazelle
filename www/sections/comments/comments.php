@@ -226,7 +226,7 @@ switch ($Action) {
 		}
 		break;
 }
-$Links = legacy_implode(' ', $ActionLinks) . (count($TypeLinks) ? '<br />' . legacy_implode(' ', $TypeLinks) : '');
+$Links = legacy_implode(' ', $ActionLinks) . (legacy_count($TypeLinks) ? '<br />' . legacy_implode(' ', $TypeLinks) : '');
 
 View::show_header($Title, 'bbcode,comments');
 ?><div class="thin">

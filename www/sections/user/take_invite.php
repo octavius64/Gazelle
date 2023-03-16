@@ -50,7 +50,7 @@ if (strpos($Email, '|') !== false && check_perms('site_send_unlimited_invites'))
 
 foreach ($Emails as $CurEmail) {
 	if (!preg_match("/^".EMAIL_REGEX."$/i", $CurEmail)) {
-		if (count($Emails) > 1) {
+		if (legacy_count($Emails) > 1) {
 			continue;
 		} else {
 			error('Invalid email.');

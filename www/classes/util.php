@@ -254,6 +254,17 @@ function legacy_array_flip($array) {
 	return array_flip($array);
 }
 
+/**
+ * If the array is null, return 0
+ */
+function legacy_count($array, $mode = COUNT_NORMAL) {
+	if ($array == null) {
+		return 0;
+	}
+
+	return count($array, $mode);
+}
+
 function gzl_log($var) {
 	file_put_contents(DEBUG_LOG_FILE_PATH, var_export($var, true).PHP_EOL, FILE_APPEND);
 }

@@ -30,7 +30,7 @@ if ($NewRequest) {
 		error(404);
 	}
 	$VoteArray = Requests::get_votes_array($RequestID);
-	$VoteCount = count($VoteArray['Voters']);
+	$VoteCount = legacy_count($VoteArray['Voters']);
 	$IsFilled = !empty($Request['TorrentID']);
 	$CategoryName = $Categories[$Request['CategoryID'] - 1];
 	$ProjectCanEdit = (check_perms('project_team') && !$IsFilled && ($Request['CategoryID'] === '0' || ($CategoryName === 'Music' && $Year === '0')));
@@ -110,27 +110,27 @@ if ($CategoryName === 'Music') {
 
 	$ReleaseType = $_POST['releasetype'];
 
-	if (empty($_POST['all_formats']) && count($_POST['formats']) !== count($Formats)) {
+	if (empty($_POST['all_formats']) && legacy_count($_POST['formats']) !== legacy_count($Formats)) {
 		$FormatArray = $_POST['formats'];
-		if (count($FormatArray) < 1) {
+		if (legacy_count($FormatArray) < 1) {
 			$Err = 'You must require at least one format';
 		}
 	} else {
 		$AllFormats = true;
 	}
 
-	if (empty($_POST['all_bitrates']) && count($_POST['bitrates']) !== count($Bitrates)) {
+	if (empty($_POST['all_bitrates']) && legacy_count($_POST['bitrates']) !== legacy_count($Bitrates)) {
 		$BitrateArray = $_POST['bitrates'];
-		if (count($BitrateArray) < 1) {
+		if (legacy_count($BitrateArray) < 1) {
 			$Err = 'You must require at least one bitrate';
 		}
 	} else {
 		$AllBitrates = true;
 	}
 
-	if (empty($_POST['all_media']) && count($_POST['media']) !== count($Media)) {
+	if (empty($_POST['all_media']) && legacy_count($_POST['media']) !== legacy_count($Media)) {
 		$MediaArray = $_POST['media'];
-		if (count($MediaArray) < 1) {
+		if (legacy_count($MediaArray) < 1) {
 			$Err = 'You must require at least one medium.';
 		}
 	} else {
@@ -235,7 +235,7 @@ if ($CategoryName === 'Music') {
 		2 => array(),
 		3 => array()
 	);
-	for ($i = 0, $il = count($Artists); $i < $il; $i++) {
+	for ($i = 0, $il = legacy_count($Artists); $i < $il; $i++) {
 		if (trim($Artists[$i]) !== '') {
 			if (!in_array($Artists[$i], $ArtistNames)) {
 				$ArtistForm[$Importance[$i]][] = array('name' => trim($Artists[$i]));

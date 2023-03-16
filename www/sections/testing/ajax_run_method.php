@@ -9,7 +9,7 @@ $Method = $_POST['method'];
 $Params = json_decode($_POST['params'], true);
 
 if (!empty($Class) && !empty($Method) && Testing::has_testable_method($Class, $Method)) {
-	if (count($Params)) {
+	if (legacy_count($Params)) {
 		$Results = call_user_func_array(array($Class, $Method), array_values($Params));
 	} else {
 		$Results = call_user_func(array($Class, $Method));

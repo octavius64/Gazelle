@@ -25,7 +25,7 @@ $DB->query("
 	WHERE ConvID IN ($ConvIDs)
 		AND UserID=$UserID");
 list($MessageCount) = $DB->next_record();
-if ($MessageCount != count($Messages)) {
+if ($MessageCount != legacy_count($Messages)) {
 	error(0);
 }
 

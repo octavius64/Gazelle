@@ -234,7 +234,7 @@ if ($ThreadInfo['StickyPostID']) {
 	if ($ThreadInfo['StickyPostID'] != $Thread[0]['ID']) {
 		array_unshift($Thread, $ThreadInfo['StickyPost']);
 	}
-	if ($ThreadInfo['StickyPostID'] != $Thread[count($Thread) - 1]['ID']) {
+	if ($ThreadInfo['StickyPostID'] != $Thread[legacy_count($Thread) - 1]['ID']) {
 		$Thread[] = $ThreadInfo['StickyPost'];
 	}
 }

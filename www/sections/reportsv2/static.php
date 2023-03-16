@@ -230,7 +230,7 @@ View::show_header('Reports V2!', 'reportsv2,bbcode');
 <?	} ?>
 <div id="all_reports" style="width: 80%; margin-left: auto; margin-right: auto;">
 <?
-if (count($Reports) === 0) {
+if (legacy_count($Reports) === 0) {
 ?>
 	<div class="box pad center">
 		<strong>No new reports! \o/</strong>

@@ -19,7 +19,7 @@ if (($Locations = file("GeoLiteCity_".date('Ym')."05/GeoLiteCity-Location.csv", 
 array_shift($Locations);
 array_shift($Locations);
 
-echo 'There are '.count($Locations).' locations';
+echo 'There are '.legacy_count($Locations).' locations';
 echo '<br />';
 
 $CountryIDs = array();
@@ -29,7 +29,7 @@ foreach ($Locations as $Location) {
 	$CountryIDs[trim($Parts[0], '"')] = trim($Parts[1], '"');
 }
 
-echo 'There are '.count($CountryIDs).' CountryIDs';
+echo 'There are '.legacy_count($CountryIDs).' CountryIDs';
 echo '<br />';
 
 if (($Blocks = file("GeoLiteCity_".date('Ym')."07/GeoLiteCity-Blocks.csv", FILE_IGNORE_NEW_LINES)) === false) {
@@ -38,7 +38,7 @@ if (($Blocks = file("GeoLiteCity_".date('Ym')."07/GeoLiteCity-Blocks.csv", FILE_
 array_shift($Blocks);
 array_shift($Blocks);
 
-echo 'There are '.count($Blocks).' blocks';
+echo 'There are '.legacy_count($Blocks).' blocks';
 echo '<br />';
 
 //Because 4,000,000 rows is a lot for any server to handle, we split it into manageable groups of 10,000
@@ -60,7 +60,7 @@ foreach ($Blocks as $Index => $Block) {
 	}
 }
 
-if (count($Values) > 0) {
+if (legacy_count($Values) > 0) {
 	$DB->query("
 		INSERT INTO geoip_country (StartIP, EndIP, Code)
 		VALUES ".legacy_implode(', ', $Values));

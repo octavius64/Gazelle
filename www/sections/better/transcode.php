@@ -127,7 +127,7 @@ foreach ($TorrentGroups as $GroupID => $Editions) {
 		if (!$Edition['FlacID'] //no FLAC in this group
 				|| !empty($Edition['Formats']) && $_GET['type'] === '3' //at least one transcode present when we only wanted groups containing no transcodes at all (type 3)
 				|| $Edition['Formats'][$Encodings[$_GET['type']]] == true //the transcode we asked for is already there
-				|| count($Edition['Formats']) === 3) //all 3 transcodes are there already (this can happen due to the caching of Sphinx's better_transcode table)
+				|| legacy_count($Edition['Formats']) === 3) //all 3 transcodes are there already (this can happen due to the caching of Sphinx's better_transcode table)
 		{
 			continue;
 		}

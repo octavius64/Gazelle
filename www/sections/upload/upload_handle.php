@@ -292,9 +292,9 @@ if (empty($Properties['GroupID']) && empty($ArtistForm) && $Type == 'Music') {
 		5 => array(),
 		6 => array()
 	);
-	for ($i = 0, $il = count($Artists); $i < $il; $i++) {
+	for ($i = 0, $il = legacy_count($Artists); $i < $il; $i++) {
 		if (trim($Artists[$i]) != '') {
-			if (!in_array($Artists[$i], trim($ArtistNames))) {
+			if (!in_array($Artists[$i], array_map('trim', $ArtistNames))) {
 				$ArtistForm[$Importance[$i]][] = array('name' => Artists::normalise_artist_name($Artists[$i]));
 				if ($Importance[$i] == 1) {
 					$MainArtistCount++;
@@ -385,7 +385,7 @@ if (isset($Tor->Dec['encrypted_files'])) {
 
 // File list and size
 list($TotalSize, $FileList) = $Tor->file_list();
-$NumFiles = count($FileList);
+$NumFiles = legacy_count($FileList);
 $HasLog = 0;
 $HasCue = 0;
 $TmpFileList = array();
@@ -412,7 +412,7 @@ foreach ($FileList as $File) {
 	// Add file info to array
 	$TmpFileList[] = Torrents::filelist_format_file($File);
 }
-if (count($TooLongPaths) > 0) {
+if (legacy_count($TooLongPaths) > 0) {
 	$Names = legacy_implode(' <br />', $TooLongPaths);
 	$Err = "The torrent contained one or more files with too long a name:<br /> $Names";
 }
@@ -728,7 +728,7 @@ if (trim($Properties['Image']) != '') {
 			}
 
 			// Only reached if no matching GroupIDs in the cache already.
-			if (count($RecentUploads) === 5) {
+			if (legacy_count($RecentUploads) === 5) {
 				array_pop($RecentUploads);
 			}
 			array_unshift($RecentUploads, array(
@@ -877,7 +877,7 @@ if (!empty($ArtistsUnescaped)) {
 		}
 	}
 	// Don't add notification if >2 main artists or if tracked artist isn't a main artist
-	if (count($ArtistNameList) > 2 || $Artist['name'] == 'Various Artists') {
+	if (legacy_count($ArtistNameList) > 2 || $Artist['name'] == 'Various Artists') {
 		$SQL .= " AND (ExcludeVA = '0' AND (";
 		$SQL .= legacy_implode(' OR ', array_merge($ArtistNameList, $GuestArtistNameList));
 		$SQL .= " OR Artists = '')) AND (";

@@ -50,7 +50,7 @@ if ($TotalQuestions > QUESTIONS_PER_PAGE) { ?>
 <div class="thin">
 	<div class="header">
 		<h2>User Questions</h2>
-		<h3><?=number_format($TotalQuestions)?> questions asked; <?=number_format(count($Questions))?> left to answer</h3>
+		<h3><?=number_format($TotalQuestions)?> questions asked; <?=number_format(legacy_count($Questions))?> left to answer</h3>
 	</div>
 	<div class="linkbox">
 		<a class="brackets" href="questions.php?action=answers">View staff answers</a>

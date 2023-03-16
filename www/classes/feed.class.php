@@ -65,7 +65,7 @@ class FEED {
 		if (!$Entries) {
 			$Entries = array();
 		} else {
-			if (count($Entries) >= 50) {
+			if (legacy_count($Entries) >= 50) {
 				array_pop($Entries);
 			}
 		}

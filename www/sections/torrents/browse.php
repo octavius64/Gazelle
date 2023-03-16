@@ -81,7 +81,7 @@ if (!empty($_GET['setdefault'])) {
 	$Cache->commit_transaction(0);
 
 // Use default search options
-} elseif (empty($_SERVER['QUERY_STRING']) || (count($_GET) === 1 && isset($_GET['page']))) {
+} elseif (empty($_SERVER['QUERY_STRING']) || (legacy_count($_GET) === 1 && isset($_GET['page']))) {
 	if (!empty($LoggedUser['DefaultSearch'])) {
 		if (!empty($_GET['page'])) {
 			$Page = $_GET['page'];
@@ -542,7 +542,7 @@ foreach ($Results as $Key => $GroupID) {
 	}
 	$SnatchedGroupClass = $GroupInfo['Flags']['IsSnatched'] ? ' snatched_group' : '';
 
-	if ($GroupResults && (count($Torrents) > 1 || isset($GroupedCategories[$CategoryID - 1]))) {
+	if ($GroupResults && (legacy_count($Torrents) > 1 || isset($GroupedCategories[$CategoryID - 1]))) {
 		// These torrents are in a group
 		$DisplayName .= "<a href=\"torrents.php?id=$GroupID\" class=\"tooltip\" title=\"View torrent group\" dir=\"ltr\">$GroupName</a>";
 		if ($GroupYear > 0) {
@@ -609,7 +609,7 @@ $ShowGroups = !(!empty($LoggedUser['TorrentGrouping']) && $LoggedUser['TorrentGr
 			//Get report info for each torrent, use the cache if available, if not, add to it.
 			$Reported = false;
 			$Reports = Torrents::get_reports($TorrentID);
-			if (count($Reports) > 0) {
+			if (legacy_count($Reports) > 0) {
 				$Reported = true;
 			}
 

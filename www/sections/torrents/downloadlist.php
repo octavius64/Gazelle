@@ -27,7 +27,7 @@ $Results = $DB->to_array('UserID', MYSQLI_ASSOC);
 $DB->query('SELECT FOUND_ROWS()');
 list($NumResults) = $DB->next_record();
 
-if (count($UserIDs) > 0) {
+if (legacy_count($UserIDs) > 0) {
 	$UserIDs = legacy_implode(',', $UserIDs);
 	$DB->query("
 		SELECT uid

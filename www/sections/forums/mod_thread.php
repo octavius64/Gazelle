@@ -384,7 +384,7 @@ if (isset($_POST['delete'])) {
 	if (isset($Notification)) {
 		NotificationsManager::notify_user($ThreadAuthorID, NotificationsManager::FORUMALERTS, $Notification, "forums.php?action=viewthread&threadid=$TopicID");
 	}
-	if (count($TopicNotes) > 0) {
+	if (legacy_count($TopicNotes) > 0) {
 		Forums::add_topic_note($TopicID, legacy_implode("\n", $TopicNotes));
 	}
 	header("Location: forums.php?action=viewthread&threadid=$TopicID&page=$Page");

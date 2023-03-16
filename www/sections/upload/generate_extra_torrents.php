@@ -37,7 +37,7 @@ foreach ($ExtraTorrents as $ExtraTorrent) {
 	$ThisInsert['FilePath'] = db_string($ExtraDirName);
 	$ThisInsert['FileString'] = db_string(legacy_implode("\n", $ExtraTmpFileList));
 	$ThisInsert['InfoHash'] = pack('H*', $ExtraTor->info_hash());
-	$ThisInsert['NumFiles'] = count($ExtraFileList);
+	$ThisInsert['NumFiles'] = legacy_count($ExtraFileList);
 	$ThisInsert['TorEnc'] = db_string($ExtraTor->encode());
 	$ThisInsert['TotalSize'] = $ExtraTotalSize;
 

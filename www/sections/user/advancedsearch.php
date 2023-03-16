@@ -120,7 +120,7 @@ $YesNo = array('inarray'=>array('any', 'yes', 'no'));
 $OrderVals = array('inarray'=>array('Username', 'Ratio', 'IP', 'Email', 'Joined', 'Last Seen', 'Uploaded', 'Downloaded', 'Invites', 'Snatches'));
 $WayVals = array('inarray'=>array('Ascending', 'Descending'));
 
-if (count($_GET)) {
+if (legacy_count($_GET)) {
 	$DateRegex = array('regex' => '/\d{4}-\d{2}-\d{2}/');
 
 	$ClassIDs = array();
@@ -459,21 +459,21 @@ if (count($_GET)) {
 		$SQL = 'SELECT '.$Distinct.$SQL;
 		$SQL .= legacy_implode(' ', $Join);
 
-		if (count($Where)) {
+		if (legacy_count($Where)) {
 			$SQL .= ' WHERE '.legacy_implode(' AND ', $Where);
 		}
 
-		if (count($Group)) {
+		if (legacy_count($Group)) {
 			$SQL .= " GROUP BY " . legacy_implode(' ,', $Group);
 		}
 
-		if (count($Having)) {
+		if (legacy_count($Having)) {
 			$SQL .= ' HAVING '.legacy_implode(' AND ', $Having);
 		}
 
 		$SQL .= $Order;
 
-		if (count($Where) > 0 || count($Join) > 0 || count($Having) > 0) {
+		if (legacy_count($Where) > 0 || legacy_count($Join) > 0 || legacy_count($Having) > 0) {
 			$RunQuery = true;
 		}
 

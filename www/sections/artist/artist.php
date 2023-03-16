@@ -99,7 +99,7 @@ if (empty($LoggedUser['DisableRequests'])) {
 		$Cache->cache_value("artists_requests_$ArtistID", $Requests);
 	}
 }
-$NumRequests = count($Requests);
+$NumRequests = legacy_count($Requests);
 
 
 if (($Importances = $Cache->get_value("artist_groups_$ArtistID")) === false) {
@@ -119,12 +119,12 @@ if (($Importances = $Cache->get_value("artist_groups_$ArtistID")) === false) {
 		$GroupIDs[] = $Group['GroupID'];
 	}
 }
-if (count($GroupIDs) > 0) {
+if (legacy_count($GroupIDs) > 0) {
 	$TorrentList = Torrents::get_groups($GroupIDs, true, true);
 } else {
 	$TorrentList = array();
 }
-$NumGroups = count($TorrentList);
+$NumGroups = legacy_count($TorrentList);
 
 if (!empty($TorrentList)) {
 ?>
@@ -355,7 +355,7 @@ foreach ($Importances as $Group) {
 				unset($ExtendedArtists[2]);
 				unset($ExtendedArtists[3]);
 				$DisplayName = Artists::display_artists($ExtendedArtists).$DisplayName;
-			} elseif (count($GroupArtists) > 0) {
+			} elseif (legacy_count($GroupArtists) > 0) {
 				$DisplayName = Artists::display_artists(array(1 => $Artists), true, true).$DisplayName;
 			}
 			break;
@@ -365,7 +365,7 @@ foreach ($Importances as $Group) {
 				unset($ExtendedArtists[3]);
 				unset($ExtendedArtists[6]);
 				$DisplayName = Artists::display_artists($ExtendedArtists).$DisplayName;
-			} elseif (count($GroupArtists) > 0) {
+			} elseif (legacy_count($GroupArtists) > 0) {
 				$DisplayName = Artists::display_artists(array(1 => $Artists), true, true).$DisplayName;
 			}
 			break;
@@ -667,7 +667,7 @@ if (empty($SimilarArray)) {
 		LIMIT 30
 	");
 	$SimilarArray = $DB->to_array();
-	$NumSimilar = count($SimilarArray);
+	$NumSimilar = legacy_count($SimilarArray);
 }
 ?>
 		<div class="box box_artists">
@@ -735,21 +735,21 @@ if (!is_array($Collages)) {
 	$Collages = $DB->to_array();
 	$Cache->cache_value("artists_collages_$ArtistID", $Collages, 3600 * 6);
 }
-if (count($Collages) > 0) {
-	if (count($Collages) > MAX_COLLAGES) {
+if (legacy_count($Collages) > 0) {
+	if (legacy_count($Collages) > MAX_COLLAGES) {
 		// Pick some at random
-		$Range = range(0,count($Collages) - 1);
+		$Range = range(0,legacy_count($Collages) - 1);
 		shuffle($Range);
 		$Indices = legacy_array_slice($Range, 0, MAX_COLLAGES);
 		$SeeAll = ' <a href="#" onclick="$(\'.collage_rows\').gtoggle(); return false;">(See all)</a>';
 	} else {
-		$Indices = range(0, count($Collages)-1);
+		$Indices = range(0, legacy_count($Collages)-1);
 		$SeeAll = '';
 	}
 ?>
 	<table class="collage_table" id="collages">
 		<tr class="colhead">
-			<td width="85%"><a href="#">&uarr;</a>&nbsp;This artist is in <?=number_format(count($Collages))?> collage<?=((count($Collages) > 1) ? 's' : '')?><?=$SeeAll?></td>
+			<td width="85%"><a href="#">&uarr;</a>&nbsp;This artist is in <?=number_format(legacy_count($Collages))?> collage<?=((legacy_count($Collages) > 1) ? 's' : '')?><?=$SeeAll?></td>
 			<td># artists</td>
 		</tr>
 <?

@@ -13,7 +13,7 @@ function diff($OldText, $NewText) {
 		}
 		$Found = -1;
 
-		while ($Key < count($LineArrayNew)) {
+		while ($Key < legacy_count($LineArrayNew)) {
 			if ($OldString != $LineArrayNew[$Key]) {
 				$Key++;
 			} elseif ($OldString == $LineArrayNew[$Key]) {
@@ -42,9 +42,9 @@ function diff($OldText, $NewText) {
 				$LineOffset = $Found - $OldLine;
 		}
 	}
-	if (count($LineArrayNew) > count($LineArrayOld) + $LineOffset) {
-		$Key = count($LineArrayOld) + $LineOffset;
-		while ($Key < count($LineArrayNew)) {
+	if (legacy_count($LineArrayNew) > legacy_count($LineArrayOld) + $LineOffset) {
+		$Key = legacy_count($LineArrayOld) + $LineOffset;
+		while ($Key < legacy_count($LineArrayNew)) {
 			$Result[] = '<span class="line_new">&rarr; '.$LineArrayNew[$Key].'</span><br />';
 			$Key++;
 		}

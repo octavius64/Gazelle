@@ -119,7 +119,7 @@ class CACHE extends Memcache {
 			if ($_GET['clearcache'] === '1') {
 				// Because check_perms() isn't true until LoggedUser is pulled from the cache, we have to remove the entries loaded before the LoggedUser data
 				// Because of this, not user cache data will require a secondary pageload following the clearcache to update
-				if (count($this->CacheHits) > 0) {
+				if (legacy_count($this->CacheHits) > 0) {
 					foreach (legacy_array_keys($this->CacheHits) as $HitKey) {
 						if (!isset($this->ClearedKeys[$HitKey]) && !Misc::in_array_partial($HitKey, $this->PersistentKeys)) {
 							$this->delete($HitKey);

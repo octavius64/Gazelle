@@ -85,7 +85,7 @@ $JsonTorrentDetails = array(
 $Torrent = $TorrentList[$TorrentID];
 
 $Reports = Torrents::get_reports($TorrentID);
-if (count($Reports) > 0) {
+if (legacy_count($Reports) > 0) {
 	$Torrent['Reported'] = true;
 } else {
 	$Torrent['Reported'] = false;

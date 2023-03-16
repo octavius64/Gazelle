@@ -82,9 +82,9 @@ function get_concert_post_template($Artist, $Event) {
 		}
 		$Website = '[b]Website:[/b] ' . $Url;
 	}
-	if (isset($Event['artists']['artist']) && (count($Event['artists']['artist']) === 1 && strtolower($Event['artists']['artist'][1]) == strtolower($Artist))) {
+	if (isset($Event['artists']['artist']) && (legacy_count($Event['artists']['artist']) === 1 && strtolower($Event['artists']['artist'][1]) == strtolower($Artist))) {
 		$i = 0;
-		$j = count($Event['artists']['artist']) - 1;
+		$j = legacy_count($Event['artists']['artist']) - 1;
 		foreach ($Event['artists']['artist'] as $WithArtist) {
 			if ($i === $j) {
 				$With .= " and [artist]" . $WithArtist . "[/artist]";

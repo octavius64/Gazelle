@@ -2,7 +2,7 @@
 
 $DB->query("
 		SELECT
-			sq.UserID, um.Username, count(1) AS Answered
+			sq.UserID, um.Username, legacy_count(1) AS Answered
 		FROM staff_answers AS sq
 			LEFT JOIN users_main AS um ON um.ID = sq.UserID
 		GROUP BY sq.UserID

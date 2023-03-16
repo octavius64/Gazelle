@@ -538,7 +538,7 @@ class Text {
 	 * @param int $Min Minimum number of headlines required for a TOC list
 	 */
 	public static function parse_toc ($Min = 3) {
-		if (count(self::$Headlines) > $Min) {
+		if (legacy_count(self::$Headlines) > $Min) {
 			$list = '<ol class="navigation_list">';
 			$i = 0;
 			$level = 0;
@@ -924,7 +924,7 @@ class Text {
 		if (!empty(G::$LoggedUser['DisableSmileys'])) {
 			return $Str;
 		}
-		if (count(self::$ProcessedSmileys) == 0 && count(self::$Smileys) > 0) {
+		if (legacy_count(self::$ProcessedSmileys) == 0 && legacy_count(self::$Smileys) > 0) {
 			foreach (self::$Smileys as $Key => $Val) {
 				self::$ProcessedSmileys[$Key] = '<img border="0" src="'.STATIC_SERVER.'common/smileys/'.$Val.'" alt="" />';
 			}

@@ -66,7 +66,7 @@ if ($CategoryName === 'Music') {
 
 //Votes time
 $RequestVotes = Requests::get_votes_array($RequestID);
-$VoteCount = count($RequestVotes['Voters']);
+$VoteCount = legacy_count($RequestVotes['Voters']);
 $ProjectCanEdit = (check_perms('project_team') && !$IsFilled && ($Request['CategoryID'] === '0' || ($CategoryName === 'Music' && $Request['Year'] === '0')));
 $UserCanEdit = (!$IsFilled && $LoggedUser['ID'] === $Request['UserID'] && $VoteCount < 2);
 $CanEdit = ($UserCanEdit || $ProjectCanEdit || check_perms('site_moderate_requests'));
@@ -138,7 +138,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 		<div class="box box_artists">
 			<div class="head"><strong>Artists</strong></div>
 			<ul class="stats nobullet">
-<?		if (!empty($ArtistForm[4]) && count($ArtistForm[4]) > 0) { ?>
+<?		if (!empty($ArtistForm[4]) && legacy_count($ArtistForm[4]) > 0) { ?>
 				<li class="artists_composer"><strong>Composers:</strong></li>
 <?			foreach ($ArtistForm[4] as $Artist) { ?>
 				<li class="artists_composer">
@@ -147,7 +147,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 <?
 			}
 		}
-		if (!empty($ArtistForm[6]) && count($ArtistForm[6]) > 0) {
+		if (!empty($ArtistForm[6]) && legacy_count($ArtistForm[6]) > 0) {
 ?>
 				<li class="artists_dj"><strong>DJ / Compiler:</strong></li>
 <?			foreach ($ArtistForm[6] as $Artist) { ?>
@@ -157,9 +157,9 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 <?
 			}
 		}
-		if ((count($ArtistForm[6]) > 0) && (count($ArtistForm[1]) > 0)) {
+		if ((legacy_count($ArtistForm[6]) > 0) && (legacy_count($ArtistForm[1]) > 0)) {
 			print '				<li class="artists_main"><strong>Artists:</strong></li>';
-		} elseif ((count($ArtistForm[4]) > 0) && (count($ArtistForm[1]) > 0)) {
+		} elseif ((legacy_count($ArtistForm[4]) > 0) && (legacy_count($ArtistForm[1]) > 0)) {
 			print '				<li class="artists_main"><strong>Performers:</strong></li>';
 		}
 		foreach ($ArtistForm[1] as $Artist) {
@@ -169,7 +169,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 				</li>
 <?
 		}
-		if (!empty($ArtistForm[2]) && count($ArtistForm[2]) > 0) {
+		if (!empty($ArtistForm[2]) && legacy_count($ArtistForm[2]) > 0) {
 ?>
 				<li class="artists_with"><strong>With:</strong></li>
 <?			foreach ($ArtistForm[2] as $Artist) { ?>
@@ -179,7 +179,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 <?
 			}
 		}
-		if (!empty($ArtistForm[5]) && count($ArtistForm[5]) > 0) {
+		if (!empty($ArtistForm[5]) && legacy_count($ArtistForm[5]) > 0) {
 ?>
 				<li class="artists_conductor"><strong>Conducted by:</strong></li>
 <?			foreach ($ArtistForm[5] as $Artist) { ?>
@@ -189,7 +189,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 <?
 			}
 		}
-		if (!empty($ArtistForm[3]) && count($ArtistForm[3]) > 0) {
+		if (!empty($ArtistForm[3]) && legacy_count($ArtistForm[3]) > 0) {
 ?>
 				<li class="artists_remix"><strong>Remixed by:</strong></li>
 <?			foreach ($ArtistForm[3] as $Artist) { ?>
@@ -199,7 +199,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 <?
 			}
 		}
-		if (!empty($ArtistForm[7]) && count($ArtistForm[7]) > 0) {
+		if (!empty($ArtistForm[7]) && legacy_count($ArtistForm[7]) > 0) {
 ?>
 				<li class="artists_producer"><strong>Produced by:</strong></li>
 <?			foreach ($ArtistForm[7] as $Artist) { ?>
@@ -315,7 +315,7 @@ $google_url = 'https://www.google.com/search?tbm=shop&amp;q=' . "$encoded_artist
 	$OCLC = str_replace(' ', '', $Request['OCLC']);
 	if ($OCLC !== '') {
 		$OCLCs = explode(',', $OCLC);
-		for ($i = 0; $i < count($OCLCs); $i++) {
+		for ($i = 0; $i < legacy_count($OCLCs); $i++) {
 			if (!empty($Worldcat)) {
 				$Worldcat .= ', <a href="https://www.worldcat.org/oclc/'.$OCLCs[$i].'">'.$OCLCs[$i].'</a>';
 			} else {

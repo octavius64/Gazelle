@@ -21,7 +21,7 @@ foreach ($Artists as $i => $Artist) {
 	}
 }
 
-if (count($CleanArtists) > 0) {
+if (legacy_count($CleanArtists) > 0) {
 	$ArtistsString = legacy_implode(',', $ArtistIDs);
 	if ($_POST['manager_action'] == 'delete') {
 		$DB->query("

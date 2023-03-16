@@ -157,7 +157,7 @@ if (in_array($_GET['filter'], array('all', 'uploaded'))) {
 	$Snatched = $DB->to_array();
 	$Debug->set_flag('Received data from DB');
 	shuffle($Snatched); // randomize results
-	while ($ResultCount < TORRENTS_PER_PAGE && count($Snatched) > 0) {
+	while ($ResultCount < TORRENTS_PER_PAGE && legacy_count($Snatched) > 0) {
 		// we throw TORRENTS_PER_PAGE results into Sphinx until we have at least TORRENTS_PER_PAGE results (or no snatches left)
 		$SnatchedTmp = legacy_array_slice($Snatched, 0, TORRENTS_PER_PAGE);
 		$Snatched = legacy_array_slice($Snatched, TORRENTS_PER_PAGE);
@@ -179,12 +179,12 @@ if (in_array($_GET['filter'], array('all', 'uploaded'))) {
 						break;
 					}
 				}
-				if (!$EditionSnatched || count($Edition['MP3s']) === 3) {
+				if (!$EditionSnatched || legacy_count($Edition['MP3s']) === 3) {
 					unset($GroupsTmp[$GroupID]['Editions'][$RemIdent]);
 				}
 			}
-			$ResultCount += count($GroupsTmp[$GroupID]['Editions']);
-			if (count($GroupsTmp[$GroupID]['Editions']) === 0) {
+			$ResultCount += legacy_count($GroupsTmp[$GroupID]['Editions']);
+			if (legacy_count($GroupsTmp[$GroupID]['Editions']) === 0) {
 				unset($GroupsTmp[$GroupID]);
 			}
 		}
@@ -203,10 +203,10 @@ $Counter = array(
 );
 foreach ($Groups as $GroupID => $Group) {
 	foreach ($Group['Editions'] as $RemIdent => $Edition) {
-		if (count($Edition['FlacIDs']) === 0 //no FLAC in this group
+		if (legacy_count($Edition['FlacIDs']) === 0 //no FLAC in this group
 				|| (!empty($Edition['MP3s']) && $_GET['target'] === 'all') //at least one transcode present when we only wanted groups containing no transcodes at all
 				|| isset($Edition['MP3s'][$Encodings[$_GET['target']]]) //the transcode we asked for is already there
-				|| count($Edition['MP3s']) === 3) //all 3 transcodes are there already (this can happen due to the caching of Sphinx's better_transcode table)
+				|| legacy_count($Edition['MP3s']) === 3) //all 3 transcodes are there already (this can happen due to the caching of Sphinx's better_transcode table)
 		{
 			$Debug->log_var($Edition, 'Skipping '.$RemIdent);
 			unset($Groups[$GroupID]['Editions'][$RemIdent]);

@@ -48,7 +48,7 @@ class Format {
 				// Not hard, cut at closest word
 				$CutDesc = mb_substr($Str, 0, $Length, 'UTF-8');
 				$DescArr = explode(' ', $CutDesc);
-				if (count($DescArr) > 1) {
+				if (legacy_count($DescArr) > 1) {
 					array_pop($DescArr);
 					$CutDesc = legacy_implode(' ', $DescArr);
 				}

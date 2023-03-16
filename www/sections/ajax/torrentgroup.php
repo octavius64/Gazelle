@@ -87,7 +87,7 @@ foreach ($TorrentList as $Torrent) {
 	$FileList = legacy_implode('|||', $FileList);
 	$Userinfo = Users::user_info($Torrent['UserID']);
 	$Reports = Torrents::get_reports($Torrent['ID']);
-	$Torrent['Reported'] = count($Reports) > 0;
+	$Torrent['Reported'] = legacy_count($Reports) > 0;
 	$JsonTorrentList[] = array(
 		'id'                      => (int)$Torrent['ID'],
 		'media'                   => $Torrent['Media'],

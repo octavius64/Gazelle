@@ -32,7 +32,7 @@ $DB->query("
 $GroupIDs = $DB->collect('GroupID');
 
 $CollageDataList = $DB->to_array('GroupID', MYSQLI_ASSOC);
-if (count($GroupIDs) > 0) {
+if (legacy_count($GroupIDs) > 0) {
 	$TorrentList = Torrents::get_groups($GroupIDs);
 } else {
 	$TorrentList = array();
@@ -95,7 +95,7 @@ View::show_header("Manage collage: $Name", 'jquery-ui,jquery.tablesorter,sort');
 			unset($ExtendedArtists[2]);
 			unset($ExtendedArtists[3]);
 			$DisplayName .= Artists::display_artists($ExtendedArtists, true, false);
-		} elseif (count($Artists) > 0) {
+		} elseif (legacy_count($Artists) > 0) {
 			$DisplayName .= Artists::display_artists(array('1' => $Artists), true, false);
 		}
 		$TorrentLink = "<a href=\"torrents.php?id=$GroupID\" class=\"tooltip\" title=\"View torrent group\">$GroupName</a>";

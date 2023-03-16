@@ -106,7 +106,7 @@ if (empty($LoggedUser['DisableRequests'])) {
 		$Cache->cache_value("artists_requests_$ArtistID", $Requests);
 	}
 }
-$NumRequests = count($Requests);
+$NumRequests = legacy_count($Requests);
 
 if (($Importances = $Cache->get_value("artist_groups_$ArtistID")) === false) {
 	$DB->query("
@@ -125,12 +125,12 @@ if (($Importances = $Cache->get_value("artist_groups_$ArtistID")) === false) {
 		$GroupIDs[] = $Group['GroupID'];
 	}
 }
-if (count($GroupIDs) > 0) {
+if (legacy_count($GroupIDs) > 0) {
 	$TorrentList = Torrents::get_groups($GroupIDs, true, true);
 } else {
 	$TorrentList = array();
 }
-$NumGroups = count($TorrentList);
+$NumGroups = legacy_count($TorrentList);
 
 //Get list of used release types
 $UsedReleases = array();
@@ -285,7 +285,7 @@ if (empty($SimilarArray)) {
 			'similarId' => (int)$Similar['SimilarID']
 		);
 	}
-	$NumSimilar = count($SimilarArray);
+	$NumSimilar = legacy_count($SimilarArray);
 } else {
 	//If data already exists, use it
 	foreach ($SimilarArray as $Similar) {

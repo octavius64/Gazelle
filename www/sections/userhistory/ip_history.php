@@ -255,13 +255,13 @@ foreach ($Results as $Index => $Result) {
 				<?=Tools::get_host_by_ajax($IP)?>
 <?
 	if (!empty($OtherUsers)) {
-		if ($FirstOccurrence || count($OtherUsers) <= 100) {
+		if ($FirstOccurrence || legacy_count($OtherUsers) <= 100) {
 ?>
-				<a href="#" onclick="$('.otherusers' + <?=$Index?>).gtoggle(); return false;">(<?=count($OtherUsers)?>)</a>
+				<a href="#" onclick="$('.otherusers' + <?=$Index?>).gtoggle(); return false;">(<?=legacy_count($OtherUsers)?>)</a>
 <?
 		} else {
 ?>
-				<a href="#<?=$ElementID?>" onclick="$('.otherusers' + <?=$IPIndexes[$IP]?>).gshow();">(<?=count($OtherUsers)?>)</a>
+				<a href="#<?=$ElementID?>" onclick="$('.otherusers' + <?=$IPIndexes[$IP]?>).gshow();">(<?=legacy_count($OtherUsers)?>)</a>
 <?
 		}
 	} else {
@@ -282,8 +282,8 @@ foreach ($Results as $Index => $Result) {
 			<td><?//time_diff(strtotime($StartTime), strtotime($EndTime)); ?></td>
 		</tr>
 <?
-	if (!empty($OtherUsers) && ($FirstOccurrence || count($OtherUsers) < 100)) {
-		$HideMe = (count($OtherUsers) > 10);
+	if (!empty($OtherUsers) && ($FirstOccurrence || legacy_count($OtherUsers) < 100)) {
+		$HideMe = (legacy_count($OtherUsers) > 10);
 		foreach ($OtherUsers as $OtherUser) {
 			if (!$OtherUser['EndTime']) {
 				$OtherUser['EndTime'] = sqltime();

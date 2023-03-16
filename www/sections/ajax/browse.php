@@ -75,7 +75,7 @@ foreach ($Results as $Key => $GroupID) {
 	} else {
 		$DisplayName = '';
 	}
-	if ($GroupResults && (count($Torrents) > 1 || isset($GroupedCategories[$CategoryID - 1]))) {
+	if ($GroupResults && (legacy_count($Torrents) > 1 || isset($GroupedCategories[$CategoryID - 1]))) {
 		// These torrents are in a group
 		$LastRemasterYear = '-';
 		$LastRemasterTitle = '';

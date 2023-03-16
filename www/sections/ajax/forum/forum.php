@@ -89,7 +89,7 @@ foreach ($Forums[$ForumID]['SpecificRules'] as $ThreadIDs) {
 
 $Pages = Format::get_pages($Page, $Forums[$ForumID]['NumTopics'], TOPICS_PER_PAGE, 9);
 
-if (count($Forum) === 0) {
+if (legacy_count($Forum) === 0) {
 	print
 		json_encode(
 			array(

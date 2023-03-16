@@ -132,13 +132,13 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
 	<div class="sidebar">
 		<div class="box box_image box_image_albumart box_albumart"><!-- .box_albumart deprecated -->
 			<div class="head">
-				<strong><?=(count($CoverArt) > 0 ? 'Covers (' . (count($CoverArt) + 1) . ')' : 'Cover')?></strong>
+				<strong><?=(legacy_count($CoverArt) > 0 ? 'Covers (' . (legacy_count($CoverArt) + 1) . ')' : 'Cover')?></strong>
 <?
-			if (count($CoverArt) > 0) {
+			if (legacy_count($CoverArt) > 0) {
 				if (empty($LoggedUser['ShowExtraCovers'])) {
-					for ($Index = 0; $Index <= count($CoverArt); $Index++) { ?>
+					for ($Index = 0; $Index <= legacy_count($CoverArt); $Index++) { ?>
 				<span id="cover_controls_<?=($Index)?>"<?=($Index > 0 ? ' style="display: none;"' : '')?>>
-<?						if ($Index == count($CoverArt)) { ?>
+<?						if ($Index == legacy_count($CoverArt)) { ?>
 						<a class="brackets prev_cover" data-gazelle-prev-cover="<?=($Index - 1)?>" href="#">Prev</a>
 						<a class="brackets show_all_covers" href="#">Show all</a>
 						<span class="brackets next_cover">Next</span>
@@ -146,7 +146,7 @@ View::show_header($Title, 'browse,comments,torrent,bbcode,recommend,cover_art,su
 						<a class="brackets prev_cover" data-gazelle-prev-cover="<?=($Index - 1)?>" href="#">Prev</a>
 						<a class="brackets show_all_covers" href="#">Show all</a>
 						<a class="brackets next_cover" data-gazelle-next-cover="<?=($Index + 1)?>" href="#">Next</a>
-<?						} elseif ($Index == 0 && count($CoverArt) > 0) { ?>
+<?						} elseif ($Index == 0 && legacy_count($CoverArt) > 0) { ?>
 						<span class="brackets prev_cover">Prev</span>
 						<a class="brackets show_all_covers" href="#">Show all</a>
 						<a class="brackets next_cover" data-gazelle-next-cover="<?=($Index + 1)?>" href="#">Next</a>
@@ -232,7 +232,7 @@ if ($Categories[$GroupCategoryID - 1] == 'Music') {
 			</div>
 			<ul class="stats nobullet" id="artist_list">
 <?
-	if (!empty($Artists[4]) && count($Artists[4]) > 0) {
+	if (!empty($Artists[4]) && legacy_count($Artists[4]) > 0) {
 		print '				<li class="artists_composers"><strong class="artists_label">Composers:</strong></li>';
 		foreach ($Artists[4] as $Artist) {
 ?>
@@ -258,7 +258,7 @@ if ($Categories[$GroupCategoryID - 1] == 'Music') {
 <?
 		}
 	}
-	if (!empty($Artists[6]) && count($Artists[6]) > 0) {
+	if (!empty($Artists[6]) && legacy_count($Artists[6]) > 0) {
 		print '				<li class="artists_dj"><strong class="artists_label">DJ / Compiler:</strong></li>';
 		foreach ($Artists[6] as $Artist) {
 ?>
@@ -305,7 +305,7 @@ if ($Categories[$GroupCategoryID - 1] == 'Music') {
 				</li>
 <?
 	}
-	if (!empty($Artists[2]) && count($Artists[2]) > 0) {
+	if (!empty($Artists[2]) && legacy_count($Artists[2]) > 0) {
 		print '				<li class="artists_with"><strong class="artists_label">With:</strong></li>';
 		foreach ($Artists[2] as $Artist) {
 ?>
@@ -330,7 +330,7 @@ if ($Categories[$GroupCategoryID - 1] == 'Music') {
 <?
 		}
 	}
-	if (!empty($Artists[5]) && count($Artists[5]) > 0) {
+	if (!empty($Artists[5]) && legacy_count($Artists[5]) > 0) {
 		print '				<li class="artists_conductors"><strong class="artists_label">Conducted by:</strong></li>';
 		foreach ($Artists[5] as $Artist) {
 ?>
@@ -355,7 +355,7 @@ if ($Categories[$GroupCategoryID - 1] == 'Music') {
 <?
 		}
 	}
-	if (!empty($Artists[3]) && count($Artists[3]) > 0) {
+	if (!empty($Artists[3]) && legacy_count($Artists[3]) > 0) {
 		print '				<li class="artists_remix"><strong class="artists_label">Remixed by:</strong></li>';
 		foreach ($Artists[3] as $Artist) {
 ?>
@@ -380,7 +380,7 @@ if ($Categories[$GroupCategoryID - 1] == 'Music') {
 <?
 		}
 	}
-	if (!empty($Artists[7]) && count($Artists[7]) > 0) {
+	if (!empty($Artists[7]) && legacy_count($Artists[7]) > 0) {
 		print '				<li class="artists_producer"><strong class="artists_label">Produced by:</strong></li>';
 		foreach ($Artists[7] as $Artist) {
 ?>
@@ -457,7 +457,7 @@ include(SERVER_ROOT.'/sections/torrents/vote.php');
 <?				} ?>
 			</div>
 <?
-if (count($Tags) > 0) {
+if (legacy_count($Tags) > 0) {
 ?>
 			<ul class="stats nobullet">
 <?
@@ -555,7 +555,7 @@ foreach ($TorrentList as $Torrent) {
 	$Reported = false;
 	unset($ReportedTimes);
 	$Reports = Torrents::get_reports($TorrentID);
-	$NumReports = count($Reports);
+	$NumReports = legacy_count($Reports);
 
 	if ($NumReports > 0) {
 		$Reported = true;
@@ -753,12 +753,12 @@ foreach ($TorrentList as $Torrent) {
 		</table>
 <?
 $Requests = get_group_requests($GroupID);
-if (empty($LoggedUser['DisableRequests']) && count($Requests) > 0) {
+if (empty($LoggedUser['DisableRequests']) && legacy_count($Requests) > 0) {
 	$i = 0;
 ?>
 		<div class="box">
 			<div class="head">
-				<span style="font-weight: bold;">Requests (<?=number_format(count($Requests))?>)</span>
+				<span style="font-weight: bold;">Requests (<?=number_format(legacy_count($Requests))?>)</span>
 				<a href="#" style="float: right;" onclick="$('#requests').gtoggle(); this.innerHTML = (this.innerHTML == 'Hide' ? 'Show' : 'Hide'); return false;" class="brackets">Show</a>
 			</div>
 			<table id="requests" class="request_table hidden">
@@ -786,7 +786,7 @@ if (empty($LoggedUser['DisableRequests']) && count($Requests) > 0) {
 				<tr class="requestrows <?=(++$i % 2 ? 'rowa' : 'rowb')?>">
 					<td><a href="requests.php?action=view&amp;id=<?=$Request['ID']?>"><?=$FormatString?> / <?=$BitrateString?> / <?=$MediaString?></a></td>
 					<td>
-						<span id="vote_count_<?=$Request['ID']?>"><?=count($RequestVotes['Voters'])?></span>
+						<span id="vote_count_<?=$Request['ID']?>"><?=legacy_count($RequestVotes['Voters'])?></span>
 <?			if (check_perms('site_vote')) { ?>
 						&nbsp;&nbsp; <a href="javascript:Vote(0, <?=$Request['ID']?>)" class="brackets">+</a>
 <?			} ?>
@@ -810,21 +810,21 @@ if (!is_array($Collages)) {
 	$Collages = $DB->to_array();
 	$Cache->cache_value("torrent_collages_$GroupID", $Collages, 3600 * 6);
 }
-if (count($Collages) > 0) {
-	if (count($Collages) > MAX_COLLAGES) {
+if (legacy_count($Collages) > 0) {
+	if (legacy_count($Collages) > MAX_COLLAGES) {
 		// Pick some at random
-		$Range = range(0, count($Collages) - 1);
+		$Range = range(0, legacy_count($Collages) - 1);
 		shuffle($Range);
 		$Indices = legacy_array_slice($Range, 0, MAX_COLLAGES);
 		$SeeAll = ' <a href="#" onclick="$(\'.collage_rows\').gtoggle(); return false;">(See all)</a>';
 	} else {
-		$Indices = range(0, count($Collages) - 1);
+		$Indices = range(0, legacy_count($Collages) - 1);
 		$SeeAll = '';
 	}
 ?>
 		<table class="collage_table" id="collages">
 			<tr class="colhead">
-				<td width="85%"><a href="#">&uarr;</a>&nbsp;This album is in <?=number_format(count($Collages))?> collage<?=((count($Collages) > 1) ? 's' : '')?><?=$SeeAll?></td>
+				<td width="85%"><a href="#">&uarr;</a>&nbsp;This album is in <?=number_format(legacy_count($Collages))?> collage<?=((legacy_count($Collages) > 1) ? 's' : '')?><?=$SeeAll?></td>
 				<td># torrents</td>
 			</tr>
 <?	foreach ($Indices as $i) {
@@ -861,21 +861,21 @@ if (!is_array($PersonalCollages)) {
 	$Cache->cache_value("torrent_collages_personal_$GroupID", $PersonalCollages, 3600 * 6);
 }
 
-if (count($PersonalCollages) > 0) {
-	if (count($PersonalCollages) > MAX_PERS_COLLAGES) {
+if (legacy_count($PersonalCollages) > 0) {
+	if (legacy_count($PersonalCollages) > MAX_PERS_COLLAGES) {
 		// Pick some at random
-		$Range = range(0,count($PersonalCollages) - 1);
+		$Range = range(0,legacy_count($PersonalCollages) - 1);
 		shuffle($Range);
 		$Indices = legacy_array_slice($Range, 0, MAX_PERS_COLLAGES);
 		$SeeAll = ' <a href="#" onclick="$(\'.personal_rows\').gtoggle(); return false;">(See all)</a>';
 	} else {
-		$Indices = range(0, count($PersonalCollages) - 1);
+		$Indices = range(0, legacy_count($PersonalCollages) - 1);
 		$SeeAll = '';
 	}
 ?>
 		<table class="collage_table" id="personal_collages">
 			<tr class="colhead">
-				<td width="85%"><a href="#">&uarr;</a>&nbsp;This album is in <?=number_format(count($PersonalCollages))?> personal collage<?=((count($PersonalCollages) > 1) ? 's' : '')?><?=$SeeAll?></td>
+				<td width="85%"><a href="#">&uarr;</a>&nbsp;This album is in <?=number_format(legacy_count($PersonalCollages))?> personal collage<?=((legacy_count($PersonalCollages) > 1) ? 's' : '')?><?=$SeeAll?></td>
 				<td># torrents</td>
 			</tr>
 <?	foreach ($Indices as $i) {
