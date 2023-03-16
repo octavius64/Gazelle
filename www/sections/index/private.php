@@ -149,11 +149,6 @@ if (($UserCount = $Cache->get_value('stats_user_count')) === false) {
 	$Cache->cache_value('stats_user_count', $UserCount, 0); //inf cache
 }
 
-// Prevent division by 0 errors DIVIDE_BY_ZERO
-if ($UserCount == 0) {
-	$UserCount = 1;
-}
-
 $UserCount = (int)$UserCount;
 ?>
 				<li>Enabled users: <?=number_format($UserCount)?> <a href="stats.php?action=users" class="brackets">Details</a></li>
@@ -184,9 +179,9 @@ if (($UserStats = $Cache->get_value('stats_users')) === false) {
 	$Cache->cache_value('stats_users', $UserStats, 0);
 }
 ?>
-				<li>Users active today: <?=number_format($UserStats['Day'])?> (<?=number_format($UserStats['Day'] / $UserCount * 100, 2)?>%)</li>
-				<li>Users active this week: <?=number_format($UserStats['Week'])?> (<?=number_format($UserStats['Week'] / $UserCount * 100, 2)?>%)</li>
-				<li>Users active this month: <?=number_format($UserStats['Month'])?> (<?=number_format($UserStats['Month'] / $UserCount * 100, 2)?>%)</li>
+				<li>Users active today: <?=number_format($UserStats['Day'])?> (<?=Format::get_ratio_percentage_text($UserStats['Day'], $UserCount)?>%)</li>
+				<li>Users active this week: <?=number_format($UserStats['Week'])?> (<?=Format::get_ratio_percentage_text($UserStats['Week'], $UserCount)?>%)</li>
+				<li>Users active this month: <?=number_format($UserStats['Month'])?> (<?=Format::get_ratio_percentage_text($UserStats['Month'], $UserCount)?>%)</li>
 <?
 
 if (($TorrentCount = $Cache->get_value('stats_torrent_count')) === false) {
@@ -250,13 +245,8 @@ if (($RequestStats = $Cache->get_value('stats_requests')) === false) {
 	list($RequestCount, $FilledCount) = $RequestStats;
 }
 
-// Prevent division by 0 DIVIDE_BY_ZERO
-if ($RequestCount == 0) {
-	$RequestCount = 1;
-}
-
 ?>
-				<li>Requests: <?=number_format($RequestCount)?> (<?=number_format($FilledCount / $RequestCount * 100, 2)?>% filled)</li>
+				<li>Requests: <?=number_format($RequestCount)?> (<?=Format::get_ratio_percentage_text($FilledCount, $RequestCount)?>% filled)</li>
 <?
 
 if ($SnatchStats = $Cache->get_value('stats_snatches')) {

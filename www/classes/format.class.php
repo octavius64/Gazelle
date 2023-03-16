@@ -120,6 +120,17 @@ class Format {
 		return $Ratio;
 	}
 
+	public static function get_ratio_percentage_text($Dividend, $Divisor, $Decimal = 2) {
+		$Dividend *= 100;
+		$Ratio = self::get_ratio($Dividend, $Divisor, $Decimal);
+
+		if ($Ratio === false) {
+			return '--';
+		}
+
+		return $Ratio;
+	}
+
 	/**
 	 * Returns ratio
 	 * @param int $Dividend

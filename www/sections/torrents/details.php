@@ -15,6 +15,7 @@ if (!empty($_GET['revisionid']) && is_number($_GET['revisionid'])) {
 }
 
 include(SERVER_ROOT.'/sections/torrents/functions.php');
+include(SERVER_ROOT.'/classes/format.class.php');
 $TorrentCache = get_group_info($GroupID, true, $RevisionID);
 $TorrentDetails = $TorrentCache[0];
 $TorrentList = $TorrentCache[1];

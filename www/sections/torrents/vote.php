@@ -6,14 +6,7 @@
 	$UpVotes	= $GroupVotes['Ups'];
 	$DownVotes	= $TotalVotes - $UpVotes;
 
-	$UpVotePercentage = '0';
-	if ($UpVotes == 0) {
-		$UpVotePercentage = '0';
-	} else if ($TotalVotes == 0) {
-		$UpVotePercentage = '∞';
-	} else {
-		$UpVotePercentage = number_format($UpVotes / $TotalVotes * 100, 1);
-	}
+	$UpVotePercentage = Format::get_ratio_percentage_text($UpVotes, $TotalVotes);
 
 	$Voted = isset($UserVotes[$GroupID]) ? $UserVotes[$GroupID]['Type'] : false;
 	$Score = Votes::binomial_score($UpVotes, $TotalVotes);
