@@ -1,0 +1,15 @@
+These base image builds install packages and run expensive operations. They don't contain
+any business logic, so they are uploaded to Docker Hub. Gazelle builds on top of these
+base images.
+
+octavius64/nginx_base:v1
+https://hub.docker.com/r/octavius64/nginx
+
+octavius64/ocelot_base:v1
+https://hub.docker.com/r/octavius64/ocelot
+
+octavius64/php_fpm_base:v1
+https://hub.docker.com/r/octavius64/php_fpm
+
+octavius64/sphinxsearch_base:v1
+https://hub.docker.com/r/octavius64/sphinxsearch

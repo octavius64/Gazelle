@@ -1,4 +1,4 @@
-FROM octavius64/php-gazelle:v2
+FROM octavius64/php_fpm_base:v1
 
 ARG GAZELLE_DEBUG
 
